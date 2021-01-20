@@ -5,6 +5,8 @@ using UnityEngine;
 public class shootingGun : MonoBehaviour
 {
     public Rigidbody projectile;
+    Vector3 origin = Vector3.zero;
+    public float distance = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class shootingGun : MonoBehaviour
         {
             Rigidbody clone;
             clone = Instantiate(projectile, transform.position, transform.rotation);
-            clone.velocity = transform.TransformDirection(Vector3.forward * 10);
+            projectile.transform.position = origin + Quaternion.Euler(0, 20, 0) * new Vector3(0, 0, distance);
         }
     }
 }

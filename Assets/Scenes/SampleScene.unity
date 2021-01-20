@@ -567,6 +567,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9173356348077468055, guid: a0eda50820ccbc346890beb7d0e1ab23,
         type: 3}
+      propertyPath: distance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173356348077468055, guid: a0eda50820ccbc346890beb7d0e1ab23,
+        type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: -180057082288485829, guid: 6e4bfa72c6ef1434c97c3f6cc81f40ad,
