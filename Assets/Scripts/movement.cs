@@ -35,28 +35,44 @@ public class movement : MonoBehaviour
         if (Input.GetButton("Jump") && shotDelay <= 0)
         {
             shotDelay = 0.2f;
-
-            GameObject clone;
-            clone = Instantiate(bullet, player.transform.position, player.transform.rotation);
-
-            clone.GetComponent<Bullet>().rot = rot;
-            clone.GetComponent<Bullet>().distance = distance;
-            clone.GetComponent<Bullet>().height = height;
-            clone.GetComponent<Bullet>().endLife = 1;
-
-            if (Input.GetAxis("Horizontal") < 0)
-            {
-                clone.GetComponent<Bullet>().direction = -1;
-                player.GetComponent<Firing>().bulletList.Add(clone);
-            }
-            else
-            {
-                clone.GetComponent<Bullet>().direction = 1;
-                player.GetComponent<Firing>().bulletList.Add(clone);
-            }
-
+            singleShot();
         }
-
         shotDelay -= Time.deltaTime;
+    }
+
+    void createShot(float heightChange)
+    {
+        GameObject clone;
+        clone = Instantiate(bullet, player.transform.position, player.transform.rotation);
+
+        clone.GetComponent<Bullet>().rot = rot;
+        clone.GetComponent<Bullet>().distance = distance;
+        clone.GetComponent<Bullet>().height = height;
+        clone.GetComponent<Bullet>().endLife = 2;
+        clone.GetComponent<Bullet>().speed = 200;
+        clone.GetComponent<Bullet>().changeHeight = heightChange;
+
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            clone.GetComponent<Bullet>().direction = -1;
+            player.GetComponent<Firing>().bulletList.Add(clone);
+        }
+        else
+        {
+            clone.GetComponent<Bullet>().direction = 1;
+            player.GetComponent<Firing>().bulletList.Add(clone);
+        }
+    }
+
+    void triShot()
+    {
+        createShot(1);
+        createShot(0);
+        createShot(-1);
+    }
+
+    void singleShot()
+    {
+        createShot(0);
     }
 }
