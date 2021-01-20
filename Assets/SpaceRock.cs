@@ -12,7 +12,7 @@ public class SpaceRock : MonoBehaviour
     
     void Start()
     {
-       
+        StartCoroutine(RockDrop());
         
     }
 
@@ -20,9 +20,9 @@ public class SpaceRock : MonoBehaviour
     {
         while (enemyCount < 1)
         {
-            xPos = Random.Range(/*we will get this later*/);
-            zPos = Random.Range(/*same here*/);
-            Instantiate(theEnemy, new Vector3(xPos,/*the Y Coords*/, zPos), Quaternion.identity);
+            xPos = Random.Range(1, 5);
+            zPos = Random.Range(1, 5);
+            Instantiate(theEnemy, new Vector3(xPos, 8, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);// sets the spawn rate
             enemyCount += 1; //limit of rocks
 

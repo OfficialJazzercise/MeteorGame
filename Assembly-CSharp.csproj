@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{9212935A-FD20-AC52-6716-217F20A07725}</ProjectGuid>
+    <ProjectGuid>{6AF82146-24A6-5267-07C3-6E6EC75C3125}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\cameraFollow.cs" />
      <Compile Include="Assets\Scripts\movement.cs" />
+     <Compile Include="Assets\SpaceRock.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Users/psiDaylight/Desktop/Game 375/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -241,7 +242,7 @@
  <HintPath>C:/Users/psiDaylight/Desktop/Game 375/2019.4.17f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Users/psiDaylight/Desktop/Game 375/2019.4.17f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -589,31 +590,31 @@
  <HintPath>C:/Users/psiDaylight/Desktop/Game 375/2019.4.17f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/psiDaylight/Documents/GitHub/ArcadeGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/psiDaylight/Documents/GitHub/MeteorGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
