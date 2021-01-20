@@ -34,7 +34,7 @@ public class movement : MonoBehaviour
 
         if (Input.GetButton("Jump") && shotDelay <= 0)
         {
-            shotDelay = 0.2f;
+            shotDelay = 0.5f;
             singleShot();
         }
         shotDelay -= Time.deltaTime;
@@ -45,11 +45,11 @@ public class movement : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") < 0)
         {
-            player.GetComponent<Firing>().startBullet(rot, -1, height, 200, heightChange, player.transform, distance);
+            player.GetComponent<Firing>().startBullet(rot, -1, height, 150, heightChange, player.transform, distance);
         }
         else
         {
-            player.GetComponent<Firing>().startBullet(rot, 1, height, 200, heightChange, player.transform, distance);
+            player.GetComponent<Firing>().startBullet(rot, 1, height, 150, heightChange, player.transform, distance);
         }
     }
 
