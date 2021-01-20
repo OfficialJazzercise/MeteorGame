@@ -42,25 +42,14 @@ public class movement : MonoBehaviour
 
     void createShot(float heightChange)
     {
-        GameObject clone;
-        clone = Instantiate(bullet, player.transform.position, player.transform.rotation);
-
-        clone.GetComponent<Bullet>().rot = rot;
-        clone.GetComponent<Bullet>().distance = distance;
-        clone.GetComponent<Bullet>().height = height;
-        clone.GetComponent<Bullet>().endLife = 2;
-        clone.GetComponent<Bullet>().speed = 200;
-        clone.GetComponent<Bullet>().changeHeight = heightChange;
 
         if (Input.GetAxis("Horizontal") < 0)
         {
-            clone.GetComponent<Bullet>().direction = -1;
-            player.GetComponent<Firing>().bulletList.Add(clone);
+            player.GetComponent<Firing>().startBullet(rot, -1, height, 200, heightChange, player.transform, distance);
         }
         else
         {
-            clone.GetComponent<Bullet>().direction = 1;
-            player.GetComponent<Firing>().bulletList.Add(clone);
+            player.GetComponent<Firing>().startBullet(rot, 1, height, 200, heightChange, player.transform, distance);
         }
     }
 
