@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Firing : MonoBehaviour
 { 
-    public List<GameObject> bulletList;
+    public List<Bullet> bulletList;
     Vector3 origin = Vector3.zero;
-    public GameObject bullet;
+    public Bullet prefab;
 
     // Start is called before the first frame update
     void Start()
 {
-    bulletList = new List<GameObject>();
+    bulletList = new List<Bullet>();
     GameObject clone;
 
         for (int i = 0; i < 30; i++)
         {
-            clone = Instantiate(bullet, bullet.transform.position, bullet.transform.rotation);
+            clone = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation).gameObject;
             clone.SetActive(false);
-            bulletList.Add(clone);
+            bulletList.Add(clone.GetComponent<Bullet>());
         }
 }
 
@@ -27,19 +27,19 @@ void Update()
 {
 
 
-        foreach (GameObject bullet in bulletList)
+        foreach (Bullet bullet in bulletList)
         {
-            if (bullet.activeSelf)
+            if (bullet.gameObject.activeSelf)
             {
-                bullet.GetComponent<Bullet>().rot -= bullet.GetComponent<Bullet>().direction * bullet.GetComponent<Bullet>().speed * Time.deltaTime;
-                bullet.GetComponent<Bullet>().height += bullet.GetComponent<Bullet>().changeHeight * 5.0f * Time.deltaTime;
-                bullet.transform.position = origin + Quaternion.Euler(0, bullet.GetComponent<Bullet>().rot, 0) * new Vector3(0, bullet.GetComponent<Bullet>().height, bullet.GetComponent<Bullet>().distance);
+                bullet.rot -= bullet.direction * bullet.speed * Time.deltaTime;
+                bullet.height += bullet.changeHeight * 5.0f * Time.deltaTime;
+                bullet.transform.position = origin + Quaternion.Euler(0, bullet.rot, 0) * new Vector3(0, bullet.height, bullet.distance);
                 bullet.transform.LookAt(origin);
-                bullet.GetComponent<Bullet>().endLife -= Time.deltaTime;
+                bullet.endLife -= Time.deltaTime;
 
-                if (bullet.GetComponent<Bullet>().endLife <= 0)
+                if (bullet.endLife <= 0)
                 {
-                    bullet.SetActive(false);
+                    bullet.gameObject.SetActive(false);
                 }
             }
         }
@@ -50,23 +50,23 @@ void Update()
 
     public void startBullet(float newRot, float newDirection, float newHeight, float newSpeed, float changeHeight, Transform newTransform, float newDistance)
     {
-        foreach (GameObject bullet in bulletList)
+        foreach (Bullet bullet in bulletList)
         {
-            if(bullet.activeSelf)
+            if(bullet.gameObject.activeSelf)
             {
 
             }
             else
             {
                 bullet.transform.position = newTransform.position;
-                bullet.GetComponent<Bullet>().rot = newRot;
-                bullet.GetComponent<Bullet>().distance = newDistance;
-                bullet.GetComponent<Bullet>().height = newHeight;
-                bullet.GetComponent<Bullet>().endLife = 2;
-                bullet.GetComponent<Bullet>().speed = newSpeed;
-                bullet.GetComponent<Bullet>().changeHeight = changeHeight;
-                bullet.GetComponent<Bullet>().direction = newDirection;
-                bullet.SetActive(true);
+                bullet.rot = newRot;
+                bullet.distance = newDistance;
+                bullet.height = newHeight;
+                bullet.endLife = 2;
+                bullet.speed = newSpeed;
+                bullet.changeHeight = changeHeight;
+                bullet.direction = newDirection;
+                bullet.gameObject.SetActive(true);
                 return;
             }
         }
