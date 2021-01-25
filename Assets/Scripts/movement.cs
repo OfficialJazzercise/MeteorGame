@@ -9,7 +9,7 @@ public class movement : MonoBehaviour
 
     float rot = 0.0f;
     float shotDelay = 0.0f;
-    public float distance = 10.0f;
+    public float distance = 100.0f;
     float speed = 100.0f;
 
     private float height = 0.0f;
