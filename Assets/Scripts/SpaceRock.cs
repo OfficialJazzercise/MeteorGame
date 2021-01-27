@@ -4,28 +4,26 @@ using UnityEngine;
 
 public class SpaceRock : MonoBehaviour
 {
+    public float endLife;
+    public float direction;
+    public float distance;
+    public float height;
+    public float changeHeight;
+
+    public float rot = 0.0f;
+    public float speed = 100.0f;
+
+
     // Start is called before the first frame update
-    public GameObject theEnemy;
-    public int xPos;
-    public int zPos;
-    public int enemyCount;
-    
     void Start()
     {
-        StartCoroutine(RockDrop());
-        
+
     }
 
-    IEnumerator RockDrop()
+    // Update is called once per frame
+    void Update()
     {
-        while (enemyCount < 1)
-        {
-            xPos = Random.Range(1, 5);
-            zPos = Random.Range(1, 5);
-            Instantiate(theEnemy, new Vector3(xPos, 8, zPos), Quaternion.identity);
-            yield return new WaitForSeconds(0.1f);// sets the spawn rate
-            enemyCount += 1; //limit of rocks
 
-        }
     }
+
 }
