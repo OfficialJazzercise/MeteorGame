@@ -7,8 +7,18 @@ public class Firing : MonoBehaviour
     public List<Bullet> bulletList;
     Vector3 origin = Vector3.zero;
     public Bullet prefab;
-
+    private bool bBigBullet;
     // Start is called before the first frame update
+
+    private void OnEnable()
+    {
+        GBullet.BigBulletPowerUp += BigBulletPowerUp;
+    }
+    private void OnDisable()
+    {
+        GBullet.BigBulletPowerUp -= BigBulletPowerUp;
+    }
+    private void BigBulletPowerUp() { bBigBullet = true; }
     void Start()
 {
     bulletList = new List<Bullet>();
@@ -18,6 +28,7 @@ public class Firing : MonoBehaviour
         {
             clone = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation).gameObject;
             clone.SetActive(false);
+           
             bulletList.Add(clone.GetComponent<Bullet>());
         }
 }
@@ -25,8 +36,6 @@ public class Firing : MonoBehaviour
 // Update is called once per frame
 void Update()
 {
-
-
         foreach (Bullet bullet in bulletList)
         {
             if (bullet.gameObject.activeSelf)
@@ -67,6 +76,10 @@ void Update()
                 bullet.changeHeight = changeHeight;
                 bullet.direction = newDirection;
                 bullet.gameObject.SetActive(true);
+
+                if (bBigBullet) bullet.transform.localScale = new Vector3(1, 1, 1);
+                else bullet.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
                 return;
             }
         }
