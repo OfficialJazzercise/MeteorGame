@@ -24,4 +24,13 @@ public class Bullet : MonoBehaviour
     {
         
     }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "Meteor")
+        {
+            Debug.Log("Meteor Down");
+            Destroy(col.gameObject);
+        }
+    }
 }
