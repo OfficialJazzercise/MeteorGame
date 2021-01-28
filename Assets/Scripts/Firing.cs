@@ -8,6 +8,7 @@ public class Firing : MonoBehaviour
     Vector3 origin = Vector3.zero;
     public Bullet prefab;
     private bool bBigBullet;
+    private float GBulletTimer = 20f; // This is the timer, in seconds, that the GBullet upgrade lasts
     // Start is called before the first frame update
 
     private void OnEnable()
@@ -18,7 +19,8 @@ public class Firing : MonoBehaviour
     {
         GBullet.BigBulletPowerUp -= BigBulletPowerUp;
     }
-    private void BigBulletPowerUp() { bBigBullet = true; }
+    private void BigBulletPowerUp() {bBigBullet = true;}
+
     void Start()
 {
     bulletList = new List<Bullet>();
@@ -53,8 +55,16 @@ void Update()
             }
         }
 
-
-
+        //Timer for GBullet upgrade
+        if(bBigBullet == true && GBulletTimer > 0)
+        {
+            GBulletTimer -= Time.deltaTime;
+            if(GBulletTimer < 0)
+            {
+                bBigBullet = false;
+                GBulletTimer = 20;
+            }
+        }
 }
 
     public void startBullet(float newRot, float newDirection, float newHeight, float newSpeed, float changeHeight, Transform newTransform, float newDistance)
@@ -77,7 +87,7 @@ void Update()
                 bullet.direction = newDirection;
                 bullet.gameObject.SetActive(true);
 
-                if (bBigBullet) bullet.transform.localScale = new Vector3(4f, 4f, 4f);
+                if (bBigBullet) bullet.transform.localScale = new Vector3(6f, 6f, 6f);
                 else bullet.transform.localScale = new Vector3(2f, 2f, 2f);
 
                 return;

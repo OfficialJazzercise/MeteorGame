@@ -6,6 +6,8 @@ public class upgradeSpawning : MonoBehaviour
 {
     public float spawnDelay = 10.0f;
     public int spawnChance = 32;
+
+    public GameObject GBullet;
     
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class upgradeSpawning : MonoBehaviour
     {
         if(Random.Range(1, spawnChance) == 1)
         {
-            gameObject.GetComponent<Renderer>().enabled = true;
+            Instantiate(GBullet, transform.position, Quaternion.identity);
         }
     }
 }
