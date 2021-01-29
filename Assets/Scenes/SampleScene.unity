@@ -216,7 +216,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b4ed0375bcd51314e8795f9d5032ee3f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4ed0375bcd51314e8795f9d5032ee3f,
         type: 3}
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 587230695}
   bullet: {fileID: 4739099607580132465, guid: 50a38f16cba95e5409b77d023a93b55d, type: 3}
-  distance: 5
+  distance: 70
 --- !u!114 &587230699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraF: {fileID: 963194225}
-  distance: 11.5
+  distance: 85
 --- !u!1001 &1290465837
 PrefabInstance:
   m_ObjectHideFlags: 0
