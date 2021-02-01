@@ -94,6 +94,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7326c2ab30da31a4eba76b25fc9f7ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endLife: 10
+  direction: 1
+  distance: 70
+  height: 8
+  changeHeight: -1
+  rot: 0
+  speed: 1
 --- !u!54 &-9156533638375528198
 Rigidbody:
   m_ObjectHideFlags: 0

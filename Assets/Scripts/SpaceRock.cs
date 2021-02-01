@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class SpaceRock : MonoBehaviour
 {
+    public float endLife;
+    public float direction;
+    public float distance;
+    public float height;
+    public float changeHeight;
+
+    public float rot = 0.0f;
+    public float speed = 100.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +31,7 @@ public class SpaceRock : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Debug.Log("Meteor Down!");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
