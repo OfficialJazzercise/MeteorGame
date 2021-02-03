@@ -87,8 +87,8 @@ void Update()
                 bullet.direction = newDirection;
                 bullet.gameObject.SetActive(true);
 
-                if (bBigBullet) bullet.transform.localScale = new Vector3(6f, 6f, 6f);
-                else bullet.transform.localScale = new Vector3(2f, 2f, 2f);
+                if (bBigBullet) bullet.transform.localScale = new Vector3(12f, 12f, 12f);
+                else bullet.transform.localScale = new Vector3(6f, 6f, 6f);
 
                 return;
             }

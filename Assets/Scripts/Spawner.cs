@@ -6,6 +6,8 @@ public class Spawner : MonoBehaviour
 {
     public List<SpaceRock> meteorList;
     public GameObject prefab;
+    public Transform spawnArea;
+
     public float rate = 3f;
     private float shittyTimer = 0;
 
@@ -36,9 +38,8 @@ public class Spawner : MonoBehaviour
                 
             }
             else
-            {
-                Debug.Log("no you");
-                meteor.transform.position = transform.position;
+            {         
+                meteor.transform.position = spawnArea.position;
                 meteor.gameObject.SetActive(true);
                 return;
             }

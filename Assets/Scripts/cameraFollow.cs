@@ -7,7 +7,7 @@ public class cameraFollow : MonoBehaviour
     public GameObject cameraF;
     float rot = 0.0f;
     public float distance = 10.0f;
-    float speed = 100.0f;
+    float speed = 50.0f;
 
     Vector3 origin = Vector3.zero;
 

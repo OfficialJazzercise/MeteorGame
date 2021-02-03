@@ -6,11 +6,14 @@ public class movement : MonoBehaviour
 {
     public GameObject player;
     public GameObject bullet;
+    public Canvas score;
 
     float rot = 0.0f;
     float shotDelay = 0.0f;
     public float distance = 100.0f;
-    float speed = 100.0f;
+    float speed = 50.0f;
+
+    bool isRight = true;
 
     private float height = 0.0f;
 
@@ -28,7 +31,7 @@ public class movement : MonoBehaviour
     {
 
         rot -= Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        height += Input.GetAxis("Vertical") * 5.0f * Time.deltaTime;
+        height += Input.GetAxis("Vertical") * 10.0f * Time.deltaTime;
         player.transform.position = origin + Quaternion.Euler(0, rot, 0) * new Vector3(0, height, distance);
         player.transform.LookAt(origin);
 
@@ -38,19 +41,37 @@ public class movement : MonoBehaviour
             singleShot();
         }
         shotDelay -= Time.deltaTime;
-    }
-
-    void createShot(float heightChange)
-    {
 
         if (Input.GetAxis("Horizontal") < 0)
         {
-            player.GetComponent<Firing>().startBullet(rot, -1, height, 150, heightChange, player.transform, distance);
+            player.GetComponent<SpriteRenderer>().flipX = true;
+            isRight = false;
+        }
+        else if(Input.GetAxis("Horizontal") > 0)
+        {
+            player.GetComponent<SpriteRenderer>().flipX = false;
+            isRight = true;
+        }
+
+
+    }
+
+
+
+    void createShot(float heightChange)
+    {
+        float direction;
+
+        if (isRight)
+        {
+            direction = 1;
         }
         else
         {
-            player.GetComponent<Firing>().startBullet(rot, 1, height, 150, heightChange, player.transform, distance);
+            direction = -1;
         }
+
+        player.GetComponent<Firing>().startBullet(rot, direction, height, 100, heightChange, player.transform, distance);
     }
 
     void triShot()
