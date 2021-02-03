@@ -16,6 +16,8 @@ public class SpaceRock : MonoBehaviour
 
     public static Action IncreaseScore = delegate { };
 
+    public AudioSource playSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,8 @@ public class SpaceRock : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+       
+
         if (other.CompareTag("Bullet"))
         {
             Debug.Log("Meteor Down!");
@@ -39,6 +43,9 @@ public class SpaceRock : MonoBehaviour
             height = 8;
             IncreaseScore();
             gameObject.SetActive(false);
+
+            playSound.Play();
+
         }
     }
 }
