@@ -24,6 +24,6 @@ public class GBullet : MonoBehaviour
         Debug.Log("Upgrade Successfully Activated");
   
         BigBulletPowerUp();
-        Destroy(gameObject);
+        gameObject.SetActive(false); ;
     }
 }
