@@ -5,13 +5,12 @@ using System;
 
 public class GBullet : MonoBehaviour
 {
-    private upgradeSpawning isOccupied;
+
 
     public static Action BigBulletPowerUp = delegate { };
+
     void OnTriggerEnter(Collider other)
     {
-        isOccupied = GetComponent<upgradeSpawning>();
-        isOccupied.occupied = false;
 
         if(other.CompareTag("Player"))
         {

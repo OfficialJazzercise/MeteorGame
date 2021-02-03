@@ -7,9 +7,11 @@ public class upgradeSpawning : MonoBehaviour
     public float spawnDelay = 10.0f;
     public int spawnChance = 32;
 
-    public GameObject GBullet;
+    public GameObject prefab;
     public bool occupied = false;
-    
+
+    public GameObject[] spawnerList;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,14 +21,14 @@ public class upgradeSpawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void spawnUpgrade()
     {
         if(Random.Range(1, spawnChance) == 1 && occupied == false)
         {
-            Instantiate(GBullet, transform.position, Quaternion.identity);
+            Instantiate(prefab, transform.position, Quaternion.identity);
             occupied = true;
         }
     }
