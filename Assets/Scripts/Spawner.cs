@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour
 {
     public List<SpaceRock> meteorList;
     public GameObject prefab;
     public Transform spawnArea;
+    
 
     public float rate = 3f;
-    private float shittyTimer = 0;
+    private float shittyTimer = 5;
+    private float cityLife = 5;
 
     Vector3 origin = Vector3.zero;
 
@@ -39,7 +42,7 @@ public class Spawner : MonoBehaviour
             }
             else
             {         
-                meteor.transform.position = spawnArea.position;
+                meteor.rot = Random.Range(0, 360);
                 meteor.gameObject.SetActive(true);
                 return;
             }
@@ -52,17 +55,23 @@ public class Spawner : MonoBehaviour
         {
             if (meteor.gameObject.activeSelf)
             {
-                meteor.rot -= meteor.direction * meteor.speed * Time.deltaTime;
+                meteor.rot -= meteor.direction * meteor.speed * Time.deltaTime; //Direction and speed important Direction -1,0,1. no negative speed.
                 meteor.height += meteor.changeHeight * 5.0f * Time.deltaTime;
                 meteor.transform.position = origin + Quaternion.Euler(0, meteor.rot, 0) * new Vector3(0, meteor.height, meteor.distance);
                 meteor.transform.LookAt(origin);
                 meteor.endLife -= Time.deltaTime;
-
-                if (meteor.endLife <= 0)
+                Debug.Log(meteor.transform.position);
+                if (meteor.height <= -8)
                 {
-                    meteor.endLife = 10;
+                    cityLife--;
+
+                    if (cityLife <= 0)
+                    {
+                        gameEnd();
+                    }
+
                     meteor.rot = 0;
-                    meteor.height = 8;
+                    meteor.height = 25;
                     meteor.gameObject.SetActive(false);
                 }
             }
@@ -72,8 +81,14 @@ public class Spawner : MonoBehaviour
 
         if (shittyTimer < 0)
         {
-            shittyTimer = 2;
+            shittyTimer = 5;
             Spawn();
         }
+    }
+
+    void gameEnd()
+    {
+     SceneManager.LoadScene("SampleScene");
+
     }
 }

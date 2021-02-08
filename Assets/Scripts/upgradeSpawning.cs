@@ -12,6 +12,7 @@ public class upgradeSpawning : MonoBehaviour
     public List<GBullet> spawnerList;
     public Vector3[] spawnLocations;
 
+
     private int index;
 
     // Start is called before the first frame update
