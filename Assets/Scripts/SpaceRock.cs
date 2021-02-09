@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class SpaceRock : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class SpaceRock : MonoBehaviour
         if(other.CompareTag("Player"))
             {
             other.gameObject.SetActive(false);
+            SceneManager.LoadScene("SampleScene");
         }
     }
 }

@@ -73,6 +73,11 @@ public class movement : MonoBehaviour
             SceneManager.LoadScene("SampleScene");
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
     }
 
 
