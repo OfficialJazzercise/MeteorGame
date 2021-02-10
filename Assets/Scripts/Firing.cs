@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Firing : MonoBehaviour
 { 
@@ -11,6 +12,7 @@ public class Firing : MonoBehaviour
     private float GBulletTimer = 20f; // This is the timer, in seconds, that the GBullet upgrade lasts
     // Start is called before the first frame update
 
+    public static Action GiantBulletEnded = delegate { };
     private void OnEnable()
     {
         GBullet.BigBulletPowerUp += BigBulletPowerUp;
@@ -61,6 +63,7 @@ void Update()
             GBulletTimer -= Time.deltaTime;
             if(GBulletTimer < 0)
             {
+                GiantBulletEnded();
                 bBigBullet = false;
                 GBulletTimer = 20;
             }
