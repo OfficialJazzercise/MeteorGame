@@ -11,8 +11,9 @@ public class Spawner : MonoBehaviour
     
 
     public float rate = 3f;
-    private float shittyTimer = 5;
+    public float spawnRate = 5;
     private float cityLife = 5;
+    public float spawnValueReset = 5; //a value for resetting spawn timer. Must be the same as spawnRate
 
     Vector3 origin = Vector3.zero;
 
@@ -51,6 +52,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+
         foreach (SpaceRock meteor in meteorList)
         {
             if (meteor.gameObject.activeSelf)
@@ -76,11 +78,11 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        shittyTimer -= Time.deltaTime;
+        spawnRate -= Time.deltaTime;
 
-        if (shittyTimer < 0)
+        if (spawnRate < 0)
         {
-            shittyTimer = 5;
+            spawnRate = spawnValueReset;
             Spawn();
         }
     }

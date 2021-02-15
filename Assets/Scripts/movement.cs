@@ -13,7 +13,7 @@ public class movement : MonoBehaviour
     float rot = 0.0f;
     float shotDelay = 0.0f;
     public float distance = 100.0f;
-    float speed = 50.0f;
+    private float speed = 50.0f;
 
     bool isRight = true;
 
@@ -44,7 +44,7 @@ public class movement : MonoBehaviour
         }
         else
         {
-            height += Input.GetAxis("Vertical") * 10.0f * Time.deltaTime;
+            height += Input.GetAxis("Vertical") * 20.0f * Time.deltaTime;
         }
 
         player.transform.position = origin + Quaternion.Euler(0, rot, 0) * new Vector3(0, height, distance);

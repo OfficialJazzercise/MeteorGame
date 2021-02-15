@@ -661,6 +661,8 @@ MonoBehaviour:
   prefab: {fileID: 3358983818371857200, guid: 28f216e5d7be5404a92da57aac05fc47, type: 3}
   spawnArea: {fileID: 636097932}
   rate: 1
+  spawnRate: 5
+  spawnValueReset: 5
 --- !u!4 &636097932
 Transform:
   m_ObjectHideFlags: 0
