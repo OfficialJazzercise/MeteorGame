@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
     public float rot = 0.0f;
     public float speed = 100.0f;
 
+    public TrailRenderer bulletTrail;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,4 +27,8 @@ public class Bullet : MonoBehaviour
         
     }
 
+    public void resetTrail()
+    {
+        bulletTrail.Clear();
+    }
 }

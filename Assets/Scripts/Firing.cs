@@ -88,7 +88,10 @@ void Update()
                 bullet.speed = newSpeed;
                 bullet.changeHeight = changeHeight;
                 bullet.direction = newDirection;
+
+                bullet.resetTrail();
                 bullet.gameObject.SetActive(true);
+
 
                 if (bBigBullet) bullet.transform.localScale = new Vector3(24f, 24f, 24f);
                 else bullet.transform.localScale = new Vector3(12f, 12f, 12f);

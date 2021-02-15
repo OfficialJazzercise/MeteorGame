@@ -60,7 +60,6 @@ public class Spawner : MonoBehaviour
                 meteor.transform.position = origin + Quaternion.Euler(0, meteor.rot, 0) * new Vector3(0, meteor.height, meteor.distance);
                 meteor.transform.LookAt(origin);
                 meteor.endLife -= Time.deltaTime;
-                Debug.Log(meteor.transform.position);
                 if (meteor.height <= -8)
                 {
                     cityLife--;

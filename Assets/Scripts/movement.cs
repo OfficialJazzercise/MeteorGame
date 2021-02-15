@@ -7,6 +7,7 @@ public class movement : MonoBehaviour
 {
     public GameObject player;
     public GameObject bullet;
+    public Transform projectileSpawn;
     public Canvas score;
 
     float rot = 0.0f;
@@ -95,7 +96,7 @@ public class movement : MonoBehaviour
             direction = -1;
         }
 
-        player.GetComponent<Firing>().startBullet(rot, direction, height, 100, heightChange, player.transform, distance);
+        player.GetComponent<Firing>().startBullet(rot, direction, height, 100, heightChange, projectileSpawn, distance);
     }
 
     void triShot()

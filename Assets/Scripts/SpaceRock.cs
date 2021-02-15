@@ -39,7 +39,8 @@ public class SpaceRock : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Debug.Log("Meteor Down!");
-           
+
+            other.gameObject.SetActive(false);
             rot = 0;
             height = 25;
             IncreaseScore();
