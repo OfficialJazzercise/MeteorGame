@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Script is not Used
 public class shootingGun : MonoBehaviour
 {
     public Rigidbody projectile;

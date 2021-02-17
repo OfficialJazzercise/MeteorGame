@@ -8,7 +8,7 @@ public class HUDUpgradeImage : MonoBehaviour
     public Sprite[] upgradeImages;
     public Image imageSwap;
 
-
+    //OnEnable activates when the specified delagate is called and preforms the function being added to the delegate
     private void OnEnable()
     {
         GBullet.BigBulletPowerUp += changeImage;
@@ -19,11 +19,14 @@ public class HUDUpgradeImage : MonoBehaviour
         GBullet.BigBulletPowerUp -= changeImage;
         Firing.GiantBulletEnded -= DefaultIcon;
     }
-
+    
+    //Changes the image to the BigBullet powerup image
     private void changeImage()
     {
         imageSwap.sprite = upgradeImages[1];
     }
+
+    //Changes the image to the question mark
     private void DefaultIcon()
     {
         imageSwap.sprite = upgradeImages[0];

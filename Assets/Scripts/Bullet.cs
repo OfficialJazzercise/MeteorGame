@@ -26,7 +26,8 @@ public class Bullet : MonoBehaviour
     {
         
     }
-
+    
+    //clears the trail on the bullet
     public void resetTrail()
     {
         bulletTrail.Clear();

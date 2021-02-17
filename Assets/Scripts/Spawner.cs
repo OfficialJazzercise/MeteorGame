@@ -20,6 +20,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //creats a meteorList and adds meteors to it
         meteorList = new List<SpaceRock>();
         GameObject clone;
 
@@ -35,6 +36,7 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
+        //checks for the first unused meteor then activates it
         foreach (SpaceRock meteor in meteorList)
         {
             if (meteor.gameObject.activeSelf)
@@ -52,7 +54,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-
+        //checks if a meteor is Active and if it is moves it
         foreach (SpaceRock meteor in meteorList)
         {
             if (meteor.gameObject.activeSelf)
@@ -62,6 +64,8 @@ public class Spawner : MonoBehaviour
                 meteor.transform.position = origin + Quaternion.Euler(0, meteor.rot, 0) * new Vector3(0, meteor.height, meteor.distance);
                 meteor.transform.LookAt(origin);
                 meteor.endLife -= Time.deltaTime;
+
+                //if a meteor gets to low it hurts the city the resets the meteor for future use
                 if (meteor.height <= -8)
                 {
                     cityLife--;
@@ -87,6 +91,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    //if the city is out of life causes a game over
     void gameEnd()
     {
      SceneManager.LoadScene("SampleScene");

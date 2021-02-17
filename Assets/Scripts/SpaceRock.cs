@@ -15,6 +15,7 @@ public class SpaceRock : MonoBehaviour
     public float rot = 0.0f;
     public float speed = 100.0f;
 
+    //delegate used for the Score Script
     public static Action IncreaseScore = delegate { };
 
     public AudioSource playSound;
@@ -35,7 +36,7 @@ public class SpaceRock : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
        
-
+        //If a bullet hits the meteor destroys the bullet and the meteor
         if (other.CompareTag("Bullet"))
         {
             Debug.Log("Meteor Down!");
@@ -49,6 +50,8 @@ public class SpaceRock : MonoBehaviour
             //playSound.Play();
 
         }
+
+        //If the player hits the meteor destroys the player
         if(other.CompareTag("Player"))
             {
             other.gameObject.SetActive(false);
