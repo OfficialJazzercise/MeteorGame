@@ -97,4 +97,14 @@ public class Spawner : MonoBehaviour
      SceneManager.LoadScene("SampleScene");
 
     }
+
+    /*void Break(SpaceRock meteor)
+    {
+        meteorList[14].gameObject.SetActive(true);
+        meteorList[15].gameObject.SetActive(true);
+        meteorList[16].gameObject.SetActive(true);
+
+     
+
+    }*/
 }
