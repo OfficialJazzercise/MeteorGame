@@ -45,17 +45,20 @@ public class SpaceRock : MonoBehaviour
             rot = 0;
             height = 25;
             IncreaseScore();
+            FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
             gameObject.SetActive(false);
+            
 
-            //playSound.Play();
 
         }
 
         //If the player hits the meteor destroys the player
         if(other.CompareTag("Player"))
             {
+            FindObjectOfType<SoundManager>().Play("Dying");
             other.gameObject.SetActive(false);
             SceneManager.LoadScene("SampleScene");
+            
         }
     }
 }
