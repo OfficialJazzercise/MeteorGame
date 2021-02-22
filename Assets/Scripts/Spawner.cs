@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Spawner : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class Spawner : MonoBehaviour
 
     public float rate = 3f;
     public float spawnRate = 5;
-    private float cityLife = 5;
     public float spawnValueReset = 5; //a value for resetting spawn timer. Must be the same as spawnRate
+
+    public static Action decreaseLife = delegate { };
 
     Vector3 origin = Vector3.zero;
 
@@ -45,7 +47,7 @@ public class Spawner : MonoBehaviour
             }
             else
             {         
-                meteor.rot = Random.Range(0, 360);
+                meteor.rot = UnityEngine.Random.Range(0, 360);
                 meteor.gameObject.SetActive(true);
                 return;
             }
@@ -68,12 +70,7 @@ public class Spawner : MonoBehaviour
                 //if a meteor gets to low it hurts the city the resets the meteor for future use
                 if (meteor.height <= -8)
                 {
-                    cityLife--;
-
-                    if (cityLife <= 0)
-                    {
-                        gameEnd();
-                    }
+                    decreaseLife();
 
                     meteor.rot = 0;
                     meteor.height = 25;
