@@ -12,11 +12,14 @@ public class SpaceRock : MonoBehaviour
     public float height;
     public float changeHeight;
 
+    public int num;
+
     public float rot = 0.0f;
     public float speed = 100.0f;
 
     //delegate used for the Score Script
     public static Action IncreaseScore = delegate { };
+    public static Action<float, float> rockBreak = delegate { }; //set Rotation on Circle, Height
 
     public AudioSource playSound;
 
@@ -31,16 +34,19 @@ public class SpaceRock : MonoBehaviour
     {
 
     }
+    private void OnDisable()
+    {
 
+    }
 
     void OnTriggerEnter(Collider other)
     {
-       
+
         //If a bullet hits the meteor destroys the bullet and the meteor
         if (other.CompareTag("Bullet"))
         {
             Debug.Log("Meteor Down!");
-
+            rockBreak(rot, height);
             other.gameObject.SetActive(false);
             rot = 0;
             height = 25;
@@ -49,16 +55,15 @@ public class SpaceRock : MonoBehaviour
             gameObject.SetActive(false);
             
 
-
         }
 
         //If the player hits the meteor destroys the player
-        if(other.CompareTag("Player"))
-            {
+        if (other.CompareTag("Player"))
+        {
             FindObjectOfType<SoundManager>().Play("Dying");
             other.gameObject.SetActive(false);
             SceneManager.LoadScene("SampleScene");
-            
+
         }
     }
 }

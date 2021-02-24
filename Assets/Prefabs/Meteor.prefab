@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5264468706334639386}
   m_Layer: 0
   m_Name: Meteor
-  m_TagString: Untagged
+  m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   distance: 50
   height: 25
   changeHeight: -2
+  num: 0
   rot: 0
   speed: 1
   playSound: {fileID: 0}

@@ -2,62 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class BreakerRock : MonoBehaviour
 {
-    public List<BreakerRock> meteorList;
-    public GameObject prefab;
-    public Transform spawnArea;
-
     public float endLife;
     public float direction;
     public float distance;
     public float height;
     public float changeHeight;
 
+    public int num;
+
     public float rot = 0.0f;
     public float speed = 100.0f;
 
+    //delegate used for the Score Script
     public static Action IncreaseScore = delegate { };
+    public static Action<float, float> rockBreak = delegate { }; //set Rotation on Circle, Height
 
     public AudioSource playSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        meteorList = new List<BreakerRock>();
-        GameObject clone, clone2, clone3;
 
-        for (int i = 0; i < 30; i++)
-        {
-            clone = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation).gameObject;
-            clone.SetActive(false);
-            clone2 = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation).gameObject;
-            clone2.SetActive(false);
-            clone3 = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation).gameObject;
-            clone3.SetActive(false);
-
-            meteorList.Add(clone.GetComponent<BreakerRock>());
-            meteorList.Add(clone2.GetComponent<BreakerRock>());
-            meteorList.Add(clone3.GetComponent<BreakerRock>());
-        }
-    }
-
-    void Spawn()
-    {
-        foreach (BreakerRock meteor in meteorList)
-        {
-            if (meteor.gameObject.activeSelf)
-            {
-
-            }
-            else
-            {
-                meteor.rot = 1;
-                meteor.gameObject.SetActive(true);
-                return;
-            }
-        }
     }
 
     // Update is called once per frame
@@ -65,30 +34,35 @@ public class BreakerRock : MonoBehaviour
     {
 
     }
+    private void OnDisable()
+    {
 
+    }
 
     void OnTriggerEnter(Collider other)
     {
 
-
+        //If a bullet hits the meteor destroys the bullet and the meteor
         if (other.CompareTag("Bullet"))
         {
             Debug.Log("Meteor Down!");
-
+            rockBreak(rot, height);
+            other.gameObject.SetActive(false);
             rot = 0;
             height = 25;
             IncreaseScore();
-
+            FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
             gameObject.SetActive(false);
-           
-
-
-            //playSound.Play();
 
         }
+
+        //If the player hits the meteor destroys the player
         if (other.CompareTag("Player"))
         {
+            FindObjectOfType<SoundManager>().Play("Dying");
             other.gameObject.SetActive(false);
+            SceneManager.LoadScene("SampleScene");
+
         }
     }
 }
