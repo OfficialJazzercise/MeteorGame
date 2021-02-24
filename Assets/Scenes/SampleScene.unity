@@ -269,13 +269,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Dying
-    clip: {fileID: 8300000, guid: ac44aa9fccc5bae4ba4e19e3c6469da7, type: 3}
+    clip: {fileID: 8300000, guid: 98233c947d647d04dabe028cb21916b7, type: 3}
     volume: 0.5
     pitch: 0
     source: {fileID: 0}
   - name: Boom
-    clip: {fileID: 8300000, guid: 3e19bf2c87909ed43bbb9c3f05343a50, type: 3}
+    clip: {fileID: 8300000, guid: a549923f1bf3bba40b3e926a5d41751f, type: 3}
     volume: 0.5
+    pitch: 0
+    source: {fileID: 0}
+  - name: FallingRocks
+    clip: {fileID: 8300000, guid: 1d787c4e49f12464b94cbfd262e4e98e, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: GetItem
+    clip: {fileID: 8300000, guid: e11a33d5b9f20354ebff69daf61881e4, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Laser1
+    clip: {fileID: 8300000, guid: e0152d5943e618f47ac0d768ff6bd4f9, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Laser2
+    clip: {fileID: 8300000, guid: e0672ea0d2e3b7d42a3f3165ad343fcc, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Laser 3
+    clip: {fileID: 8300000, guid: cf36e71d607dd444481d3bb22dc43f0e, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Thrusters
+    clip: {fileID: 8300000, guid: 183901b7033d0b44f8c2ac14ded0a96c, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Cursor
+    clip: {fileID: 8300000, guid: fc92fe00532416d49843e69a9950dbed, type: 3}
+    volume: 0
     pitch: 0
     source: {fileID: 0}
   - name: 
