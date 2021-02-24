@@ -50,10 +50,22 @@ void Update()
             //Checks to see if the current bullet is active
             if (bullet.gameObject.activeSelf)
             {
+                //handles dash
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    bullet.speed = 150f;
+                }
+                else
+                {
+                    bullet.speed = 100f;
+                }
+
                 //Will change the current bullets position on a circular track
                 bullet.rot -= bullet.direction * bullet.speed * Time.deltaTime;
                 bullet.height += bullet.changeHeight * 5.0f * Time.deltaTime;
                 bullet.transform.position = origin + Quaternion.Euler(0, bullet.rot, 0) * new Vector3(0, bullet.height, bullet.distance);
+                bullet.transform.LookAt(origin);
+
 
                 //makes bullet face the origin point
                 bullet.transform.LookAt(origin);
@@ -81,7 +93,7 @@ void Update()
         }
 }
     //a function to activate a bullet when needed
-    public void startBullet(float newRot, float newDirection, float newHeight, float newSpeed, float changeHeight, Transform newTransform, float newDistance)
+    public void startBullet(float newRot, float newDirection, float newHeight, float newSpeed, float changeHeight, Transform newTransform,  Quaternion newRotation)
     {
         //cycles through each object in bulletList
         foreach (Bullet bullet in bulletList)
@@ -94,9 +106,9 @@ void Update()
             else
             {
                 //Sets the values for the new bullet
+                bullet.transform.localRotation = newRotation;
                 bullet.transform.position = newTransform.position;
                 bullet.rot = newRot;
-                bullet.distance = newDistance;
                 bullet.height = newHeight;
                 bullet.endLife = 2;
                 bullet.speed = newSpeed;
@@ -108,8 +120,8 @@ void Update()
                 bullet.gameObject.SetActive(true);
 
                 //checks and then applies the BigBulletPowerup
-                if (bBigBullet) bullet.transform.localScale = new Vector3(24f, 24f, 24f);
-                else bullet.transform.localScale = new Vector3(12f, 12f, 12f);
+                if (bBigBullet) bullet.transform.localScale = new Vector3(12f, 12f, 12f);
+                else bullet.transform.localScale = new Vector3(6f, 6f, 6f);
 
                 //Leaves the function to skip cycling through the rest of the list
                 return;

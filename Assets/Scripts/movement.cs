@@ -34,6 +34,16 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //handles dash
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 100f;
+        }
+        else
+        {
+            speed = 50f;
+        }
+
         //Sets the players postion on a circular track based on which direction the are traveling, speed, and time
         rot -= Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
@@ -116,7 +126,7 @@ public class movement : MonoBehaviour
         }
 
         //calls the firing script and activates a bullet
-        player.GetComponent<Firing>().startBullet(rot, direction, height, 100, heightChange, projectileSpawn, distance);
+        player.GetComponent<Firing>().startBullet(rot, direction, height, speed, heightChange, projectileSpawn, player.transform.rotation);
     }
 
     //creates 3 shots
