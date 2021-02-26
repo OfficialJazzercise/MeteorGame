@@ -96,12 +96,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endLife: 10
   direction: 1
-  distance: 50
+  distance: 70
   height: 25
   changeHeight: -2
   num: 0
   rot: 0
   speed: 1
+  canSplit: 0
   playSound: {fileID: 0}
 --- !u!54 &-9156533638375528198
 Rigidbody:

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 07e8b78ca488e19498f5f5d55fcd97a6, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 78cb929baa02c7044a2f65fac17d949a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5af1ff54d44dba64090d6c0d84507e5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -964,7 +964,7 @@ Transform:
   - {fileID: 65952378}
   - {fileID: 183389439}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &587230698
 MonoBehaviour:
@@ -983,7 +983,7 @@ MonoBehaviour:
   muzzleLeft: {fileID: 183389438}
   projectileSpawn: {fileID: 65952378}
   score: {fileID: 1128938536}
-  distance: 50
+  distance: 70
 --- !u!114 &587230699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1357,7 +1357,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1670,7 +1670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraF: {fileID: 963194225}
-  distance: 84
+  distance: 97
 --- !u!1001 &978289130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1810,7 +1810,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1042119744
 GameObject:
@@ -2174,7 +2174,7 @@ RectTransform:
   - {fileID: 479888832}
   - {fileID: 699852053}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2196,7 +2196,7 @@ PrefabInstance:
     - target: {fileID: 8919977611542568801, guid: afe9f939f2f021c408a458e103673e7d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8919977611542568801, guid: afe9f939f2f021c408a458e103673e7d,
         type: 3}
@@ -2796,7 +2796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3350f160a46fa664c915f605226babff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 911d9c08dab57e64785ef077c90ba308, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2893,7 +2893,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 10b0c2d7b85d5ce4fbbaceb7f623ebc0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 10b0c2d7b85d5ce4fbbaceb7f623ebc0,
         type: 3}
@@ -2962,7 +2962,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f355ad7fe2badef4a88ccc65f95b9f8c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f355ad7fe2badef4a88ccc65f95b9f8c,
         type: 3}
@@ -3234,7 +3234,7 @@ Transform:
   - {fileID: 978289131}
   - {fileID: 2053087757}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2504497791471996313
 PrefabInstance:
@@ -3406,7 +3406,7 @@ PrefabInstance:
     - target: {fileID: 2504497792209197010, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2504497792209197010, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}

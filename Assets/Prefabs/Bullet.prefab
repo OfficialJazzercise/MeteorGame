@@ -66,6 +66,7 @@ MonoBehaviour:
   changeHeight: 0
   rot: -24.672266
   speed: 200
+  bulletTrail: {fileID: 0}
 --- !u!212 &2385943965537448715
 SpriteRenderer:
   m_ObjectHideFlags: 0
