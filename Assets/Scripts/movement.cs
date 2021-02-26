@@ -47,19 +47,16 @@ public class movement : MonoBehaviour
         //Sets the players postion on a circular track based on which direction the are traveling, speed, and time
         rot -= Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
-        //prevents the player from going to high or low
-        if(height <= -7)
-        {
-            height = -6.9f;
-        }
-        else if(height >= 12)
-        {
-            height = 11.9f;
-        }
-        else
+        //Allows the player to go down if above -7 and go up if below 12
+        if(Input.GetAxis("Vertical") < 0 && height >= -7)
         {
             height += Input.GetAxis("Vertical") * 20.0f * Time.deltaTime;
         }
+        else if(Input.GetAxis("Vertical") > 0 && height <= 12)
+        {
+            height += Input.GetAxis("Vertical") * 20.0f * Time.deltaTime;
+        }
+
         //Sets the player location and makes the player face the origin point
         player.transform.position = origin + Quaternion.Euler(0, rot, 0) * new Vector3(0, height, distance);
         player.transform.LookAt(origin);
@@ -67,7 +64,7 @@ public class movement : MonoBehaviour
         //handles shooting
         if (Input.GetKey(KeyCode.Space) && shotDelay <= 0)
         {
-            shotDelay = 0.5f;
+            shotDelay = 0.2f;
             singleShot();
         }
 
@@ -126,7 +123,7 @@ public class movement : MonoBehaviour
         }
 
         //calls the firing script and activates a bullet
-        player.GetComponent<Firing>().startBullet(rot, direction, height, speed, heightChange, projectileSpawn, player.transform.rotation);
+        player.GetComponent<Firing>().startBullet(rot, direction, height, speed + 50, heightChange, projectileSpawn, player.transform.rotation);
     }
 
     //creates 3 shots

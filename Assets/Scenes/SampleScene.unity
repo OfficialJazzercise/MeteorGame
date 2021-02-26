@@ -839,7 +839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700, y: 351}
+  m_AnchoredPosition: {x: -700, y: 240.99997}
   m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479888833
@@ -1141,7 +1141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 167}
+  m_AnchoredPosition: {x: 0, y: 126}
   m_SizeDelta: {x: 401.08044, y: 71.641174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &617202438
@@ -1220,6 +1220,7 @@ MonoBehaviour:
   rate: 1
   spawnRate: 5
   spawnValueReset: 5
+  meteorCount: 0
 --- !u!4 &636097932
 Transform:
   m_ObjectHideFlags: 0
@@ -1272,7 +1273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 700, y: 351}
+  m_AnchoredPosition: {x: 700, y: 241}
   m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699852054
@@ -3262,7 +3263,7 @@ PrefabInstance:
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
       propertyPath: spawnChance
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}

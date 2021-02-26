@@ -10,7 +10,9 @@ public class Firing : MonoBehaviour
     public Bullet prefab;
     private bool bBigBullet;
     private float GBulletTimer = 20f; // This is the timer, in seconds, that the GBullet upgrade lasts
-    // Start is called before the first frame update
+
+    private IEnumerator coroutine;
+
 
     //A delegate to let the HUD know the GiantBulletPowerup has ended
     public static Action GiantBulletEnded = delegate { };
@@ -24,8 +26,14 @@ public class Firing : MonoBehaviour
     {
         GBullet.BigBulletPowerUp -= BigBulletPowerUp;
     }
-    private void BigBulletPowerUp() {bBigBullet = true;}
+    private void BigBulletPowerUp()
+    {
+        bBigBullet = true;
+        coroutine = endPowerup(5f);
+        StartCoroutine(coroutine);
+    }
 
+    // Start is called before the first frame update
     void Start()
 {
     //Creates a new list that contains objects created from the Bullet script and stores 30 cloned bullets into it
@@ -50,45 +58,11 @@ void Update()
             //Checks to see if the current bullet is active
             if (bullet.gameObject.activeSelf)
             {
-                //handles dash
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    bullet.speed = 150f;
-                }
-                else
-                {
-                    bullet.speed = 100f;
-                }
-
                 //Will change the current bullets position on a circular track
                 bullet.rot -= bullet.direction * bullet.speed * Time.deltaTime;
                 bullet.height += bullet.changeHeight * 5.0f * Time.deltaTime;
                 bullet.transform.position = origin + Quaternion.Euler(0, bullet.rot, 0) * new Vector3(0, bullet.height, bullet.distance);
                 bullet.transform.LookAt(origin);
-
-
-                //makes bullet face the origin point
-                bullet.transform.LookAt(origin);
-
-                //Crappy Timer needs to be changed
-                bullet.endLife -= Time.deltaTime;
-
-                if (bullet.endLife <= 0)
-                {
-                    bullet.gameObject.SetActive(false);
-                }
-            }
-        }
-
-        //Timer for GBullet upgrade
-        if(bBigBullet == true && GBulletTimer > 0)
-        {
-            GBulletTimer -= Time.deltaTime;
-            if(GBulletTimer < 0)
-            {
-                GiantBulletEnded();
-                bBigBullet = false;
-                GBulletTimer = 20;
             }
         }
 }
@@ -123,10 +97,31 @@ void Update()
                 if (bBigBullet) bullet.transform.localScale = new Vector3(12f, 12f, 12f);
                 else bullet.transform.localScale = new Vector3(6f, 6f, 6f);
 
+                coroutine = destroyBullet(bullet, 2f);
+                StartCoroutine(coroutine);
+
                 //Leaves the function to skip cycling through the rest of the list
                 return;
             }
         }
+
+    }
+
+    //use for the courtine, will disable both muzzles after a set amount of time
+    private IEnumerator destroyBullet(Bullet bullet, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        bullet.gameObject.SetActive(false);
+
+    }
+
+    private IEnumerator endPowerup(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        GiantBulletEnded();
+        bBigBullet = false;
     }
 
 }
