@@ -4954,7 +4954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endLife: 0
   direction: 0
-  distance: 50
+  distance: 70
   height: 0
   changeHeight: 0
   rot: 0

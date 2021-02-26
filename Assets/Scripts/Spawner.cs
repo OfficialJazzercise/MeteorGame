@@ -193,7 +193,7 @@ public class Spawner : MonoBehaviour
         else
         {
             meteorCount--;
-            coroutine = spawnMeteor(2f);
+            coroutine = spawnMeteor(2.5f);
             StartCoroutine(coroutine);
         }
 
@@ -205,7 +205,7 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         meteorCount = 10;
-        coroutine = spawnMeteor(2f);
+        coroutine = spawnMeteor(2.5f);
         StartCoroutine(coroutine);
 
     }

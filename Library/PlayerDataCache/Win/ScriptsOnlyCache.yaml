@@ -4,7 +4,10 @@ ScriptsOnlyBuild:
     - Bullet
     - Firing
     - GBullet
+    - HUDUpgradeImage
+    - LifeWillChange
     - Score
+    - SoundManager
     - SpaceRock
     - Spawner
     - cameraFollow
@@ -53,40 +56,48 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 96
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11282}
+      Script: {instanceID: 11286}
     - Class: 114
-      Script: {instanceID: 11392}
+      Script: {instanceID: 11396}
     - Class: 114
-      Script: {instanceID: 11442}
+      Script: {instanceID: 11446}
     - Class: 114
-      Script: {instanceID: 11482}
+      Script: {instanceID: 11488}
     - Class: 114
-      Script: {instanceID: 11870}
+      Script: {instanceID: 11598}
     - Class: 114
-      Script: {instanceID: 12158}
+      Script: {instanceID: 11878}
     - Class: 114
-      Script: {instanceID: 12360}
+      Script: {instanceID: 12166}
     - Class: 114
-      Script: {instanceID: 12362}
+      Script: {instanceID: 12368}
     - Class: 114
-      Script: {instanceID: 12566}
+      Script: {instanceID: 12370}
     - Class: 114
-      Script: {instanceID: 12594}
+      Script: {instanceID: 12438}
     - Class: 114
-      Script: {instanceID: 12654}
+      Script: {instanceID: 12576}
     - Class: 114
-      Script: {instanceID: 12744}
+      Script: {instanceID: 12604}
     - Class: 114
-      Script: {instanceID: 12760}
+      Script: {instanceID: 12664}
     - Class: 114
-      Script: {instanceID: 12858}
+      Script: {instanceID: 12754}
     - Class: 114
-      Script: {instanceID: 13098}
+      Script: {instanceID: 12770}
+    - Class: 114
+      Script: {instanceID: 12860}
+    - Class: 114
+      Script: {instanceID: 12870}
+    - Class: 114
+      Script: {instanceID: 13110}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -96,6 +107,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -224,6 +239,12 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
+      Hash: 6691d5e06d17c8e2a59b93f92ed6dca9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HUDUpgradeImage
+  - hash:
+      serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -260,7 +281,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 2568e76b3922b933be67bccbeb83c77a
+      Hash: 7b8ac176a0633cfbade7fcc004c01d10
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BreakerRock
@@ -338,7 +359,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 3d311617f3c7c3c3b3e19413740dc553
+      Hash: 0d4b22dc118cd7df2716e53cd6b627cd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Spawner
@@ -384,6 +405,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Firing
+  - hash:
+      serializedVersion: 2
+      Hash: 0b59f2c8038356fcd2b947d00656de11
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SoundManager
   - hash:
       serializedVersion: 2
       Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
@@ -440,13 +467,13 @@ ScriptsOnlyBuild:
     className: GBullet
   - hash:
       serializedVersion: 2
-      Hash: 11ce812e5ac62460b17be9ca3c8e036b
+      Hash: 4bc5a2b71b6f7ef461ecd93f43afe1af
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: movement
   - hash:
       serializedVersion: 2
-      Hash: 8697c038c8149759599ba5e299ab88b4
+      Hash: a5574665f4b8d1db88175cc73225b4b5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpaceRock
@@ -482,7 +509,13 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: daad8779c99407f71599fd86063cffba
+      Hash: ead39c13644c8544dd896af72db044df
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LifeWillChange
+  - hash:
+      serializedVersion: 2
+      Hash: 7d925266928adca4f28f6168030908c2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bullet
