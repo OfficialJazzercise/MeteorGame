@@ -73,12 +73,10 @@ public class movement : MonoBehaviour
         //flips the players sprite depending on which direction they are going
         if (Input.GetAxis("Horizontal") < 0)
         {
-            player.GetComponent<SpriteRenderer>().flipX = true;
             isRight = false;
         }
         else if(Input.GetAxis("Horizontal") > 0)
         {
-            player.GetComponent<SpriteRenderer>().flipX = false;
             isRight = true;
         }
 
@@ -123,7 +121,7 @@ public class movement : MonoBehaviour
         }
 
         //calls the firing script and activates a bullet
-        player.GetComponent<Firing>().startBullet(rot, direction, height, speed + 50, heightChange, projectileSpawn, player.transform.rotation);
+        GetComponent<Firing>().startBullet(rot, direction, height, speed + 50, heightChange, projectileSpawn, player.transform.rotation);
     }
 
     //creates 3 shots
