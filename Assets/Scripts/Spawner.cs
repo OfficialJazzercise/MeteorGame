@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System;
 
 
@@ -9,6 +10,7 @@ public class Spawner : MonoBehaviour
 {
     public List<SpaceRock> meteorList;
     public GameObject prefab;
+    public GameObject cityHitScreenFlash;
     public Transform spawnArea;
 
     public float rate = 3f;
@@ -142,7 +144,8 @@ public class Spawner : MonoBehaviour
                 if (meteor.height <= -9)
                 {
                     decreaseLife();
-
+                    screenFlashes(); // flash screen for damage
+                    ScreenShake.instance.StartShake(1.2f, 1.8f); //Shakes screen upon hitting city
                     meteor.rot = 0;
                     meteor.height = 25;
                     meteor.canSplit = false;
@@ -150,7 +153,29 @@ public class Spawner : MonoBehaviour
                 }
             }
         }
+
+        // removes screen flash
+        if(cityHitScreenFlash != null)
+        {
+            if(cityHitScreenFlash.GetComponent<Image>().color.a > 0)
+            {
+                var color = cityHitScreenFlash.GetComponent<Image>().color;
+                color.a -= 0.01f;
+
+                cityHitScreenFlash.GetComponent<Image>().color = color;
+            }
+        }
+
     }
+
+    void screenFlashes()
+    {
+        var color = cityHitScreenFlash.GetComponent<Image>().color;
+        color.a = 0.5f;
+
+        cityHitScreenFlash.GetComponent<Image>().color = color;
+    }
+
     private void OnEnable()
     {
         SpaceRock.rockBreak += rockBreak;

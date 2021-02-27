@@ -34,7 +34,7 @@ public class SpaceRock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.Rotate(0, 0, 52 * Time.deltaTime);
     }
     private void OnDisable()
     {
@@ -54,6 +54,7 @@ public class SpaceRock : MonoBehaviour
             height = 25;
             IncreaseScore();
             FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
+            ScreenShake.instance.StartShake(.4f, .8f); //Shakes screen upon destroying meteor
             gameObject.SetActive(false);
             canSplit = false;
         }

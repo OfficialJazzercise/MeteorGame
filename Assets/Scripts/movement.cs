@@ -17,6 +17,7 @@ public class movement : MonoBehaviour
     float shotDelay = 0.0f;
     public float distance = 100.0f;
     private float speed = 50.0f;
+    private float turningSpeed = 1.0f;
 
     bool isRight = true;
 
@@ -70,7 +71,7 @@ public class movement : MonoBehaviour
 
         shotDelay -= Time.deltaTime;
 
-        //flips the players sprite depending on which direction they are going
+        //flips the player depending on which direction they are going
         if (Input.GetAxis("Horizontal") < 0)
         {
             isRight = false;
@@ -80,8 +81,14 @@ public class movement : MonoBehaviour
             isRight = true;
         }
 
-        //kills the player
-        if (Input.GetKeyDown("r"))
+        // Turns the player ship depending on direction
+        if(isRight == false)
+        {
+           transform.Rotate(0, 180, 0);
+        }
+
+            //kills the player
+            if (Input.GetKeyDown("r"))
         {
             SceneManager.LoadScene("SampleScene");
         }
