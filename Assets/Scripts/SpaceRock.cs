@@ -36,6 +36,7 @@ public class SpaceRock : MonoBehaviour
     {
         transform.Rotate(0, 0, 52 * Time.deltaTime);
     }
+
     private void OnDisable()
     {
 

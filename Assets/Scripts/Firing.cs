@@ -60,6 +60,17 @@ void Update()
             {
                 //Will change the current bullets position on a circular track
                 bullet.rot -= bullet.direction * bullet.speed * Time.deltaTime;
+
+                //keeps rot between 0 and 360
+                if (bullet.rot >= 360)
+                {
+                    bullet.rot = 0;
+                }
+                if (bullet.rot < 0)
+                {
+                    bullet.rot = 360 + bullet.rot;
+                }
+
                 bullet.height += bullet.changeHeight * 5.0f * Time.deltaTime;
                 bullet.transform.position = origin + Quaternion.Euler(0, bullet.rot, 0) * new Vector3(0, bullet.height, bullet.distance);
                 bullet.transform.LookAt(origin);
@@ -84,7 +95,6 @@ void Update()
                 bullet.transform.position = newTransform.position;
                 bullet.rot = newRot;
                 bullet.height = newHeight;
-                bullet.endLife = 2;
                 bullet.speed = newSpeed;
                 bullet.changeHeight = changeHeight;
                 bullet.direction = newDirection;

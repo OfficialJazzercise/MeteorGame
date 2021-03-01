@@ -13,7 +13,7 @@ public class movement : MonoBehaviour
 
     private IEnumerator coroutine;
 
-    float rot = 0.0f;
+    public float rot = 0.0f;
     float shotDelay = 0.0f;
     public float distance = 100.0f;
     private float speed = 50.0f;
@@ -21,7 +21,7 @@ public class movement : MonoBehaviour
 
     bool isRight = true;
 
-    private float height = 0.0f;
+    public float height = 0.0f;
 
     Vector3 origin = Vector3.zero;
 
@@ -47,6 +47,16 @@ public class movement : MonoBehaviour
 
         //Sets the players postion on a circular track based on which direction the are traveling, speed, and time
         rot -= Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+
+        //keeps rot between 0 and 360
+        if (rot >= 360)
+        {
+            rot = 0;
+        }
+        if (rot < 0)
+        {
+            rot = 360 + rot;
+        }
 
         //Allows the player to go down if above -7 and go up if below 12
         if(Input.GetAxis("Vertical") < 0 && height >= -7)

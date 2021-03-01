@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
-{
-    public float endLife;
-    public float direction;
+{   public float direction;
     public float distance;
     public float height;
     public float changeHeight;

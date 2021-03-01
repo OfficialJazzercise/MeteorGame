@@ -135,6 +135,17 @@ public class Spawner : MonoBehaviour
             if (meteor.gameObject.activeSelf)
             {
                 meteor.rot -= meteor.direction * meteor.speed * Time.deltaTime; //Direction and speed important Direction -1,0,1. no negative speed.
+
+                //keeps rot between 0 and 360
+                if (meteor.rot >= 360)
+                {
+                    meteor.rot = 0;
+                }
+                if (meteor.rot < 0)
+                {
+                    meteor.rot = 360 + meteor.rot;
+                }
+
                 meteor.height += meteor.changeHeight * 5.0f * Time.deltaTime;
                 meteor.transform.position = origin + Quaternion.Euler(0, meteor.rot, 0) * new Vector3(0, meteor.height, meteor.distance);
                 meteor.transform.LookAt(origin);
