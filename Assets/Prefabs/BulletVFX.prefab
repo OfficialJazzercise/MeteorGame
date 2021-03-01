@@ -4952,7 +4952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9010236df50c5954ea8f56219bbd29a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endLife: 0
   direction: 0
   distance: 70
   height: 0
