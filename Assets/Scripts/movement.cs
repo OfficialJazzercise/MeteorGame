@@ -10,6 +10,7 @@ public class movement : MonoBehaviour
     public GameObject muzzleLeft;
     public Transform projectileSpawn;
     public Canvas score;
+    public Transform ship;
 
     private IEnumerator coroutine;
 
@@ -18,6 +19,7 @@ public class movement : MonoBehaviour
     public float distance = 100.0f;
     private float speed = 50.0f;
     private float turningSpeed = 1.0f;
+    private float cacheHeight;
 
     bool isRight = true;
 
@@ -30,6 +32,8 @@ public class movement : MonoBehaviour
     void Start()
     {
         rot = player.transform.eulerAngles.y;
+        cacheHeight = transform.position.y;
+
     }
 
     // Update is called once per frame
@@ -109,6 +113,32 @@ public class movement : MonoBehaviour
             Application.Quit();
         }
 
+        HeightRotation();
+
+    }
+
+    //Ship rotation code
+    private void HeightRotation()
+    {
+        float angle = ship.localRotation.eulerAngles.x;
+
+        if(cacheHeight - transform.position.y < 0)
+        {
+            angle -= Time.deltaTime * 5;
+            angle = Mathf.Clamp(angle, -110, -90);
+        }
+        else if (cacheHeight - transform.position.y > 0)
+        {
+            angle += Time.deltaTime * 5;
+            angle = Mathf.Clamp(angle, -90, -60);
+        }
+        else
+        {
+            angle = Mathf.Lerp(angle, -90, Time.deltaTime * 5);
+        }
+
+        ship.localRotation = Quaternion.Euler(angle, ship.localRotation.y, ship.localRotation.z);
+        cacheHeight = transform.position.y;
     }
 
 
