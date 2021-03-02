@@ -102,6 +102,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meteorite Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2763943519167890395, guid: 7fabfed8d04a1e9468f997687e4dab04,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3247288089693821281, guid: 7fabfed8d04a1e9468f997687e4dab04,
         type: 3}
       propertyPath: m_RootOrder
