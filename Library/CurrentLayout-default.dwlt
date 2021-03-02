@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 260
     height: 741
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -72,10 +72,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 741
-  m_MinSize: {x: 609, y: 492}
-  m_MaxSize: {x: 18004, y: 14042}
+  m_MinSize: {x: 608, y: 492}
+  m_MaxSize: {x: 18003, y: 14042}
   vertical: 0
-  controlID: 131
+  controlID: 35
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -152,7 +152,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 791
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 62
+  controlID: 89
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -279,9 +279,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 68fbffff
+      m_SelectedIDs: 30480000
+      m_LastClickedID: 18480
+      m_ExpandedIDs: 68fbfffffe46000016470000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -406,14 +406,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/StageAssets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\DSU\Documents\GitHub\MeteorGame
+  m_LastProjectPath: C:\Users\DSU\Documents\GitHub\Meteors\MeteorGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 46}
-    m_SelectedIDs: 90420000
-    m_LastClickedID: 17040
-    m_ExpandedIDs: 00000000a23c00004242000044420000464200004842000000ca9a3b
+    m_SelectedIDs: 7e4b0000
+    m_LastClickedID: 19326
+    m_ExpandedIDs: 00000000084b00000a4b00000c4b00000e4b0000104b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -441,7 +441,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a23c000042420000444200004642000048420000
+    m_ExpandedIDs: 00000000084b00000a4b00000c4b00000e4b0000104b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -571,9 +571,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.24295044, y: -13.5962715, z: 0.45452118}
+    m_Target: {x: -42.417492, y: 77.28853, z: 124.581245}
     speed: 2
-    m_Value: {x: 0.24295044, y: -13.5962715, z: 0.45452118}
+    m_Value: {x: -42.417492, y: 77.28853, z: 124.581245}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -619,13 +619,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.42699677, y: -0.16316788, z: 0.07860362, w: -0.88597417}
+    m_Target: {x: -0.3884645, y: 0.050557915, z: -0.021352716, w: -0.9198301}
     speed: 2
-    m_Value: {x: -0.42697996, y: -0.16316146, z: 0.078600526, w: -0.8859393}
+    m_Value: {x: -0.38846374, y: 0.05055781, z: -0.021352673, w: -0.91982824}
   m_Size:
-    m_Target: 102.47389
+    m_Target: 7.9911685
     speed: 2
-    m_Value: 102.47389
+    m_Value: 7.9911685
   m_Ortho:
     m_Target: 0
     speed: 2
