@@ -18,9 +18,11 @@ public class SpaceRock : MonoBehaviour
     public float speed = 100.0f;
 
     public bool canSplit = false;
+    public bool isSplit = false;
 
     //delegate used for the Score Script
     public static Action IncreaseScore = delegate { };
+    public static Action MeteorDestroyed = delegate { };
     public static Action<float, float, Vector3> rockBreak = delegate { }; //set Rotation on Circle, Height
 
     public AudioSource playSound;
@@ -48,7 +50,6 @@ public class SpaceRock : MonoBehaviour
         //If a bullet hits the meteor destroys the bullet and the meteor
         if (other.CompareTag("Bullet"))
         {
-            Debug.Log("Meteor Down!");
             if(canSplit)rockBreak(rot, height, this.gameObject.transform.position);
             other.gameObject.SetActive(false);
             rot = 0;
@@ -58,6 +59,15 @@ public class SpaceRock : MonoBehaviour
             ScreenShake.instance.StartShake(.4f, .8f); //Shakes screen upon destroying meteor
             gameObject.SetActive(false);
             canSplit = false;
+
+            if (!isSplit)
+            {
+                MeteorDestroyed();
+            }
+            else
+            {
+                isSplit = false;
+            }
         }
 
         //If the player hits the meteor destroys the player

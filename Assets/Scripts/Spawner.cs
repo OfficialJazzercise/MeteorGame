@@ -14,10 +14,14 @@ public class Spawner : MonoBehaviour
     public Transform spawnArea;
 
     public float rate = 3f;
-    public float spawnRate = 5;
+    private float spawnRate = 2.5f;
     public float spawnValueReset = 5; //a value for resetting spawn timer. Must be the same as spawnRate
 
-    public int meteorCount = 0;
+    private int waveSize = 0;
+    private int meteorsSpawned = 0;
+    private int meteorsDestroyed = 0;
+    private int currentWave = 0;
+    public Text waveText;
 
     public static Action decreaseLife = delegate { };
     public static Action breakRock = delegate { };
@@ -25,6 +29,22 @@ public class Spawner : MonoBehaviour
     private IEnumerator coroutine;
 
     Vector3 origin = Vector3.zero;
+
+    private void OnEnable()
+    {
+        SpaceRock.MeteorDestroyed += decreaseMeterCount;
+        SpaceRock.rockBreak += rockBreak;
+    }
+    private void OnDisable()
+    {
+        SpaceRock.MeteorDestroyed -= decreaseMeterCount;
+        SpaceRock.rockBreak -= rockBreak;
+    }
+    private void decreaseMeterCount()
+    {
+        meteorsDestroyed++;
+        Debug.Log(meteorsDestroyed);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +61,7 @@ public class Spawner : MonoBehaviour
             meteorList.Add(clone.GetComponent<SpaceRock>());
         }
 
-        coroutine = prepWave(1f);
+        coroutine = prepWave(5f);
         StartCoroutine(coroutine);
     }
 
@@ -104,6 +124,7 @@ public class Spawner : MonoBehaviour
                         meteor.height = desiredHeight;
                         meteor.direction = -1;
                         meteor.canSplit = false;
+                        meteor.isSplit = true;
                         meteor.transform.position = spawnLocation;
                         //meteor.transform.localScale = new Vector3(10, 10, 10);
                         meteor.gameObject.SetActive(true);
@@ -115,6 +136,7 @@ public class Spawner : MonoBehaviour
                         meteor.height = desiredHeight;
                         meteor.direction = 1;
                         meteor.canSplit = false;
+                        meteor.isSplit = true;
                         meteor.transform.position = spawnLocation;
                         // meteor.transform.localScale = new Vector3(10, 10, 10);
                         meteor.gameObject.SetActive(true);
@@ -152,8 +174,10 @@ public class Spawner : MonoBehaviour
                 meteor.endLife -= Time.deltaTime;
 
                 //if a meteor gets to low it hurts the city the resets the meteor for future use
-                if (meteor.height <= -9)
+                if (meteor.height <= -10)
                 {
+                    decreaseMeterCount();
+
                     decreaseLife();
                     screenFlashes(); // flash screen for damage
                     ScreenShake.instance.StartShake(1.2f, 1.8f); //Shakes screen upon hitting city
@@ -163,6 +187,7 @@ public class Spawner : MonoBehaviour
                     meteor.gameObject.SetActive(false);
                 }
             }
+
         }
 
         // removes screen flash
@@ -177,6 +202,12 @@ public class Spawner : MonoBehaviour
             }
         }
 
+        if (meteorsDestroyed == waveSize)
+        {
+            coroutine = prepWave(5f);
+            StartCoroutine(coroutine);
+        }
+
     }
 
     void screenFlashes()
@@ -187,16 +218,6 @@ public class Spawner : MonoBehaviour
         cityHitScreenFlash.GetComponent<Image>().color = color;
     }
 
-    private void OnEnable()
-    {
-        SpaceRock.rockBreak += rockBreak;
-    }
-
-    public void OnDisable()
-    {
-        SpaceRock.rockBreak -= rockBreak;
-        
-    }
     //if the city is out of life causes a game over
     void gameEnd()
     {
@@ -207,6 +228,7 @@ public class Spawner : MonoBehaviour
     //use for the courtine, will disable both muzzles after a set amount of time
     private IEnumerator spawnMeteor(float waitTime)
     {
+
         yield return new WaitForSeconds(waitTime);
 
         int num;//how many rocks var
@@ -221,15 +243,10 @@ public class Spawner : MonoBehaviour
             spawnRegular();
         }
 
-        if (meteorCount <= 0)
+        if (meteorsSpawned > 1)
         {
-            coroutine = prepWave(5f);
-            StartCoroutine(coroutine);
-        }
-        else
-        {
-            meteorCount--;
-            coroutine = spawnMeteor(2.5f);
+            meteorsSpawned--;
+            coroutine = spawnMeteor(spawnRate);
             StartCoroutine(coroutine);
         }
 
@@ -238,10 +255,20 @@ public class Spawner : MonoBehaviour
     //use for the courtine, will disable both muzzles after a set amount of time
     private IEnumerator prepWave(float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);
+        currentWave++;
+        waveText.text = "Wave: " + currentWave.ToString();
+        waveText.gameObject.SetActive(true);
+        waveSize = currentWave * 10;
+        meteorsDestroyed = 0;
+        spawnRate = 2.5f - waveSize / 50f;
 
-        meteorCount = 10;
-        coroutine = spawnMeteor(2.5f);
+    yield return new WaitForSeconds(waitTime);
+
+        waveText.gameObject.SetActive(false);
+
+        meteorsSpawned = waveSize;
+
+        coroutine = spawnMeteor(0f);
         StartCoroutine(coroutine);
 
     }

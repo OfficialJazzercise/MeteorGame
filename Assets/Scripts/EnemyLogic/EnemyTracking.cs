@@ -109,28 +109,12 @@ public class EnemyTracking : MonoBehaviour
         float tripStart = projectile.rot;
         float tripEnd = projectile.targetsRot;
 
-        tripStart = Mathf.Round(tripStart);
-        tripEnd = Mathf.Round(tripEnd);
+        if (tripEnd == 0 && tripEnd != tripStart) { tripEnd = 360; }
 
-        for (float i = tripStart; i != tripEnd; i++)
-        {
-            if (i >= 360)
-            {
-                i = 0;
-            }
-            tripA++;
-        }
+        tripA = tripStart + (360 - tripEnd);
+        tripB = Mathf.Abs(tripEnd - tripStart);
 
-        for (float i = tripStart; i != tripEnd; i--)
-        {
-            if (i <= 0)
-            {
-                i = 360;
-            }
-            tripB++;
-        }
-
-        if(tripB < tripA)
+        if (tripB > tripA)
         {
             projectile.rot += 360;    
         }

@@ -151,20 +151,10 @@ public class movement : MonoBehaviour
         if (isRight)
         { 
             direction = 1;
-            muzzleRight.SetActive(true);
-
-            //coroutine used to Deactivate the muzzles after a while
-            coroutine = WaitAndDisable(shotDelay);
-            StartCoroutine(coroutine);
         }
         else
         {
             direction = -1;
-            muzzleLeft.SetActive(true);
-
-            //coroutine used to Deactivate the muzzles after a while
-            coroutine = WaitAndDisable(shotDelay);
-            StartCoroutine(coroutine);
         }
 
         //calls the firing script and activates a bullet
@@ -185,13 +175,5 @@ public class movement : MonoBehaviour
         createShot(0);
     }
 
-    //use for the courtine, will disable both muzzles after a set amount of time
-    private IEnumerator WaitAndDisable(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        muzzleRight.SetActive(false);
-        muzzleLeft.SetActive(false);
-        Debug.Log("can fire");
-    }
 
 }
