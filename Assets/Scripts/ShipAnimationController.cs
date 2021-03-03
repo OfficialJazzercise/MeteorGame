@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShipAnimationController : MonoBehaviour
 {
     public Animator anim;
-    private bool isRight = true;
+    private bool isRight = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,36 +16,37 @@ public class ShipAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Checks for which direction ship is facing
-
-        if(Input.GetKeyDown(KeyCode.W) && isRight == true) // When facing right and moving up, ship tilts left
+        if(Input.GetKeyDown(KeyCode.W))
         {
-            anim.Play("ShipTurn2");
-        }
-        else if(Input.GetKeyDown(KeyCode.S) && isRight == true) // When facing right and moving down, ship tilts right
-        {
-            anim.Play("ShipTurn1");
+            anim.Play("TiltUp");
         }
 
-        if(Input.GetKeyDown(KeyCode.W) && isRight == false) // When facing left and moving up, ship tilts right
+        if(Input.GetKeyUp(KeyCode.W))
         {
-            anim.Play("ShipTurn2Left");
-        }
-        else if(Input.GetKeyDown(KeyCode.S) && isRight == false) // When facing left and moving down, ship tilts left
-        {
-            anim.Play("ShipTurn1Left");
+            anim.Play("TiltUpRevert");
         }
 
-        if(Input.GetKeyDown(KeyCode.A) && isRight == true) // When turning left, turning animation (towards player)
+
+        if(Input.GetKeyDown(KeyCode.S))
         {
-            isRight = false;
-            anim.Play("HoriShipTurn1");
+            anim.Play("TiltDown");
         }
 
-        if(Input.GetKeyDown(KeyCode.D) && isRight == false) // When turning right, turning animation (towards player)
+        if(Input.GetKeyUp(KeyCode.S))
+        {
+            anim.Play("TiltDownRevert");
+        }
+
+        if (Input.GetKeyDown(KeyCode.D) && isRight == false)
         {
             isRight = true;
-            anim.Play("HoriShipTurn2");
+            anim.Play("HoriShipTurn");
+        }
+
+        if(Input.GetKeyDown(KeyCode.A) && isRight == true)
+        {
+            isRight = false;
+            anim.Play("HoriShipTurnRevert");
         }
     }
 }
