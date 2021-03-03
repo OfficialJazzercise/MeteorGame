@@ -61,9 +61,11 @@ public class movement : MonoBehaviour
             rot = 360 + rot;
         }
 
+        
         //Allows the player to go down if above -7 and go up if below 12
         if(Input.GetAxis("Vertical") < 0 && height >= -7)
         {
+            FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
             height += Input.GetAxis("Vertical") * 20.0f * Time.deltaTime;
         }
         else if(Input.GetAxis("Vertical") > 0 && height <= 12)
@@ -78,6 +80,7 @@ public class movement : MonoBehaviour
         //handles shooting
         if (Input.GetKey(KeyCode.Space) && shotDelay <= 0)
         {
+            FindObjectOfType<SoundManager>().Play("Laser1");//Will give variations later
             shotDelay = 0.2f;
             singleShot();
         }
@@ -87,10 +90,12 @@ public class movement : MonoBehaviour
         //flips the player depending on which direction they are going
         if (Input.GetAxis("Horizontal") < 0)
         {
+            FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
             isRight = false;
         }
         else if(Input.GetAxis("Horizontal") > 0)
         {
+            FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
             isRight = true;
         }
 
@@ -145,7 +150,7 @@ public class movement : MonoBehaviour
     void createShot(float heightChange)
     {
         float direction;
-
+        FindObjectOfType<SoundManager>().Play("Laser1");//SFX
         //determines the direction and which muzzle to used based on weither the player is facing the right
         if (isRight)
         { 

@@ -23,6 +23,7 @@ public class HUDUpgradeImage : MonoBehaviour
     //Changes the image to the BigBullet powerup image
     private void changeImage()
     {
+        FindObjectOfType<SoundManager>().Play("GetItem");//SFX
         imageSwap.sprite = upgradeImages[1];
     }
 

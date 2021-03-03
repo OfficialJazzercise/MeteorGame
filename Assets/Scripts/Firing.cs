@@ -58,6 +58,7 @@ void Update()
             //Checks to see if the current bullet is active
             if (bullet.gameObject.activeSelf)
             {
+
                 //Will change the current bullets position on a circular track
                 bullet.rot -= bullet.direction * bullet.speed * Time.deltaTime;
 
@@ -90,6 +91,8 @@ void Update()
             }
             else
             {
+                
+
                 //Sets the values for the new bullet
                 bullet.transform.localRotation = newRotation;
                 bullet.transform.position = newTransform.position;

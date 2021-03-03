@@ -55,6 +55,7 @@ MonoBehaviour:
   rot: 0
   speed: 1
   canSplit: 0
+  isSplit: 0
   playSound: {fileID: 0}
 --- !u!135 &8354167794363400796
 SphereCollider:
