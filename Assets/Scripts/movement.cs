@@ -18,7 +18,6 @@ public class movement : MonoBehaviour
     float shotDelay = 0.0f;
     public float distance = 100.0f;
     private float speed = 50.0f;
-    private float turningSpeed = 1.0f;
     private float cacheHeight;
 
     bool isRight = true;
@@ -98,7 +97,7 @@ public class movement : MonoBehaviour
         // Turns the player ship depending on direction
         if(isRight == false)
         {
-           transform.Rotate(0, 180, 0);
+           //transform.Rotate(0, 180, 0);
         }
 
             //kills the player
@@ -113,12 +112,12 @@ public class movement : MonoBehaviour
             Application.Quit();
         }
 
-        HeightRotation();
+       // HeightRotation();
 
     }
 
     //Ship rotation code
-    private void HeightRotation()
+   /* private void HeightRotation()
     {
         float angle = ship.localRotation.eulerAngles.x;
 
@@ -139,7 +138,7 @@ public class movement : MonoBehaviour
 
         ship.localRotation = Quaternion.Euler(angle, ship.localRotation.y, ship.localRotation.z);
         cacheHeight = transform.position.y;
-    }
+    } */
 
 
     //creates a shot
