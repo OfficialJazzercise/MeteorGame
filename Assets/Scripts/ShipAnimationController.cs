@@ -18,35 +18,29 @@ public class ShipAnimationController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.W))
         {
-            anim.Play("TiltUp");
+            anim.SetFloat("Vertical", 1);
         }
-
-        if(Input.GetKeyUp(KeyCode.W))
-        {
-            anim.Play("TiltUpRevert");
-        }
-
 
         if(Input.GetKeyDown(KeyCode.S))
         {
-            anim.Play("TiltDown");
+            anim.SetFloat("Vertical", -1);
         }
 
-        if(Input.GetKeyUp(KeyCode.S))
+        if(Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
         {
-            anim.Play("TiltDownRevert");
+            anim.SetFloat("Vertical", 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && isRight == false)
+        if(Input.GetKeyDown(KeyCode.A) && isRight == false)
         {
             isRight = true;
-            anim.Play("HoriShipTurn");
+            anim.SetTrigger("FlipR");
         }
 
-        if(Input.GetKeyDown(KeyCode.A) && isRight == true)
+        if(Input.GetKeyDown(KeyCode.D) && isRight == true)
         {
             isRight = false;
-            anim.Play("HoriShipTurnRevert");
+            anim.SetTrigger("FlipL");
         }
     }
 }
