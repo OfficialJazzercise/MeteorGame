@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
-{   public float direction;
+{
+    public float direction;
     public float distance;
     public float height;
-    public float changeHeight;
+    public float targetHeight;
+    public bool isRight = true;
 
     public float rot = 0.0f;
+    public float rotChanges = 0.0f;
+    public float targetRot = 0.0f;
     public float speed = 100.0f;
 
     public TrailRenderer bulletTrail;
@@ -22,9 +26,9 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
+
     //clears the trail on the bullet
     public void resetTrail()
     {

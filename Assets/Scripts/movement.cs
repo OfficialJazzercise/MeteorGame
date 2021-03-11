@@ -20,7 +20,7 @@ public class movement : MonoBehaviour
     private float speed = 50.0f;
     private float cacheHeight;
 
-    bool isRight = true;
+    public bool isRight = true;
 
     public float height = 0.0f;
 
@@ -61,14 +61,14 @@ public class movement : MonoBehaviour
             rot = 360 + rot;
         }
 
-        
+
         //Allows the player to go down if above -7 and go up if below 12
-        if(Input.GetAxis("Vertical") < 0 && height >= -7)
+        if (Input.GetAxis("Vertical") < 0 && height >= -7)
         {
             FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
             height += Input.GetAxis("Vertical") * 20.0f * Time.deltaTime;
         }
-        else if(Input.GetAxis("Vertical") > 0 && height <= 12)
+        else if (Input.GetAxis("Vertical") > 0 && height <= 12)
         {
             height += Input.GetAxis("Vertical") * 20.0f * Time.deltaTime;
         }
@@ -93,20 +93,20 @@ public class movement : MonoBehaviour
             FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
             isRight = false;
         }
-        else if(Input.GetAxis("Horizontal") > 0)
+        else if (Input.GetAxis("Horizontal") > 0)
         {
             FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
             isRight = true;
         }
 
         // Turns the player ship depending on direction
-        if(isRight == false)
+        if (isRight == false)
         {
-           //transform.Rotate(0, 180, 0);
+            //transform.Rotate(0, 180, 0);
         }
 
-            //kills the player
-            if (Input.GetKeyDown("r"))
+        //kills the player
+        if (Input.GetKeyDown("r"))
         {
             SceneManager.LoadScene("SampleScene");
         }
@@ -117,52 +117,43 @@ public class movement : MonoBehaviour
             Application.Quit();
         }
 
-       // HeightRotation();
+        // HeightRotation();
 
     }
 
     //Ship rotation code
-   /* private void HeightRotation()
-    {
-        float angle = ship.localRotation.eulerAngles.x;
+    /* private void HeightRotation()
+     {
+         float angle = ship.localRotation.eulerAngles.x;
 
-        if(cacheHeight - transform.position.y < 0)
-        {
-            angle -= Time.deltaTime * 5;
-            angle = Mathf.Clamp(angle, -110, -90);
-        }
-        else if (cacheHeight - transform.position.y > 0)
-        {
-            angle += Time.deltaTime * 5;
-            angle = Mathf.Clamp(angle, -90, -60);
-        }
-        else
-        {
-            angle = Mathf.Lerp(angle, -90, Time.deltaTime * 5);
-        }
+         if(cacheHeight - transform.position.y < 0)
+         {
+             angle -= Time.deltaTime * 5;
+             angle = Mathf.Clamp(angle, -110, -90);
+         }
+         else if (cacheHeight - transform.position.y > 0)
+         {
+             angle += Time.deltaTime * 5;
+             angle = Mathf.Clamp(angle, -90, -60);
+         }
+         else
+         {
+             angle = Mathf.Lerp(angle, -90, Time.deltaTime * 5);
+         }
 
-        ship.localRotation = Quaternion.Euler(angle, ship.localRotation.y, ship.localRotation.z);
-        cacheHeight = transform.position.y;
-    } */
+         ship.localRotation = Quaternion.Euler(angle, ship.localRotation.y, ship.localRotation.z);
+         cacheHeight = transform.position.y;
+     } */
 
 
     //creates a shot
     void createShot(float heightChange)
     {
-        float direction;
         FindObjectOfType<SoundManager>().Play("Laser1");//SFX
         //determines the direction and which muzzle to used based on weither the player is facing the right
-        if (isRight)
-        { 
-            direction = 1;
-        }
-        else
-        {
-            direction = -1;
-        }
 
         //calls the firing script and activates a bullet
-        GetComponent<Firing>().startBullet(rot, direction, height, speed + 50, heightChange, projectileSpawn, player.transform.rotation);
+        GetComponent<Firing>().startBullet(projectileSpawn, player.transform.rotation);
     }
 
     //creates 3 shots

@@ -56,6 +56,7 @@ MonoBehaviour:
   ship: {fileID: 0}
   rot: 0
   distance: 70
+  isRight: 1
   height: 0
 --- !u!114 &7952055204667123412
 MonoBehaviour:
@@ -71,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletList: []
   prefab: {fileID: 4559740942108149490, guid: 15b29f4189d00cd40a3fd53d6ff99bf7, type: 3}
+  player: {fileID: 789775666202325851}
 --- !u!65 &7147685334441658936
 BoxCollider:
   m_ObjectHideFlags: 0
