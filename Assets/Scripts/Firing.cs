@@ -56,18 +56,12 @@ public class Firing : MonoBehaviour
         foreach (Bullet bullet in bulletList)
         {
             //ignores the bullet if it's already active
-            if (bullet.gameObject.activeSelf)
+            if (bullet.canActivate)
             {
-
-            }
-            else
-            {
-
-
                 //Sets the values for the new bullet
                 bullet.transform.localRotation = newRotation;
                 bullet.transform.position = newTransform.position;
-
+                bullet.canActivate = false;
                 bullet.rot = player.rot;
                 bullet.rotChanges = 0;
                 bullet.height = player.height;
@@ -88,7 +82,7 @@ public class Firing : MonoBehaviour
 
                 //Prevents the bullet's trail from making weird traces
                 bullet.resetTrail();
-                
+
 
                 //checks and then applies the BigBulletPowerup
                 if (bBigBullet) bullet.transform.localScale = new Vector3(12f, 12f, 12f);
@@ -116,6 +110,7 @@ public class Firing : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         bullet.gameObject.SetActive(false);
+        bullet.canActivate = true;
 
     }
 

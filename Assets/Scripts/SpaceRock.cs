@@ -51,6 +51,7 @@ public class SpaceRock : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             if(canSplit)rockBreak(rot, height, this.gameObject.transform.position);
+            other.gameObject.SetActive(false);
             rot = 0;
             height = 25;
             IncreaseScore();

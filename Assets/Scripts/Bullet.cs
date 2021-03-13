@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public float height;
     public float targetHeight;
     public bool isRight = true;
+    public bool canActivate = true;
 
     public float rot = 0.0f;
     public float rotChanges = 0.0f;
