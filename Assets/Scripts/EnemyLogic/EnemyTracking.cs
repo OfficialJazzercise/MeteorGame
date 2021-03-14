@@ -9,18 +9,20 @@ public class EnemyTracking : MonoBehaviour
     Vector3 origin = Vector3.zero;
     public EnemyProjectile prefab;
 
-    public movement target; 
+    private GameObject target; 
 
     private IEnumerator coroutine;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (target == null)
+            target = GameObject.FindGameObjectWithTag("Player");
         //Creates a new list that contains objects created from the Bullet script and stores 30 cloned bullets into it
         bulletList = new List<EnemyProjectile>();
         GameObject clone;
 
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 10; i++)
         {
             clone = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation).gameObject;
             clone.SetActive(false);
@@ -32,35 +34,35 @@ public class EnemyTracking : MonoBehaviour
     //a function to activate a bullet when needed
     public void startBullet(float currentRot, float currentHieght, Transform currentLoction)
     {
-        //cycles through each object in bulletList
-        foreach (EnemyProjectile bullet in bulletList)
+
+        float distanceToPlayer = Math.Abs(target.GetComponent<movement>().rot - currentRot);
+
+        if (distanceToPlayer <= 50)
         {
-            //ignores the bullet if it's already active
-            if (bullet.gameObject.activeSelf)
+
+            //cycles through each object in bulletList
+            foreach (EnemyProjectile bullet in bulletList)
             {
+                //ignores the bullet if it's already active
+                if (bullet.canActivate)
+                {
+                    //Sets the values for the new bullet
+                    bullet.height = currentHieght;
+                    bullet.rot = currentRot;
+                    bullet.targetsHeight = target.GetComponent<movement>().height;
+                    bullet.targetsRot = target.GetComponent<movement>().rot;
+                    bullet.canActivate = false;
 
-            }
-            else
-            {
-                //Sets the values for the new bullet
-                bullet.height = currentHieght;
-                bullet.rot = currentRot;
-                bullet.targetsHeight = target.height;
-                bullet.targetsRot = target.rot;
-
-                //Prevents the bullet's trail from making weird traces
-                bullet.gameObject.SetActive(true);
-
-
-                coroutine = destroyBullet(bullet, 5f);
-                StartCoroutine(coroutine);
+                    //Prevents the bullet's trail from making weird traces
+                    bullet.gameObject.SetActive(true);
 
 
+                    coroutine = destroyBullet(bullet, 5f);
+                    StartCoroutine(coroutine);
 
-                findShortestTrip(bullet);
-
-                //Leaves the function to skip cycling through the rest of the list
-                return;
+                    //Leaves the function to skip cycling through the rest of the list
+                    return;
+                }
             }
         }
 
@@ -69,9 +71,12 @@ public class EnemyTracking : MonoBehaviour
     //use for the courtine, will disable both muzzles after a set amount of time
     private IEnumerator destroyBullet(EnemyProjectile bullet, float waitTime)
     {
+        findShortestTrip(bullet);
+
         yield return new WaitForSeconds(waitTime);
 
         bullet.gameObject.SetActive(false);
+        bullet.canActivate = true;
 
     }
 

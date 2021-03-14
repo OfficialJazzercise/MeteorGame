@@ -7,6 +7,7 @@ public class EnemyProjectile : MonoBehaviour
     public float height;
     public float targetsHeight;
     public float targetsRot;
+    public bool canActivate = true;
 
     public float rot = 0.0f;
     public float speed = 100.0f;

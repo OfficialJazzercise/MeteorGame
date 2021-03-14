@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletList: []
-  prefab: {fileID: 4457645742091188047, guid: 6d6d8b8aca260524a817971d1f0a3f19, type: 3}
-  target: {fileID: 0}
+  prefab: {fileID: 5744822251852727797, guid: 6b02f91c05421864a914889f4b2a5a56, type: 3}
 --- !u!114 &6843230475610908517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawn: {fileID: 6183700659912582428}
   rot: 0
-  distance: 100
+  distance: 70
   height: 0
 --- !u!1 &6793442423965708257
 GameObject:

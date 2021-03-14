@@ -9,7 +9,10 @@ using System;
 public class Spawner : MonoBehaviour
 {
     public List<SpaceRock> meteorList;
-    public GameObject prefab;
+    public List<Enemy> enemyList;
+
+    public GameObject meteorPrefab;
+    public GameObject enemyPrefab;
     public GameObject cityHitScreenFlash;
     public Transform spawnArea;
 
@@ -55,10 +58,18 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < 30; i++)
         {
-            clone = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation).gameObject;
+            clone = Instantiate(meteorPrefab, meteorPrefab.transform.position, meteorPrefab.transform.rotation).gameObject;
             clone.SetActive(false);
 
             meteorList.Add(clone.GetComponent<SpaceRock>());
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            clone = Instantiate(enemyPrefab, enemyPrefab.transform.position, enemyPrefab.transform.rotation).gameObject;
+            clone.SetActive(false);
+
+            enemyList.Add(clone.GetComponent<Enemy>());
         }
 
         coroutine = prepWave(5f);
