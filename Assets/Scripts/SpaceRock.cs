@@ -36,7 +36,7 @@ public class SpaceRock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, 52 * Time.deltaTime);
+        transform.Rotate(2, 0, 53 * Time.deltaTime);
     }
 
     private void OnDisable()
