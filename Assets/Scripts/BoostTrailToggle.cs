@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 public class BoostTrailToggle : MonoBehaviour
 {
     public GameObject Maintrail;
@@ -12,7 +14,7 @@ public class BoostTrailToggle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   /* void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -25,4 +27,5 @@ public class BoostTrailToggle : MonoBehaviour
             Maintrail.SetActive (false);
         }
     }
+    */
 }

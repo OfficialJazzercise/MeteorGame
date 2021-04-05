@@ -16,15 +16,6 @@ public class ScreenShake : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            StartShake(.5f, 1f);
-        }
-    }
-
     void LateUpdate()
     {
         if(shakeTimeRemaining > 0) // may have to change either x or y to z

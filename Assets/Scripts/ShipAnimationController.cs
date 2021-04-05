@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShipAnimationController : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class ShipAnimationController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   /* void Update()
     {
         if(Input.GetKeyDown(KeyCode.W))
         {
@@ -57,4 +58,5 @@ public class ShipAnimationController : MonoBehaviour
             anim.SetTrigger("FlipL");
         }
     }
+    */
 }

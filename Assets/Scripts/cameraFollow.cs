@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class cameraFollow : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class cameraFollow : MonoBehaviour
     public float distance = 10.0f;
     private float speed = 50.0f;
     private bool canMove = true;
+
+    private float horizontalMovement = 0;
+    private float verticalMovement = 0;
 
     public movement player;
 
@@ -35,6 +39,24 @@ public class cameraFollow : MonoBehaviour
 
     void switchMovement() { canMove = !canMove; }
 
+    public void Moving(InputAction.CallbackContext context)
+    {
+        horizontalMovement = context.ReadValue<Vector2>().x;
+        verticalMovement = context.ReadValue<Vector2>().y;
+    }
+
+    public void Boosting(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            speed = 100f;
+        }
+        else if (context.canceled)
+        {
+            speed = 50f;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,33 +66,34 @@ public class cameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //handles dash
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = 100f;
-        }
-        else
-        {
-            speed = 50f;
-        }
-
         if (canMove)
         {
+            rot -= horizontalMovement * speed * Time.deltaTime;
 
-            if (Input.GetAxis("Vertical") < 0 && height >= -7 && player.height <= height - 5)
+            if (rot >= 360)
+            {
+                rot = rot - 360;
+            }
+            if (rot < 0)
+            {
+                rot = 360 + rot;
+            }
+
+            if (verticalMovement < 0 && height >= -11)
             {
                 FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-                height += Input.GetAxis("Vertical") * 40.0f * Time.deltaTime;
+                height += verticalMovement * 40.0f * Time.deltaTime;
             }
-            else if (Input.GetAxis("Vertical") > 0 && height <= 60 && player.height >= height + 5)
+            else if (verticalMovement > 0 && height <= 70)
             {
-                height += Input.GetAxis("Vertical") * 40.0f * Time.deltaTime;
+                FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
+                height += verticalMovement * 40.0f * Time.deltaTime;
             }
 
-            rot -= Input.GetAxis("Horizontal") * speed * Time.deltaTime;
             cameraF.transform.position = origin + Quaternion.Euler(0, rot, 0) * new Vector3(0, 0, distance);
             cameraF.transform.LookAt(origin);
             cameraF.transform.position = new Vector3(cameraF.transform.position.x, height, cameraF.transform.position.z);
         }
     }
+    
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class movement : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class movement : MonoBehaviour
     public bool isRight = true;
 
     public float height = 0.0f;
+
+    private bool isFiring = false;
+    private float horizontalMovement = 0;
+    private float verticalMovement = 0;
 
     public Vector3 origin = Vector3.zero;
     Vector3 lookTowards = Vector3.zero;
@@ -54,6 +59,53 @@ public class movement : MonoBehaviour
         player.SetActive(true);
     }
 
+    public void Shooting(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isFiring = true;
+        }
+        else if (context.canceled)
+        {
+            isFiring = false;
+        }
+    }
+
+    public void Moving(InputAction.CallbackContext context)
+    {
+            horizontalMovement = context.ReadValue<Vector2>().x;
+            verticalMovement = context.ReadValue<Vector2>().y;
+
+            if (context.ReadValue<Vector2>().x < 0)
+            {
+                isRight = false;
+            }
+            else if (context.ReadValue<Vector2>().x > 0)
+            {
+                isRight = true;
+            }
+    }
+
+    public void Boosting(InputAction.CallbackContext context)
+    {
+            if (context.performed)
+            {
+                speed = 100f;
+            }
+            else if (context.canceled)
+            {
+                speed = 50f;
+            }
+    }
+
+    public void Pausing(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Application.Quit();
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,79 +115,52 @@ public class movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+     void Update()
     {
-        //handles dash
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        rot -= horizontalMovement * speed * Time.deltaTime;
+
+        if (rot >= 360)
         {
-            speed = 100f;
+            rot = rot - 360;
         }
-        else
+        if (rot < 0)
         {
-            speed = 50f;
+            rot = 360 + rot;
         }
 
-            //Sets the players postion on a circular track based on which direction the are traveling, speed, and time
-            rot -= Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        if (verticalMovement < 0 && height >= -11)
+        {
+            FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
+            height += verticalMovement * 40.0f * Time.deltaTime;
+        }
+        else if (verticalMovement > 0 && height <= 70)
+        {
+            FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
+            height += verticalMovement * 40.0f * Time.deltaTime;
+        }
 
-        //keeps rot between 0 and 360
-            if (rot >= 360)
-            {
-                rot = rot - 360;
-            }
-            if (rot < 0)
-            {
-                rot = 360 + rot;
-            }
-
-
-            //Allows the player to go down if above -7 and go up if below 12
-            if (Input.GetAxis("Vertical") < 0 && height >= -11)
-            {
-                FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-                height += Input.GetAxis("Vertical") * 40.0f * Time.deltaTime;
-            }
-            else if (Input.GetAxis("Vertical") > 0 && height <= 70)
-            {
-                height += Input.GetAxis("Vertical") * 40.0f * Time.deltaTime;
-            }
-
-            //Sets the player location and makes the player face the origin point
-            player.transform.position = origin + Quaternion.Euler(0, rot, 0) * new Vector3(0, height, distance);
+        //Sets the player location and makes the player face the origin point
+        player.transform.position = origin + Quaternion.Euler(0, rot, 0) * new Vector3(0, height, distance);
 
             lookTowards = new Vector3(origin.x, origin.y + height, origin.z);
             player.transform.LookAt(lookTowards);
 
-            //handles shooting
-            if (Input.GetKey(KeyCode.Space) && shotDelay <= 0)
+
+        if (isFiring)
+        {
+            if (shotDelay <= 0)
             {
                 FindObjectOfType<SoundManager>().Play("Laser1");//Will give variations later
                 shotDelay = 0.2f;
                 singleShot();
             }
+        }
 
             shotDelay -= Time.deltaTime;
 
-            //flips the player depending on which direction they are going
-            if (Input.GetAxis("Horizontal") < 0)
-            {
-                FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-                isRight = false;
-            }
-            else if (Input.GetAxis("Horizontal") > 0)
-            {
-                FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-                isRight = true;
-            }
-
-        //quits the game
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-
     }
-
+    
 
     //creates a shot
     void createShot(float heightChange)
