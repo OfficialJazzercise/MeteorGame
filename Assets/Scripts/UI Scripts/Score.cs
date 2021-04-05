@@ -59,12 +59,12 @@ public class Score : MonoBehaviour
         if (player1Turn)
         {
             P1Score += 100 * scoreMultiplier;
-            comboMultiplier += 1f;
+            comboMultiplier += .1f;
         }
         else
         {
             P2Score += 100 * scoreMultiplier;
-            comboMultiplier += 1f;
+            comboMultiplier += .1f;
         }
 
         if (P1Score > P1LifeTarget)
@@ -80,7 +80,7 @@ public class Score : MonoBehaviour
             P2LifeTarget += 10000;
         }
 
-        scoreMultiplier += 1f;
+        scoreMultiplier += .1f;
         pointsGiven = 100 * scoreMultiplier;
     }
 

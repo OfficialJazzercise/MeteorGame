@@ -8,6 +8,9 @@ public class ShipAnimationController : MonoBehaviour
     public Animator anim;
     private bool isRight = false;
 
+    private float horizontalMovement = 0;
+    private float verticalMovement = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,35 +31,43 @@ public class ShipAnimationController : MonoBehaviour
         isRight = false;
     }
 
-    // Update is called once per frame
-   /* void Update()
+    public void ShipAnim(InputAction.CallbackContext context)
     {
-        if(Input.GetKeyDown(KeyCode.W))
+        horizontalMovement = context.ReadValue<Vector2>().x;
+        verticalMovement = context.ReadValue<Vector2>().y;
+
+        if (verticalMovement > 0)
         {
             anim.SetFloat("Vertical", 1);
         }
 
-        if(Input.GetKeyDown(KeyCode.S))
+        if (verticalMovement < 0)
         {
             anim.SetFloat("Vertical", -1);
         }
 
-        if(Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
+        if (verticalMovement == 0)
         {
             anim.SetFloat("Vertical", 0);
         }
 
-        if(Input.GetKeyDown(KeyCode.A) && isRight == false)
+    }
+    // Update is called once per frame
+        void Update()
+     {
+
+        if (horizontalMovement < 0 && isRight == false)
         {
             isRight = true;
             anim.SetTrigger("FlipR");
         }
 
-        if(Input.GetKeyDown(KeyCode.D) && isRight == true)
+        if (horizontalMovement > 0 && isRight == true)
         {
             isRight = false;
             anim.SetTrigger("FlipL");
         }
+
     }
-    */
+
 }
