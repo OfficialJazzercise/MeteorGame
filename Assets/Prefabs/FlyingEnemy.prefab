@@ -52,6 +52,7 @@ MonoBehaviour:
   rot: 0
   distance: 70
   height: 0
+  desiredHeight: 0
   canActivate: 1
   canMove: 1
   enemyType: none
@@ -66,8 +67,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6, y: 2, z: 6}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5.588683, y: 2.8471346, z: 6}
+  m_Center: {x: 0.17262459, y: 0.4235673, z: 0}
 --- !u!54 &5323580045519048246
 Rigidbody:
   m_ObjectHideFlags: 0
