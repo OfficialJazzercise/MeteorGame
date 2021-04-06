@@ -10,7 +10,6 @@ public class Firing : MonoBehaviour
     public Bullet prefab;
     public movement player;
     private bool bBigBullet;
-    private float GBulletTimer = 20f; // This is the timer, in seconds, that the GBullet upgrade lasts
 
     private IEnumerator coroutine;
 
@@ -85,8 +84,16 @@ public class Firing : MonoBehaviour
 
 
                 //checks and then applies the BigBulletPowerup
-                if (bBigBullet) bullet.transform.localScale = new Vector3(12f, 12f, 12f);
-                else bullet.transform.localScale = new Vector3(6f, 6f, 6f);
+                if (bBigBullet)
+                {
+                    bullet.transform.localScale = new Vector3(12f, 12f, 12f);
+                    bullet.bulletTrail.startWidth = 1.2f;
+                }
+                else
+                {
+                    bullet.transform.localScale = new Vector3(6f, 6f, 6f);
+                    bullet.bulletTrail.startWidth = .6f;
+                }
 
                 bullet.gameObject.SetActive(true);
 
