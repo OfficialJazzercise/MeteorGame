@@ -79,24 +79,28 @@ public class EnemyTracking : MonoBehaviour
 
     }
 
-    private IEnumerator moveToPlayer(EnemyProjectile projectile, float speed)
+    private IEnumerator moveToPlayer(EnemyProjectile projectile, float speed, bool isRight)
     {
         float timePast = 0.0f;
 
         float startingRot = projectile.rot;
         float startingHeight = projectile.height;
 
-        float HorizontalDistance = Math.Abs(startingRot - projectile.targetsRot);
-        float VerticalDistance = Math.Abs(startingHeight - projectile.targetsHeight);
+        float HorizontalDistance = startingRot - projectile.targetsRot;
+        float VerticalDistance = startingHeight - projectile.targetsHeight;
+
+        HorizontalDistance *= 4;
+        VerticalDistance *= 4;
 
         float distance = Mathf.Sqrt(Mathf.Pow(HorizontalDistance, 2) + Mathf.Pow(VerticalDistance, 2));
 
-
+        projectile.targetsRot = startingRot - HorizontalDistance;
+        projectile.targetsHeight = startingHeight - VerticalDistance;
 
         float duration = distance / speed;
 
 
-        while (timePast < duration)
+        while (timePast < duration && projectile.height < 100 & projectile.height > -15)
         {
             projectile.rot = Mathf.Lerp(startingRot, projectile.targetsRot, timePast / duration);
             projectile.height = Mathf.Lerp(startingHeight, projectile.targetsHeight, timePast / duration);
@@ -150,7 +154,7 @@ public class EnemyTracking : MonoBehaviour
             }
         }
 
-        coroutine = moveToPlayer(projectile, 45f);
+        coroutine = moveToPlayer(projectile, 45f, isRight);
         StartCoroutine(coroutine);
     }
 
