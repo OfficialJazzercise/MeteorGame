@@ -18,6 +18,15 @@ public class Bullet : MonoBehaviour
 
     public TrailRenderer bulletTrail;
 
+    private void OnEnable()
+    {
+        Spawner.resetArena += disableBullet;
+    }
+
+    private void OnDisable()
+    {
+        Spawner.resetArena -= disableBullet;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +37,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void disableBullet()
+    {
+        gameObject.SetActive(false);
     }
 
     //clears the trail on the bullet

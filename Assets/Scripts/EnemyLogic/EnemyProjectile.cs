@@ -13,6 +13,8 @@ public class EnemyProjectile : MonoBehaviour
     public float rot = 0.0f;
     public float speed = 100.0f;
 
+    public TrailRenderer bulletTrail;
+
     public static Action PlayerKilled = delegate { };
 
     private void OnEnable()
@@ -50,6 +52,12 @@ public class EnemyProjectile : MonoBehaviour
             FindObjectOfType<SoundManager>().Play("Dying");
             PlayerKilled();
         }
+    }
+
+    //clears the trail on the bullet
+    public void resetTrail()
+    {
+        bulletTrail.Clear();
     }
 
 }

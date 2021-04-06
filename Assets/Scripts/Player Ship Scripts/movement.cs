@@ -25,8 +25,13 @@ public class movement : MonoBehaviour
     public float height = 0.0f;
 
     private bool isFiring = false;
-    private float horizontalMovement = 0;
-    private float verticalMovement = 0;
+
+    public bool isBoosting = false;
+    public float horizontalMovement = 0;
+    public float verticalMovement = 0;
+
+    public bool topMap = false;
+    public bool bottomMap = false;
 
     public Vector3 origin = Vector3.zero;
     Vector3 lookTowards = Vector3.zero;
@@ -91,10 +96,12 @@ public class movement : MonoBehaviour
             if (context.performed)
             {
                 speed = 100f;
+                isBoosting = true;
             }
             else if (context.canceled)
             {
                 speed = 50f;
+                isBoosting = false;
             }
     }
 
@@ -129,15 +136,33 @@ public class movement : MonoBehaviour
             rot = 360 + rot;
         }
 
-        if (verticalMovement < 0 && height >= -11)
+        if (verticalMovement < 0)
         {
             FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-            height += verticalMovement * 40.0f * Time.deltaTime;
+            if (height >= -11)
+            {
+                height += verticalMovement * 40.0f * Time.deltaTime;
+                bottomMap = false;
+                topMap = false;
+            }
+            else
+            {
+                bottomMap = true;
+            }
         }
-        else if (verticalMovement > 0 && height <= 70)
+        else if (verticalMovement > 0)
         {
             FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-            height += verticalMovement * 40.0f * Time.deltaTime;
+            if (height <= 70)
+            {
+                height += verticalMovement * 40.0f * Time.deltaTime;
+                bottomMap = false;
+                topMap = false;
+            }
+            else
+            {
+                topMap = true;
+            }
         }
 
         //Sets the player location and makes the player face the origin point
@@ -152,7 +177,7 @@ public class movement : MonoBehaviour
             if (shotDelay <= 0)
             {
                 FindObjectOfType<SoundManager>().Play("Laser1");//Will give variations later
-                shotDelay = 0.2f;
+                shotDelay = 0.15f;
                 singleShot();
             }
         }
@@ -165,9 +190,6 @@ public class movement : MonoBehaviour
     //creates a shot
     void createShot(float heightChange)
     {
-        FindObjectOfType<SoundManager>().Play("Laser1");//SFX
-        //determines the direction and which muzzle to used based on weither the player is facing the right
-
         //calls the firing script and activates a bullet
         GetComponent<Firing>().startBullet(projectileSpawn, player.transform.rotation);
     }

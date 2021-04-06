@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class ShipAnimationController : MonoBehaviour
 {
     public Animator anim;
+    public movement player;
     private bool isRight = false;
 
     private float horizontalMovement = 0;
@@ -35,7 +36,10 @@ public class ShipAnimationController : MonoBehaviour
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
         verticalMovement = context.ReadValue<Vector2>().y;
-
+    }
+    // Update is called once per frame
+        void Update()
+     {
         if (verticalMovement > 0)
         {
             anim.SetFloat("Vertical", 1);
@@ -46,15 +50,10 @@ public class ShipAnimationController : MonoBehaviour
             anim.SetFloat("Vertical", -1);
         }
 
-        if (verticalMovement == 0)
+        if (verticalMovement == 0 || horizontalMovement == 0 || player.topMap || player.bottomMap)
         {
             anim.SetFloat("Vertical", 0);
         }
-
-    }
-    // Update is called once per frame
-        void Update()
-     {
 
         if (horizontalMovement < 0 && isRight == false)
         {

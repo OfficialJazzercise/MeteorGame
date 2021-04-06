@@ -9731,6 +9731,7 @@ MonoBehaviour:
   canActivate: 1
   rot: 0
   speed: 100
+  bulletTrail: {fileID: 3351626723680370920}
 --- !u!108 &8468417340442177948
 Light:
   m_ObjectHideFlags: 0

@@ -66,6 +66,8 @@ public class EnemyTracking : MonoBehaviour
                     bullet.canActivate = false;
 
                     //Prevents the bullet's trail from making weird traces
+                    bullet.resetTrail();
+                    
                     bullet.gameObject.SetActive(true);
 
 

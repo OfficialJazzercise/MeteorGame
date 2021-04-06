@@ -88,11 +88,13 @@ public class Firing : MonoBehaviour
                 {
                     bullet.transform.localScale = new Vector3(12f, 12f, 12f);
                     bullet.bulletTrail.startWidth = 1.2f;
+                    bullet.bulletTrail.endWidth = .6f;
                 }
                 else
                 {
                     bullet.transform.localScale = new Vector3(6f, 6f, 6f);
                     bullet.bulletTrail.startWidth = .6f;
+                    bullet.bulletTrail.endWidth = .3f;
                 }
 
                 bullet.gameObject.SetActive(true);
@@ -136,12 +138,49 @@ public class Firing : MonoBehaviour
         float startingRot = projectile.rot;
         float startingHeight = projectile.height;
 
+        if (player.verticalMovement > 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
+        {
+            startingHeight += 2.2f;
+            projectile.targetHeight += 45f;
+        }
+        else if (player.verticalMovement < 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
+        {
+            startingHeight += -2.2f;
+            projectile.targetHeight += -45f;
+        }
+        else
+        {
+            startingHeight = projectile.height;
+            projectile.targetHeight = projectile.height;
+        }
+
+        if (player.horizontalMovement != 0)
+        {
+            projectile.bulletTrail.time = .02f;
+
+        }
+        else
+        {
+            projectile.bulletTrail.time = .05f;
+        }
+
 
         while (timePast < duration && projectile.gameObject.activeSelf)
         {
-            projectile.targetRot = player.rot + projectile.rotChanges;
+            startingRot = player.rot;
 
-            projectile.rot = Mathf.Lerp(player.rot, projectile.targetRot, timePast / duration);
+            if (player.isRight)
+            {
+                startingRot += -1.7f;
+            }
+            else
+            {
+                startingRot += 1.7f;
+            }
+
+            projectile.targetRot = startingRot + projectile.rotChanges;
+
+            projectile.rot = Mathf.Lerp(startingRot, projectile.targetRot, timePast / duration);
             projectile.height = Mathf.Lerp(startingHeight, projectile.targetHeight, timePast / duration);
 
             projectile.transform.position = origin + Quaternion.Euler(0, projectile.rot, 0) * new Vector3(0, projectile.height, projectile.distance);
