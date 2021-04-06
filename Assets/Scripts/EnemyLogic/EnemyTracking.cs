@@ -86,8 +86,8 @@ public class EnemyTracking : MonoBehaviour
         float startingRot = projectile.rot;
         float startingHeight = projectile.height;
 
-        float HorizontalDistance = Math.Abs(startingRot - target.GetComponent<movement>().rot);
-        float VerticalDistance = Math.Abs(startingHeight - target.GetComponent<movement>().height);
+        float HorizontalDistance = Math.Abs(startingRot - projectile.targetsRot);
+        float VerticalDistance = Math.Abs(startingHeight - projectile.targetsHeight);
 
         float distance = Mathf.Sqrt(Mathf.Pow(HorizontalDistance, 2) + Mathf.Pow(VerticalDistance, 2));
 
@@ -120,20 +120,34 @@ public class EnemyTracking : MonoBehaviour
 
     private void findShortestTrip(EnemyProjectile projectile)
     {
-        float tripA = 0;
-        float tripB = 0;
-
         float tripStart = projectile.rot;
         float tripEnd = projectile.targetsRot;
 
-        if (tripEnd == 0 && tripEnd != tripStart) { tripEnd = 360; }
+        bool isRight = false;
 
-        tripA = tripStart + (360 - tripEnd);
-        tripB = Mathf.Abs(tripEnd - tripStart);
-
-        if (tripB > tripA)
+        if (tripStart < tripEnd)
         {
-            projectile.rot += 360;    
+            if (tripEnd - tripStart < tripStart + 360 - tripEnd)
+            {
+                isRight = false;
+            }
+            else
+            {
+                isRight = true;
+                projectile.rot += 360;
+            }
+        }
+        else
+        {
+            if (tripStart - tripEnd < tripEnd + 360 - tripStart)
+            {
+                isRight = false;
+            }
+            else
+            {
+                isRight = true;
+                projectile.targetsRot += 360;
+            }
         }
 
         coroutine = moveToPlayer(projectile, 45f);
