@@ -31,13 +31,13 @@ public class BoostTrailToggle : MonoBehaviour
     {
         if (isBoosting)
         {
-            if(Maintrail != null)
-            Maintrail.SetActive (true);
+            if (Maintrail != null)
+            Maintrail.SetActive (false);
         }
         else
         {
             if (Maintrail != null)
-            Maintrail.SetActive (false);
+            Maintrail.SetActive (true);
         }
     }
     

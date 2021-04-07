@@ -99,7 +99,7 @@ public class Firing : MonoBehaviour
 
                 bullet.gameObject.SetActive(true);
 
-                coroutine = destroyBullet(bullet, .5f);
+                coroutine = destroyBullet(bullet, .3f);
                 StartCoroutine(coroutine);
 
                 //Leaves the function to skip cycling through the rest of the list
@@ -138,20 +138,41 @@ public class Firing : MonoBehaviour
         float startingRot = projectile.rot;
         float startingHeight = projectile.height;
 
-        if (player.verticalMovement > 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
+        if (player.isBoosting)
         {
-            startingHeight += 2.2f;
-            projectile.targetHeight += 45f;
-        }
-        else if (player.verticalMovement < 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
-        {
-            startingHeight += -2.2f;
-            projectile.targetHeight += -45f;
+            if (player.verticalMovement > 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
+            {
+                startingHeight += 3f;
+                projectile.targetHeight += 45f;
+            }
+            else if (player.verticalMovement < 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
+            {
+                startingHeight += -2.8f;
+                projectile.targetHeight += -45f;
+            }
+            else
+            {
+                startingHeight = projectile.height;
+                projectile.targetHeight = projectile.height;
+            }
         }
         else
         {
-            startingHeight = projectile.height;
-            projectile.targetHeight = projectile.height;
+            if (player.verticalMovement > 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
+            {
+                startingHeight += 3f;
+                projectile.targetHeight = projectile.height;
+            }
+            else if (player.verticalMovement < 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
+            {
+                startingHeight += -2.8f;
+                projectile.targetHeight = projectile.height;
+            }
+            else
+            {
+                startingHeight = projectile.height;
+                projectile.targetHeight = projectile.height;
+            }
         }
 
         if (player.horizontalMovement != 0)
@@ -169,13 +190,27 @@ public class Firing : MonoBehaviour
         {
             startingRot = player.rot;
 
-            if (player.isRight)
+            if (!player.isBoosting)
             {
-                startingRot += -1.7f;
+                if (player.isRight)
+                {
+                    startingRot += -2.5f;
+                }
+                else
+                {
+                    startingRot += 2.5f;
+                }
             }
             else
             {
-                startingRot += 1.7f;
+                if (player.isRight)
+                {
+                    startingRot += -2f;
+                }
+                else
+                {
+                    startingRot += 2f;
+                }
             }
 
             projectile.targetRot = startingRot + projectile.rotChanges;

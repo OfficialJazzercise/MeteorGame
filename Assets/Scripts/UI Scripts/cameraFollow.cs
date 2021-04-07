@@ -10,7 +10,7 @@ public class cameraFollow : MonoBehaviour
     public float height = 0.0f;
 
     public float distance = 10.0f;
-    private float speed = 50.0f;
+    private float speed = 100.0f;
     private bool canMove = true;
 
     private float horizontalMovement = 0;
@@ -49,11 +49,11 @@ public class cameraFollow : MonoBehaviour
     {
         if (context.performed)
         {
-            speed = 100f;
+            speed = 40f;
         }
         else if (context.canceled)
         {
-            speed = 50f;
+            speed = 100f;
         }
     }
 

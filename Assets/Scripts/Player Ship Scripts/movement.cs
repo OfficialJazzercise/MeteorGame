@@ -17,7 +17,7 @@ public class movement : MonoBehaviour
     public float rot = 0.0f;
     float shotDelay = 0.0f;
     public float distance = 100.0f;
-    private float speed = 50.0f;
+    private float speed = 100.0f;
     private float cacheHeight;
 
     public bool isRight = true;
@@ -95,12 +95,12 @@ public class movement : MonoBehaviour
     {
             if (context.performed)
             {
-                speed = 100f;
+                speed = 40f;
                 isBoosting = true;
             }
             else if (context.canceled)
             {
-                speed = 50f;
+                speed = 100f;
                 isBoosting = false;
             }
     }
