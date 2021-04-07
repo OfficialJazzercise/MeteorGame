@@ -109,7 +109,7 @@ public class movement : MonoBehaviour
     {
         if (context.performed)
         {
-            Application.Quit();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

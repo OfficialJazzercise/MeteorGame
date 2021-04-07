@@ -13,11 +13,13 @@ public class HUDUpgradeImage : MonoBehaviour
     {
         GBullet.BigBulletPowerUp += changeImage;
         Firing.GiantBulletEnded += DefaultIcon;
+        Spawner.resetArena += DefaultIcon;
     }
     private void OnDisable()
     {
         GBullet.BigBulletPowerUp -= changeImage;
         Firing.GiantBulletEnded -= DefaultIcon;
+        Spawner.resetArena -= DefaultIcon;
     }
     
     //Changes the image to the BigBullet powerup image

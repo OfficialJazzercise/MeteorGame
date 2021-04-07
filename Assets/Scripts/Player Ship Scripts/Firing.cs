@@ -21,17 +21,23 @@ public class Firing : MonoBehaviour
     private void OnEnable()
     {
         GBullet.BigBulletPowerUp += BigBulletPowerUp;
+        Spawner.resetArena += resetBigBullet;
     }
     private void OnDisable()
     {
         GBullet.BigBulletPowerUp -= BigBulletPowerUp;
+        Spawner.resetArena -= resetBigBullet;
     }
+
     private void BigBulletPowerUp()
     {
         bBigBullet = true;
-        coroutine = endPowerup(20f);
+
+        coroutine = endPowerup(5f);
         StartCoroutine(coroutine);
     }
+
+    private void resetBigBullet() { bBigBullet = false; }
 
     // Start is called before the first frame update
     void Start()
@@ -125,7 +131,13 @@ public class Firing : MonoBehaviour
 
     private IEnumerator endPowerup(float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);
+        float timePast = 0;
+
+        while (timePast < waitTime && bBigBullet)
+        {          
+            timePast += Time.deltaTime;
+            yield return null;
+        }
 
         GiantBulletEnded();
         bBigBullet = false;

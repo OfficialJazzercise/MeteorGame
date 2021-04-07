@@ -19,7 +19,7 @@ public class FloatingScore : MonoBehaviour
         if (target == null)
             target = GameObject.FindGameObjectWithTag("MainCamera");
 
-        GetComponent<TextMesh>().text = Score.pointsGiven.ToString();
+        GetComponent<TextMesh>().text = Mathf.Round(Score.pointsGiven).ToString();
     }
     
 
