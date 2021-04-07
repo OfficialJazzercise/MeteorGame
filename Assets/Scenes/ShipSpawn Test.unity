@@ -327,7 +327,7 @@ Transform:
   m_GameObject: {fileID: 262916672}
   m_LocalRotation: {x: -0.51341856, y: 0.513419, z: -0.48621097, w: 0.48621124}
   m_LocalPosition: {x: 4.36, y: -3.5, z: 1.17}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.38973, y: 0.38973, z: 0.38973}
   m_Children: []
   m_Father: {fileID: 1891800667}
   m_RootOrder: 0
@@ -1043,7 +1043,7 @@ Transform:
   m_GameObject: {fileID: 975519703}
   m_LocalRotation: {x: -0.51341856, y: 0.513419, z: -0.48621097, w: 0.48621124}
   m_LocalPosition: {x: 4.36, y: 3.49, z: 1.12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.38973, y: 0.38973, z: 0.38973}
   m_Children: []
   m_Father: {fileID: 1891800667}
   m_RootOrder: 1
@@ -1153,7 +1153,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 0
+  m_Intensity: 3
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
