@@ -429,7 +429,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 7713861278256989623, guid: 923aa50bad281a443af7d469cd48cb4d,
         type: 3}
       propertyPath: m_RenderMode
@@ -438,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 7713861278256989623, guid: 923aa50bad281a443af7d469cd48cb4d,
         type: 3}
       propertyPath: m_RenderAlignment
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7713861278256989623, guid: 923aa50bad281a443af7d469cd48cb4d,
         type: 3}
