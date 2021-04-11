@@ -58,7 +58,9 @@
      <Compile Include="Assets\Scripts\EnemyLogic\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyLogic\EnemyProjectile.cs" />
      <Compile Include="Assets\Scripts\EnemyLogic\EnemyTracking.cs" />
+     <Compile Include="Assets\Scripts\Menu Scripts\ButtonFadeIn.cs" />
      <Compile Include="Assets\Scripts\Menu Scripts\MainMenuManager.cs" />
+     <Compile Include="Assets\Scripts\Menu Scripts\TitleFadeIn.cs" />
      <Compile Include="Assets\Scripts\Meteor and Enemy Scripts\BreakerRock.cs" />
      <Compile Include="Assets\Scripts\Meteor and Enemy Scripts\RockExplode.cs" />
      <Compile Include="Assets\Scripts\Meteor and Enemy Scripts\SpaceRock.cs" />
