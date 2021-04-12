@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class BoostTrailToggle : MonoBehaviour
 {
-    public GameObject Maintrail;
+    public TrailRenderer Maintrail;
     private bool isBoosting = false;
     // Start is called before the first frame update
     void Start()
@@ -32,12 +32,17 @@ public class BoostTrailToggle : MonoBehaviour
         if (isBoosting)
         {
             if (Maintrail != null)
-            Maintrail.SetActive (false);
+            Maintrail.Clear();
+            Maintrail.gameObject.SetActive (false);
         }
         else
         {
             if (Maintrail != null)
-            Maintrail.SetActive (true);
+            {
+                Maintrail.gameObject.SetActive (true);
+
+            }
+            
         }
     }
     
