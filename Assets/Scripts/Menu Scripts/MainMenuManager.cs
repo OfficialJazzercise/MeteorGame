@@ -2,30 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class MainMenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static Action<int> beginFade = delegate { };
 
     public void StartGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene(0);
+        beginFade(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        beginFade(0);
     }
 
     public void ExitGame()
