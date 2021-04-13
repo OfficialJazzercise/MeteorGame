@@ -36,10 +36,12 @@ public class SpaceRock : MonoBehaviour
     private void OnEnable()
     {
         Spawner.resetArena += disableSelf;
+        SPSpawner.resetArena += disableSelf;
     }
     private void OnDisable()
     {
         Spawner.resetArena -= disableSelf;
+        SPSpawner.resetArena -= disableSelf;
     }
 
     private void disableSelf()

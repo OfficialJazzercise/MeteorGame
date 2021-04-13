@@ -11,10 +11,14 @@ public class LevelTransition : MonoBehaviour
     private void OnEnable()
     {
         MainMenuManager.beginFade += FadeToLevel;
+        SPPlayerLives.callFade += FadeToLevel;
+        PlayerLives.callFade += FadeToLevel;
     }
     private void OnDisable()
     {
         MainMenuManager.beginFade -= FadeToLevel;
+        SPPlayerLives.callFade -= FadeToLevel;
+        PlayerLives.callFade -= FadeToLevel;
     }
 
     public void FadeToLevel(int levelIndex)

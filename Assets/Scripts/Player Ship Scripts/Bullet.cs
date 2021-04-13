@@ -21,11 +21,13 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         Spawner.resetArena += disableBullet;
+        SPSpawner.resetArena += disableBullet;
     }
 
     private void OnDisable()
     {
         Spawner.resetArena -= disableBullet;
+        SPSpawner.resetArena -= disableBullet;
     }
     // Start is called before the first frame update
     void Start()

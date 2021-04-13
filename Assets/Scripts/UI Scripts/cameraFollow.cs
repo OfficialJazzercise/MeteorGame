@@ -26,7 +26,9 @@ public class cameraFollow : MonoBehaviour
         SpaceRock.PlayerKilled += switchMovement;
         Enemy.PlayerKilled += switchMovement;
         EnemyProjectile.PlayerKilled += switchMovement;
+
         Spawner.restoreLife += switchMovement;
+        SPSpawner.restoreLife += switchMovement;
     }
     private void OnDisable()
     {
@@ -34,7 +36,9 @@ public class cameraFollow : MonoBehaviour
         SpaceRock.PlayerKilled -= switchMovement;
         Enemy.PlayerKilled -= switchMovement;
         EnemyProjectile.PlayerKilled -= switchMovement;
+
         Spawner.restoreLife -= switchMovement;
+        SPSpawner.restoreLife -= switchMovement;
     }
 
     void switchMovement() { canMove = !canMove; }

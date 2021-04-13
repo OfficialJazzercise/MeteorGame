@@ -8,7 +8,12 @@ public class MainMenuManager : MonoBehaviour
 {
     public static Action<int> beginFade = delegate { };
 
-    public void StartGame()
+    public void Singleplayer()
+    {
+        beginFade(SceneManager.GetActiveScene().buildIndex + 2);
+    }
+
+    public void Multiplayer()
     {
         beginFade(SceneManager.GetActiveScene().buildIndex + 1);
     }

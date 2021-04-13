@@ -76,7 +76,6 @@
     <Compile Include="Assets\Scripts\Player Ship Scripts\Firing.cs" />
     <Compile Include="Assets\Scripts\Player Ship Scripts\ShipAnimationController.cs" />
     <Compile Include="Assets\Scripts\Player Ship Scripts\movement.cs" />
-    <Compile Include="Assets\Scripts\Player Ship Scripts\shootingGun.cs" />
     <Compile Include="Assets\Scripts\Sound Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Sound Scripts\Sounds.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\FloatingScore.cs" />
@@ -84,12 +83,14 @@
     <Compile Include="Assets\Scripts\UI Scripts\LevelTransition.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\LifeWillChange.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\PlayerLives.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\SPPlayerLives.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\SPScore.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\Score.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\ScreenShake.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\cameraFollow.cs" />
     <Compile Include="Assets\Scripts\Upgrade Scripts\upgradeSpawning.cs" />
+    <Compile Include="Assets\Scripts\Wave Scripts\SPSpawner.cs" />
     <Compile Include="Assets\Scripts\Wave Scripts\Spawner.cs" />
-    <Compile Include="Assets\Scripts\Wave Scripts\WaveHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

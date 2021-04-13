@@ -22,11 +22,13 @@ public class Firing : MonoBehaviour
     {
         GBullet.BigBulletPowerUp += BigBulletPowerUp;
         Spawner.resetArena += resetBigBullet;
+        SPSpawner.resetArena += resetBigBullet;
     }
     private void OnDisable()
     {
         GBullet.BigBulletPowerUp -= BigBulletPowerUp;
         Spawner.resetArena -= resetBigBullet;
+        SPSpawner.resetArena -= resetBigBullet;
     }
 
     private void BigBulletPowerUp()

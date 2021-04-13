@@ -43,6 +43,7 @@ public class movement : MonoBehaviour
         Enemy.PlayerKilled += shipDestroyed;
         EnemyProjectile.PlayerKilled += shipDestroyed;
         Spawner.restoreLife += shipRevived;
+        SPSpawner.restoreLife += shipRevived;
     }
     private void OnDisable()
     {
@@ -51,6 +52,7 @@ public class movement : MonoBehaviour
         Enemy.PlayerKilled -= shipDestroyed;
         EnemyProjectile.PlayerKilled -= shipDestroyed;
         Spawner.restoreLife -= shipRevived;
+        SPSpawner.restoreLife -= shipRevived;
     }
 
     void shipDestroyed()

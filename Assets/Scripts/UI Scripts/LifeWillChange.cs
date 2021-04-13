@@ -23,11 +23,17 @@ public class LifeWillChange : MonoBehaviour
     {
         Spawner.decreaseLife += minusLife;
         Spawner.restoreLife += resetCity;
+
+        SPSpawner.decreaseLife += minusLife;
+        SPSpawner.restoreLife += resetCity;
     }
     private void OnDisable()
     {
         Spawner.decreaseLife -= minusLife;
         Spawner.restoreLife -= resetCity;
+
+        SPSpawner.decreaseLife -= minusLife;
+        SPSpawner.restoreLife -= resetCity;
     }
 
     void minusLife()

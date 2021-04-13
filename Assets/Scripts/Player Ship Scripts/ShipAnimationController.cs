@@ -21,10 +21,12 @@ public class ShipAnimationController : MonoBehaviour
     private void OnEnable()
     {
         Spawner.restoreLife += fixLRFlip;
+        SPSpawner.restoreLife += fixLRFlip;
     }
     private void OnDisable()
     {
         Spawner.restoreLife -= fixLRFlip;
+        SPSpawner.restoreLife -= fixLRFlip;
     }
 
     void fixLRFlip()

@@ -21,8 +21,6 @@ public class Score : MonoBehaviour
     private float scoreMultiplier = 1;
     public float pointsGiven = 0;
 
-    public float bombBuildup = 0;
-
     private bool player1Turn = true;
 
     public static Action GiveLife = delegate { };
@@ -54,8 +52,6 @@ public class Score : MonoBehaviour
     }
     private void IncreaseScore()
     {
-        bombBuildup++;
-
         if (player1Turn)
         {
             P1Score += 100 * scoreMultiplier;
@@ -104,10 +100,12 @@ public class Score : MonoBehaviour
         P2ScoreText.text = P2Score.ToString("000000000000");
         combo.text = comboMultiplier.ToString("0.00");
 
-        if(bombBuildup > 100)
-        {
-            Debug.Log("Bomb");
-            bombBuildup = 0;
-        }
+    }
+
+    private void Start()
+    {
+        P1ScoreText.text = P1Score.ToString("000000000000");
+        P2ScoreText.text = P2Score.ToString("000000000000");
+        combo.text = comboMultiplier.ToString("0.00");
     }
 }

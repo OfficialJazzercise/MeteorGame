@@ -20,10 +20,12 @@ public class EnemyProjectile : MonoBehaviour
     private void OnEnable()
     {
         Spawner.resetArena += disableSelf;
+        SPSpawner.resetArena += disableSelf;
     }
     private void OnDisable()
     {
         Spawner.resetArena -= disableSelf;
+        SPSpawner.resetArena -= disableSelf;
     }
 
     private void disableSelf()

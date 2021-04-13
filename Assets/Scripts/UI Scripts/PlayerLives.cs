@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PlayerLives : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerLives : MonoBehaviour
 
     public Text P1Text;
     public Text P2Text;
+
+    public static Action<int> callFade = delegate { };
 
 
     private IEnumerator coroutine;
@@ -99,6 +102,6 @@ public class PlayerLives : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        callFade(3);
     }
 }
