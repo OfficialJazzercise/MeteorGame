@@ -189,7 +189,8 @@ MonoBehaviour:
   player: {fileID: 1923626806537727695}
   muzzleRight: {fileID: 1489641128733505191}
   muzzleLeft: {fileID: 8691809862582419222}
-  Explosion: {fileID: 0}
+  Explosion: {fileID: 9037250291576265965, guid: 9384edcf5e4d18a46b7889e265b16a15,
+    type: 3}
   projectileSpawn: {fileID: 1489641128733505188}
   rot: 0
   distance: 70
