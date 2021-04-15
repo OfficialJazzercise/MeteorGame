@@ -11,13 +11,13 @@ public class MainMenuManager : MonoBehaviour
     public void Singleplayer()
     {
         beginFade(SceneManager.GetActiveScene().buildIndex + 2);
-        SceneManager.LoadScene(2);
+        //SceneManager.LoadScene(2);
     }
 
     public void Multiplayer()
     {
         beginFade(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
     }
 
     public void RestartGame()
