@@ -15,9 +15,9 @@ public class SelfDestruct : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(x < 40)
+        if(x < 120)
             x = x + 1;
-        else if(x >= 40)
+        else if(x >= 120)
             Destroy(Thingy);
     }
 }
