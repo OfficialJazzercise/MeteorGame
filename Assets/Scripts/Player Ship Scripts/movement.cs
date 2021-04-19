@@ -18,6 +18,7 @@ public class movement : MonoBehaviour
     float shotDelay = 0.0f;
     public float distance = 100.0f;
     private float speed = 100.0f;
+    private float vSpeed = 60.0f;
     private float cacheHeight;
 
     public bool isRight = true;
@@ -98,11 +99,13 @@ public class movement : MonoBehaviour
             if (context.performed)
             {
                 speed = 40f;
+                vSpeed = 30f;
                 isBoosting = true;
             }
             else if (context.canceled)
             {
                 speed = 100f;
+                vSpeed = 60f;
                 isBoosting = false;
             }
     }
@@ -143,7 +146,7 @@ public class movement : MonoBehaviour
             FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
             if (height >= -11)
             {
-                height += verticalMovement * 40.0f * Time.deltaTime;
+                height += verticalMovement * vSpeed * Time.deltaTime;
                 bottomMap = false;
                 topMap = false;
             }
@@ -157,7 +160,7 @@ public class movement : MonoBehaviour
             FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
             if (height <= 70)
             {
-                height += verticalMovement * 40.0f * Time.deltaTime;
+                height += verticalMovement * vSpeed * Time.deltaTime;
                 bottomMap = false;
                 topMap = false;
             }

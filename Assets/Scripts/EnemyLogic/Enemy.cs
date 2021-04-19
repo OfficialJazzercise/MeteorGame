@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     public bool canActivate = true;
 
     public bool canMove = true;
+    private bool canShoot = false;
     public string enemyType = "none";
 
     Vector3 origin = Vector3.zero;
@@ -46,6 +47,8 @@ public class Enemy : MonoBehaviour
     private void disableSelf()
     {
         canActivate = true;
+        canMove = false;
+        canShoot = false;
         gameObject.SetActive(false);
     }
 
@@ -67,9 +70,11 @@ public class Enemy : MonoBehaviour
             IncreaseScore();
             FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
             ScreenShake.instance.StartShake(.4f, .8f); //Shakes screen upon destroying meteor
-            gameObject.SetActive(false);
+            canMove = false;
+            canShoot = false;
             EnemyDestroyed();
             canActivate = true;
+            gameObject.SetActive(false);
         }
 
         //If the player hits the meteor destroys the player
@@ -129,10 +134,15 @@ public class Enemy : MonoBehaviour
         {
             if (enemyType == "flying")
             {
-                height -= speed * Time.deltaTime / 5;
-                if(height <= desiredHeight)
+                if (height > desiredHeight)
                 {
-                    canMove = true;
+                    height -= speed * Time.deltaTime / 3;
+
+                    if (height <= desiredHeight)
+                    {
+                        canMove = true;
+                        canShoot = true;
+                    }
                 }
 
             }
@@ -140,7 +150,12 @@ public class Enemy : MonoBehaviour
             {
                 if (height > desiredHeight)
                 {
-                    height -= speed * Time.deltaTime / 5;
+                    height -= speed * Time.deltaTime / 3;
+
+                    if (height <= desiredHeight)
+                    {
+                        canShoot = true;
+                    }
                 }
             }
         }
@@ -154,16 +169,10 @@ public class Enemy : MonoBehaviour
 
 
     //creates a shot
-    void createShot(float heightChange)
+    void createShot()
     {
         //calls the firing script and activates a bullet
         shootBullet(rot, height, projectileSpawn);
-    }
-
-    //creates a shot
-    void singleShot()
-    {
-        createShot(0);
     }
 
     //use for the courtine, will disable both muzzles after a set amount of time
@@ -171,8 +180,13 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        singleShot();
-        coroutine = WaitAndFire(3f);
+        if (canShoot)
+        {
+            createShot();
+        }
+
+
+        coroutine = WaitAndFire(1f);
         StartCoroutine(coroutine);
     }
 

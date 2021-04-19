@@ -25,7 +25,7 @@ public class SPSpawner : MonoBehaviour
 
     private int waveSize = 0;
     private int meteorsSpawned = 0;
-    private int meteorsDestroyed = 0;
+    private bool waveEnd = true;
     private int currentWave = 0;
     public Text waveText;
     public Text PlayerText;
@@ -66,7 +66,16 @@ public class SPSpawner : MonoBehaviour
     }
     private void decreaseMeterCount()
     {
-        meteorsDestroyed++;
+        meteorsSpawned--;
+
+        Debug.Log(meteorsSpawned);
+
+        if (meteorsSpawned <= 0 && waveEnd)
+        {
+            disableWave();
+            coroutine = prepWave(5f);
+            StartCoroutine(coroutine);
+        }
     }
 
     private void changePlayer()
@@ -127,6 +136,8 @@ public class SPSpawner : MonoBehaviour
                 meteor.height = 100;
                 meteor.gameObject.SetActive(true);
 
+                meteorsSpawned++;
+
                 coroutine = moveMeteor(meteor, 7f);
                 StartCoroutine(coroutine);
                 return;
@@ -145,6 +156,9 @@ public class SPSpawner : MonoBehaviour
                 meteor.canActivate = false;
                 meteor.canSplit = true;
                 meteor.gameObject.SetActive(true);
+
+                meteorsSpawned++;
+
 
                 coroutine = moveMeteor(meteor, 7f);
                 StartCoroutine(coroutine);
@@ -184,6 +198,8 @@ public class SPSpawner : MonoBehaviour
                         //meteor.transform.localScale = new Vector3(10, 10, 10);
                         meteor.gameObject.SetActive(true);
 
+                        meteorsSpawned++;
+
                         coroutine = moveMeteor(meteor, 5f);
                         StartCoroutine(coroutine);
 
@@ -202,6 +218,8 @@ public class SPSpawner : MonoBehaviour
                         // meteor.transform.localScale = new Vector3(10, 10, 10);
                         meteor.gameObject.SetActive(true);
 
+                        meteorsSpawned++;
+
                         coroutine = moveMeteor(meteor, 5f);
                         StartCoroutine(coroutine);
                         break;
@@ -213,13 +231,6 @@ public class SPSpawner : MonoBehaviour
 
     void Update()
     {
-        if (meteorsDestroyed == waveSize)
-        {
-            disableWave();
-            coroutine = prepWave(5f);
-            StartCoroutine(coroutine);
-        }
-
         if (cityHitScreenFlash.GetComponent<Image>().color.a > 0)
         {
             var color = cityHitScreenFlash.GetComponent<Image>().color;
@@ -259,9 +270,8 @@ public class SPSpawner : MonoBehaviour
                 spawnRegular();
             }
 
-            if (meteorsSpawned > 1)
+            if (!waveEnd)
             {
-                meteorsSpawned--;
                 coroutine = spawnEnemy(spawnRate);
                 StartCoroutine(coroutine);
             }
@@ -283,6 +293,8 @@ public class SPSpawner : MonoBehaviour
                 enemy.desiredHeight = UnityEngine.Random.Range(10, 60);
                 enemy.gameObject.SetActive(true);
 
+                meteorsSpawned++;
+
                 return;
             }
         }
@@ -302,6 +314,8 @@ public class SPSpawner : MonoBehaviour
                 enemy.desiredHeight = -12;
                 enemy.gameObject.SetActive(true);
 
+                meteorsSpawned++;
+
                 return;
             }
         }
@@ -310,12 +324,12 @@ public class SPSpawner : MonoBehaviour
     //use for the courtine, will disable both muzzles after a set amount of time
     private IEnumerator prepWave(float waitTime)
     {
+        waveEnd = false;
         currentWave++;
         waveText.text = "Wave: " + currentWave.ToString();
         waveText.gameObject.SetActive(true);
         PlayerText.gameObject.SetActive(true);
         waveSize = currentWave * 10;
-        meteorsDestroyed = 0;
         spawnRate = 2.5f - waveSize / 50f;
 
         if (spawnRate < 1)
@@ -328,9 +342,7 @@ public class SPSpawner : MonoBehaviour
         waveText.gameObject.SetActive(false);
         PlayerText.gameObject.SetActive(false);
 
-        meteorsSpawned = waveSize;
-
-        coroutine = spawnEnemy(0f);
+        coroutine = EndWave(waveSize);
         StartCoroutine(coroutine);
 
     }
@@ -420,6 +432,16 @@ public class SPSpawner : MonoBehaviour
         coroutine = prepWave(5f);
         StartCoroutine(coroutine);
 
+    }
+
+    private IEnumerator EndWave(float waitTime)
+    {
+        coroutine = spawnEnemy(0f);
+        StartCoroutine(coroutine);
+
+        yield return new WaitForSeconds(waitTime);
+
+        waveEnd = true;
     }
 
     private void disableWave()

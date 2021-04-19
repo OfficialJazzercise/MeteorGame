@@ -48,10 +48,10 @@ public class EnemyTracking : MonoBehaviour
     {
 
         float distanceToPlayer = Math.Abs(target.GetComponent<movement>().rot - currentRot);
+        float heightToPlayer = Math.Abs(target.GetComponent<movement>().height - currentHieght);
 
-        if (distanceToPlayer <= 50)
+        if (distanceToPlayer <= 50 && heightToPlayer <= 15)
         {
-
             //cycles through each object in bulletList
             foreach (EnemyProjectile bullet in bulletList)
             {

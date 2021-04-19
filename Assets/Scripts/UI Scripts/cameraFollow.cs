@@ -11,6 +11,7 @@ public class cameraFollow : MonoBehaviour
 
     public float distance = 10.0f;
     private float speed = 100.0f;
+    private float vSpeed = 60.0f;
     private bool canMove = true;
 
     private float horizontalMovement = 0;
@@ -54,10 +55,12 @@ public class cameraFollow : MonoBehaviour
         if (context.performed)
         {
             speed = 40f;
+            vSpeed = 30f;
         }
         else if (context.canceled)
         {
             speed = 100f;
+            vSpeed = 60f;
         }
     }
 
@@ -86,12 +89,12 @@ public class cameraFollow : MonoBehaviour
             if (verticalMovement < 0 && height >= -11)
             {
                 FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-                height += verticalMovement * 40.0f * Time.deltaTime;
+                height += verticalMovement * vSpeed * Time.deltaTime;
             }
             else if (verticalMovement > 0 && height <= 70)
             {
                 FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-                height += verticalMovement * 40.0f * Time.deltaTime;
+                height += verticalMovement * vSpeed * Time.deltaTime;
             }
 
             cameraF.transform.position = origin + Quaternion.Euler(0, rot, 0) * new Vector3(0, 0, distance);

@@ -73,19 +73,17 @@ public class SpaceRock : MonoBehaviour
             rot = 0;
             height = 25;
             IncreaseScore();
+            MeteorDestroyed();
             FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
             ScreenShake.instance.StartShake(.4f, .8f); //Shakes screen upon destroying meteor
             gameObject.SetActive(false);
             canSplit = false;
 
-            if (!isSplit)
+            if (isSplit)
             {
-                MeteorDestroyed();
+              isSplit = false;
             }
-            else
-            {
-                isSplit = false;
-            }
+
         }
 
         //If the player hits the meteor destroys the player
