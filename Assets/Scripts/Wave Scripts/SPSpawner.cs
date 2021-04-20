@@ -68,7 +68,7 @@ public class SPSpawner : MonoBehaviour
     {
         meteorsSpawned--;
 
-        if (meteorsSpawned <= 0)
+        if (meteorsSpawned <= 0 && !waveEnd)
         {
             waveEnd = true;
             coroutine = prepWave(5f);
@@ -132,6 +132,7 @@ public class SPSpawner : MonoBehaviour
                 meteor.canSplit = false;
                 meteor.canActivate = false;
                 meteor.height = 100;
+                meteor.transform.position = new Vector3(200, 200, 200);
                 meteor.gameObject.SetActive(true);
 
                 coroutine = moveMeteor(meteor, 7f);
@@ -151,6 +152,7 @@ public class SPSpawner : MonoBehaviour
                 meteor.height = 100;
                 meteor.canActivate = false;
                 meteor.canSplit = true;
+                meteor.transform.position = new Vector3(200, 200, 200);
                 meteor.gameObject.SetActive(true);
 
 
@@ -283,6 +285,7 @@ public class SPSpawner : MonoBehaviour
                 enemy.desiredHeight = -11;
                 enemy.canMove = false;
                 enemy.desiredHeight = UnityEngine.Random.Range(10, 60);
+                enemy.transform.position = new Vector3(200, 200, 200);
                 enemy.gameObject.SetActive(true);
 
 
@@ -303,6 +306,7 @@ public class SPSpawner : MonoBehaviour
                 enemy.height = 100;
                 enemy.canMove = false;
                 enemy.desiredHeight = -12;
+                enemy.transform.position = new Vector3(200, 200, 200);
                 enemy.gameObject.SetActive(true);
 
 
@@ -314,13 +318,11 @@ public class SPSpawner : MonoBehaviour
     //use for the courtine, will disable both muzzles after a set amount of time
     private IEnumerator prepWave(float waitTime)
     {
-        
         currentWave++;
         waveText.text = "Wave: " + currentWave.ToString();
         waveText.gameObject.SetActive(true);
         PlayerText.gameObject.SetActive(true);
         waveSize = currentWave * 10;
-        meteorsSpawned = waveSize;
         spawnRate = 2.5f - waveSize / 50f;
 
         if (spawnRate < 1)
@@ -329,8 +331,10 @@ public class SPSpawner : MonoBehaviour
         }
 
         yield return new WaitForSeconds(waitTime);
-        
+
+        meteorsSpawned = waveSize;
         waveEnd = false;
+        
         waveText.gameObject.SetActive(false);
         PlayerText.gameObject.SetActive(false);
 
@@ -410,9 +414,9 @@ public class SPSpawner : MonoBehaviour
 
     private IEnumerator switchPlayers(float waitTime)
     {
-            PlayerText.text = "P1";
-            P2Wave = currentWave - 1;
-            currentWave = P1Wave;
+
+        PlayerText.text = "P1";
+        currentWave--;
 
 
         yield return new WaitForSeconds(waitTime);

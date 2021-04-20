@@ -71,7 +71,7 @@ public class Spawner : MonoBehaviour
     {
         meteorsSpawned--;
 
-        if (meteorsSpawned <= 0)
+        if (meteorsSpawned <= 0 && !waveEnd)
         {
             waveEnd = true;
             coroutine = prepWave(5f);
@@ -136,6 +136,7 @@ public class Spawner : MonoBehaviour
                 meteor.canSplit = false;
                 meteor.canActivate = false;
                 meteor.height = 100;
+                meteor.transform.position = new Vector3(200, 200, 200);
                 meteor.gameObject.SetActive(true);
 
 
@@ -156,6 +157,7 @@ public class Spawner : MonoBehaviour
                 meteor.height = 100;
                 meteor.canActivate = false;
                 meteor.canSplit = true;
+                meteor.transform.position = new Vector3(200, 200, 200);
                 meteor.gameObject.SetActive(true);
 
 
@@ -289,6 +291,7 @@ public class Spawner : MonoBehaviour
                 enemy.desiredHeight = -11;
                 enemy.canMove = false;
                 enemy.desiredHeight = UnityEngine.Random.Range(10, 60);
+                enemy.transform.position = new Vector3(200, 200, 200);
                 enemy.gameObject.SetActive(true);
 
 
@@ -309,6 +312,7 @@ public class Spawner : MonoBehaviour
                 enemy.height = 100;
                 enemy.canMove = false;
                 enemy.desiredHeight = -12;
+                enemy.transform.position = new Vector3(200, 200, 200);
                 enemy.gameObject.SetActive(true);
 
 
@@ -335,7 +339,9 @@ public class Spawner : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
+        meteorsSpawned = waveSize;
         waveEnd = false;
+        
         waveText.gameObject.SetActive(false);
         PlayerText.gameObject.SetActive(false);
 
