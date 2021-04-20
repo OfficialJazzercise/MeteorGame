@@ -68,8 +68,6 @@ public class SPSpawner : MonoBehaviour
     {
         meteorsSpawned--;
 
-        Debug.Log(meteorsSpawned);
-
         if (meteorsSpawned <= 0)
         {
             waveEnd = true;

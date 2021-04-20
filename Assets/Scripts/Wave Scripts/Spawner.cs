@@ -71,11 +71,9 @@ public class Spawner : MonoBehaviour
     {
         meteorsSpawned--;
 
-        Debug.Log(meteorsSpawned);
-
-        if (meteorsSpawned <= 0 && waveEnd)
+        if (meteorsSpawned <= 0)
         {
-            disableWave();
+            waveEnd = true;
             coroutine = prepWave(5f);
             StartCoroutine(coroutine);
         }
@@ -140,7 +138,6 @@ public class Spawner : MonoBehaviour
                 meteor.height = 100;
                 meteor.gameObject.SetActive(true);
 
-                meteorsSpawned++;
 
                 coroutine = moveMeteor(meteor, 7f);
                 StartCoroutine(coroutine);
@@ -161,7 +158,6 @@ public class Spawner : MonoBehaviour
                 meteor.canSplit = true;
                 meteor.gameObject.SetActive(true);
 
-                meteorsSpawned++;
 
 
                 coroutine = moveMeteor(meteor, 7f);
@@ -202,7 +198,6 @@ public class Spawner : MonoBehaviour
                         //meteor.transform.localScale = new Vector3(10, 10, 10);
                         meteor.gameObject.SetActive(true);
 
-                        meteorsSpawned++;
 
                         coroutine = moveMeteor(meteor, 5f);
                         StartCoroutine(coroutine);
@@ -222,7 +217,6 @@ public class Spawner : MonoBehaviour
                         // meteor.transform.localScale = new Vector3(10, 10, 10);
                         meteor.gameObject.SetActive(true);
 
-                        meteorsSpawned++;
 
                         coroutine = moveMeteor(meteor, 5f);
                         StartCoroutine(coroutine);
@@ -297,7 +291,6 @@ public class Spawner : MonoBehaviour
                 enemy.desiredHeight = UnityEngine.Random.Range(10, 60);
                 enemy.gameObject.SetActive(true);
 
-                meteorsSpawned++;
 
                 return;
             }
@@ -318,7 +311,6 @@ public class Spawner : MonoBehaviour
                 enemy.desiredHeight = -12;
                 enemy.gameObject.SetActive(true);
 
-                meteorsSpawned++;
 
                 return;
             }
@@ -343,10 +335,11 @@ public class Spawner : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
+        waveEnd = false;
         waveText.gameObject.SetActive(false);
         PlayerText.gameObject.SetActive(false);
 
-        coroutine = EndWave(waveSize);
+        coroutine = spawnEnemy(0f);
         StartCoroutine(coroutine);
 
     }
@@ -444,16 +437,6 @@ public class Spawner : MonoBehaviour
         coroutine = prepWave(5f);
         StartCoroutine(coroutine);
 
-    }
-
-    private IEnumerator EndWave(float waitTime)
-    {
-        coroutine = spawnEnemy(0f);
-        StartCoroutine(coroutine);
-
-        yield return new WaitForSeconds(waitTime);
-
-        waveEnd = true;
     }
 
     private void disableWave()
