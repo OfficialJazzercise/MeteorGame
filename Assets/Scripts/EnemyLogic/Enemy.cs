@@ -183,7 +183,7 @@ public class Enemy : MonoBehaviour
 
         if (canShoot)
         {
-            FindObjectOfType<SoundManager>().Play("EL1");
+            
             createShot();
         }
 

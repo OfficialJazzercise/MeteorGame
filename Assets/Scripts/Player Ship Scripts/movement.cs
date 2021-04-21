@@ -84,7 +84,17 @@ public class movement : MonoBehaviour
             horizontalMovement = context.ReadValue<Vector2>().x;
             verticalMovement = context.ReadValue<Vector2>().y;
 
-            if (context.ReadValue<Vector2>().x < 0)
+        if (horizontalMovement != 0 && context.started)
+        {
+            Debug.Log("moving");// Moving here
+            
+        }
+        else if(horizontalMovement == 0)
+        {
+            Debug.Log("stopped");// Idle here
+        }
+
+        if (context.ReadValue<Vector2>().x < 0)
             {
                 isRight = false;
             }

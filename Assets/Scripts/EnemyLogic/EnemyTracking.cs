@@ -69,7 +69,7 @@ public class EnemyTracking : MonoBehaviour
                     bullet.resetTrail();
                     
                     bullet.gameObject.SetActive(true);
-
+                    FindObjectOfType<SoundManager>().Play("EL1");
 
                     findShortestTrip(bullet);
 
