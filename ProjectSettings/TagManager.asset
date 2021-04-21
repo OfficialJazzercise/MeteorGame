@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Meteor
+  - Floor
   layers:
   - Default
   - TransparentFX

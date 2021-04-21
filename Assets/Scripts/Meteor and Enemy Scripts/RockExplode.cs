@@ -6,6 +6,7 @@ public class RockExplode : MonoBehaviour
 {
     public GameObject Explosion;
     public GameObject floatingText;
+    public GameObject Impact;
     public Vector3 Pos;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,14 @@ public class RockExplode : MonoBehaviour
             Instantiate(floatingText, Pos, Quaternion.identity);
              //GameObject go = Instantiate(Explosion, new Vector3 (0,0,0), Quaternion.identity) as GameObject; 
              //go.transform.parent = GameObject.Find("Meteor").transform;
+        }
+
+        if(other.CompareTag("Floor"))
+        {
+            Pos = this.gameObject.transform.position;
+            Instantiate(Impact, Pos, Quaternion.identity);
+
+            FindObjectOfType<SoundManager>().Play("Impact");
         }
     }
 }

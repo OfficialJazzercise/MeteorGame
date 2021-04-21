@@ -160,6 +160,7 @@ MonoBehaviour:
     type: 3}
   floatingText: {fileID: 7581100647062497447, guid: 7fb7e55d7d23b4a4d941f77102d4a96f,
     type: 3}
+  Impact: {fileID: 350637562495031879, guid: 9f33c470b6eb4d2428b55a87b2b80a71, type: 3}
   Pos: {x: 0, y: 0, z: 0}
 --- !u!114 &5480185187151342595
 MonoBehaviour:
