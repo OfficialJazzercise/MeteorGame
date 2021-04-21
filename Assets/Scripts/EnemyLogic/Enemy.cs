@@ -172,6 +172,7 @@ public class Enemy : MonoBehaviour
     void createShot()
     {
         //calls the firing script and activates a bullet
+        
         shootBullet(rot, height, projectileSpawn);
     }
 
@@ -182,6 +183,7 @@ public class Enemy : MonoBehaviour
 
         if (canShoot)
         {
+            FindObjectOfType<SoundManager>().Play("EL1");
             createShot();
         }
 
