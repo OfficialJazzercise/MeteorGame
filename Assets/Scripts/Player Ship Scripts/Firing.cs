@@ -152,8 +152,6 @@ public class Firing : MonoBehaviour
         float startingRot = projectile.rot;
         float startingHeight = projectile.height;
 
-        if (player.isBoosting)
-        {
             if (player.verticalMovement > 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
             {
                 startingHeight += 3f;
@@ -169,25 +167,6 @@ public class Firing : MonoBehaviour
                 startingHeight = projectile.height;
                 projectile.targetHeight = projectile.height;
             }
-        }
-        else
-        {
-            if (player.verticalMovement > 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
-            {
-                startingHeight += 3f;
-                projectile.targetHeight = projectile.height;
-            }
-            else if (player.verticalMovement < 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
-            {
-                startingHeight += -2.8f;
-                projectile.targetHeight = projectile.height;
-            }
-            else
-            {
-                startingHeight = projectile.height;
-                projectile.targetHeight = projectile.height;
-            }
-        }
 
         if (player.horizontalMovement != 0)
         {
@@ -204,8 +183,6 @@ public class Firing : MonoBehaviour
         {
             startingRot = player.rot;
 
-            if (!player.isBoosting)
-            {
                 if (player.isRight)
                 {
                     startingRot += -2.5f;
@@ -214,18 +191,6 @@ public class Firing : MonoBehaviour
                 {
                     startingRot += 2.5f;
                 }
-            }
-            else
-            {
-                if (player.isRight)
-                {
-                    startingRot += -2f;
-                }
-                else
-                {
-                    startingRot += 2f;
-                }
-            }
 
             projectile.targetRot = startingRot + projectile.rotChanges;
 
