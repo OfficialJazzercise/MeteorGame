@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,6 @@ public class movement : MonoBehaviour
     public GameObject player;
     public GameObject muzzleRight;
     public GameObject muzzleLeft;
-    public GameObject Explosion;
     public Transform projectileSpawn;
 
     private IEnumerator coroutine;
@@ -37,6 +37,8 @@ public class movement : MonoBehaviour
     public Vector3 origin = Vector3.zero;
     Vector3 lookTowards = Vector3.zero;
 
+    public static Action<Vector3> startExplosion = delegate { };
+
     private void OnEnable()
     {
         LifeWillChange.CityDestroyed += shipDestroyed;
@@ -58,7 +60,7 @@ public class movement : MonoBehaviour
 
     void shipDestroyed()
     {
-        Instantiate(Explosion, player.transform.position, Quaternion.identity);
+        startExplosion(player.transform.position);
         player.SetActive(false);
     }
 

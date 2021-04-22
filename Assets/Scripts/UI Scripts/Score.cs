@@ -24,6 +24,7 @@ public class Score : MonoBehaviour
     private bool player1Turn = true;
 
     public static Action GiveLife = delegate { };
+    public static Action<float, Vector3> flashText = delegate { };
 
     //when the IncreaseScore delgate is activated will call this Scripts increaseScore function
     private void OnEnable()
@@ -50,7 +51,7 @@ public class Score : MonoBehaviour
 
         Spawner.decreaseLife -= resetMultiplier;
     }
-    private void IncreaseScore()
+    private void IncreaseScore(Vector3 Pos)
     {
         if (player1Turn)
         {
@@ -76,8 +77,9 @@ public class Score : MonoBehaviour
             P2LifeTarget += 10000;
         }
 
+        pointsGiven = Mathf.Round(100 * scoreMultiplier);
         scoreMultiplier += .1f;
-        pointsGiven = 100 * scoreMultiplier;
+        flashText(pointsGiven, Pos);
     }
 
     private void resetMultiplier()

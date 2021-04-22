@@ -27,10 +27,11 @@ public class Enemy : MonoBehaviour
     Vector3 origin = Vector3.zero;
     Vector3 lookTowards = Vector3.zero;
 
-    public static Action IncreaseScore = delegate { };
+    public static Action<Vector3> IncreaseScore = delegate { };
     public static Action EnemyDestroyed = delegate { };
     public static Action PlayerKilled = delegate { };
     public static Action<float, float, Transform> shootBullet = delegate { };
+    public static Action<Vector3> startExplosion = delegate { };
 
     private void OnEnable()
     {
@@ -67,12 +68,13 @@ public class Enemy : MonoBehaviour
             other.gameObject.SetActive(false);
             rot = 0;
             height = 10;
-            IncreaseScore();
+            IncreaseScore(gameObject.transform.position);
             FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
             ScreenShake.instance.StartShake(.4f, .8f); //Shakes screen upon destroying meteor
             canMove = false;
             canShoot = false;
             EnemyDestroyed();
+            startExplosion(gameObject.transform.position);
             canActivate = true;
             gameObject.SetActive(false);
         }

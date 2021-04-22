@@ -5,21 +5,18 @@ using System;
 
 public class FloatingScore : MonoBehaviour
 {
-    public float DestroyTime = .3f;
+    public float x = .3f;
+    public float points;
 
-    private Vector3 CameraPostion;
     private GameObject target;
-    private Score Score;
 
-    private void Awake()
+    private void OnEnable()
     {
-        Score = GameObject.FindObjectOfType<Score>();
-        Destroy(gameObject, DestroyTime);
-
         if (target == null)
             target = GameObject.FindGameObjectWithTag("MainCamera");
 
-        GetComponent<TextMesh>().text = Mathf.Round(Score.pointsGiven).ToString();
+        GetComponent<TextMesh>().text = points.ToString();
+        GetComponent<Animator>().Play("same state you are", -1, 0f);
     }
     
 
@@ -29,5 +26,10 @@ public class FloatingScore : MonoBehaviour
         transform.LookAt(target.transform);
         transform.Rotate(0, 180, 0);
 
+    }
+
+    public void resetText()
+    {
+        gameObject.SetActive(false);
     }
 }

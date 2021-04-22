@@ -18,6 +18,7 @@ public class SPScore : MonoBehaviour
     public float pointsGiven = 0;
 
     public static Action GiveLife = delegate { };
+    public static Action<float, Vector3> flashText = delegate{};
 
     //when the IncreaseScore delgate is activated will call this Scripts increaseScore function
     private void OnEnable()
@@ -44,7 +45,7 @@ public class SPScore : MonoBehaviour
 
         SPSpawner.decreaseLife -= resetMultiplier;
     }
-    private void IncreaseScore()
+    private void IncreaseScore(Vector3 Pos)
     {
         P1Score += 100 * scoreMultiplier;
         comboMultiplier += .1f;
@@ -55,8 +56,9 @@ public class SPScore : MonoBehaviour
             P1LifeTarget += 10000;
         }
 
+        pointsGiven = Mathf.Round(100 * scoreMultiplier);
         scoreMultiplier += .1f;
-        pointsGiven = 100 * scoreMultiplier;
+        flashText(pointsGiven, Pos);
 
         P1ScoreText.text = P1Score.ToString("000000000000");
         combo.text = comboMultiplier.ToString("0.00");

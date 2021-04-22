@@ -83,7 +83,7 @@ TextMesh:
   m_GameObject: {fileID: 7581100647062497447}
   m_Text: SampleText
   m_OffsetZ: 0
-  m_CharacterSize: 2
+  m_CharacterSize: 10
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
@@ -94,7 +94,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190335
+    rgba: 4294967295
 --- !u!95 &6584296353079951476
 Animator:
   serializedVersion: 3
@@ -126,4 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe74bc3508b5a9841a8b53b9e476a91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyTime: 3
+  x: 0.3
+  points: 0

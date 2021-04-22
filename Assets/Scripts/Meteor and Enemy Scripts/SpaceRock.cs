@@ -26,10 +26,11 @@ public class SpaceRock : MonoBehaviour
 
 
     //delegate used for the Score Script
-    public static Action IncreaseScore = delegate { };
+    public static Action<Vector3> IncreaseScore = delegate { };
     public static Action MeteorDestroyed = delegate { };
     public static Action PlayerKilled = delegate { };
     public static Action<float, float, Vector3> rockBreak = delegate { }; //set Rotation on Circle, Height
+    public static Action<Vector3> startExplosion = delegate { };
 
     public AudioSource playSound;
 
@@ -72,7 +73,8 @@ public class SpaceRock : MonoBehaviour
             other.gameObject.SetActive(false);
             rot = 0;
             height = 25;
-            IncreaseScore();
+            IncreaseScore(gameObject.transform.position);
+            startExplosion(this.gameObject.transform.position);
             MeteorDestroyed();
             FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
             ScreenShake.instance.StartShake(.4f, .8f); //Shakes screen upon destroying meteor
