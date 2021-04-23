@@ -15,6 +15,7 @@ public class Firing : MonoBehaviour
 
 
     //A delegate to let the HUD know the GiantBulletPowerup has ended
+
     public static Action GiantBulletEnded = delegate { };
 
     //Activated from the GBullet Script will enable the use of the GiantBulletPowerup
@@ -33,13 +34,23 @@ public class Firing : MonoBehaviour
 
     private void BigBulletPowerUp()
     {
+        //starts Powerup
+
         bBigBullet = true;
 
-        coroutine = endPowerup(5f);
+        coroutine = endPowerup(15f);
         StartCoroutine(coroutine);
     }
 
-    private void resetBigBullet() { bBigBullet = false; }
+    private void resetBigBullet() 
+    { 
+        //Deactivates powerup
+
+
+        bBigBullet = false; 
+        GiantBulletEnded();
+        
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +66,8 @@ public class Firing : MonoBehaviour
 
             bulletList.Add(clone.GetComponent<Bullet>());
         }
+
+       GiantBulletEnded();
     }
     //a function to activate a bullet when needed
     public void startBullet(Transform newTransform, Quaternion newRotation)
@@ -141,8 +154,7 @@ public class Firing : MonoBehaviour
             yield return null;
         }
 
-        GiantBulletEnded();
-        bBigBullet = false;
+        resetBigBullet();
     }
 
     private IEnumerator moveToTarget(Bullet projectile, float duration)

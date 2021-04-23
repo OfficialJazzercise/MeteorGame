@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 7147685334441658936}
   - component: {fileID: 8516927277782700122}
   - component: {fileID: 8666738122969519857}
+  - component: {fileID: 3482556418270488659}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -190,8 +191,6 @@ MonoBehaviour:
   player: {fileID: 1923626806537727695}
   muzzleRight: {fileID: 1489641128733505191}
   muzzleLeft: {fileID: 8691809862582419222}
-  Explosion: {fileID: 9037250291576265965, guid: 9384edcf5e4d18a46b7889e265b16a15,
-    type: 3}
   projectileSpawn: {fileID: 1489641128733505188}
   rot: 0
   distance: 70
@@ -260,6 +259,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Maintrail: {fileID: 1154542822437208756}
+--- !u!114 &3482556418270488659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923626806537727695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb55e06bfd2eb1341baa037c5c62a589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 4929120490765812182}
 --- !u!1 &2586496907309149873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,6 +1157,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPowerup
       objectReference: {fileID: 0}
+    - target: {fileID: 497072394438765069, guid: 2a9ef942ebba0a545869267d7ce84df7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3839126724938235023, guid: 2a9ef942ebba0a545869267d7ce84df7,
         type: 3}
       propertyPath: m_RootOrder
@@ -1207,6 +1224,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9ef942ebba0a545869267d7ce84df7, type: 3}
+--- !u!1 &4929120490765812182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 497072394438765069, guid: 2a9ef942ebba0a545869267d7ce84df7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4792450458945776603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8630415480826894164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3839126724938235023, guid: 2a9ef942ebba0a545869267d7ce84df7,

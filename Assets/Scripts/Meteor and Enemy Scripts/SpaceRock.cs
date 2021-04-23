@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.VFX;
 using UnityEngine.SceneManagement;
 
 public class SpaceRock : MonoBehaviour
@@ -38,6 +39,17 @@ public class SpaceRock : MonoBehaviour
     {
         Spawner.resetArena += disableSelf;
         SPSpawner.resetArena += disableSelf;
+
+
+        if(!canSplit)
+        {
+            gameObject.GetComponent<VisualEffect>().Stop();
+        }
+        else
+        {
+           gameObject.GetComponent<VisualEffect>().Play();
+        }
+
     }
     private void OnDisable()
     {
@@ -95,5 +107,7 @@ public class SpaceRock : MonoBehaviour
             PlayerKilled();
 
         }
+
+
     }
 }
