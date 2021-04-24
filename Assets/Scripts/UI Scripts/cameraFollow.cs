@@ -86,15 +86,34 @@ public class cameraFollow : MonoBehaviour
                 rot = 360 + rot;
             }
 
-            if (verticalMovement < 0 && height >= -11)
+            if (verticalMovement < 0)
             {
                 FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
+
                 height += verticalMovement * vSpeed * Time.deltaTime;
+
+                if (height >= -11)
+                {
+
+                }
+                else
+                {
+                    height = -11;
+                }
             }
-            else if (verticalMovement > 0 && height <= 70)
+            else if (verticalMovement > 0)
             {
                 FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
+
                 height += verticalMovement * vSpeed * Time.deltaTime;
+
+                if (height <= 70)
+                {
+                }
+                else
+                {
+                    height = 70;
+                }
             }
 
             cameraF.transform.position = origin + Quaternion.Euler(0, rot, 0) * new Vector3(0, 0, distance);

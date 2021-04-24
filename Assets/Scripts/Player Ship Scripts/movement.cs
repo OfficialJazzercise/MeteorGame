@@ -156,28 +156,34 @@ public class movement : MonoBehaviour
         if (verticalMovement < 0)
         {
             FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
+
+            height += verticalMovement * vSpeed * Time.deltaTime;
+
             if (height >= -11)
             {
-                height += verticalMovement * vSpeed * Time.deltaTime;
                 bottomMap = false;
                 topMap = false;
             }
             else
             {
+                height = -11;
                 bottomMap = true;
             }
         }
         else if (verticalMovement > 0)
         {
             FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
+
+            height += verticalMovement * vSpeed * Time.deltaTime;
+
             if (height <= 70)
             {
-                height += verticalMovement * vSpeed * Time.deltaTime;
                 bottomMap = false;
                 topMap = false;
             }
             else
             {
+                height = 70;
                 topMap = true;
             }
         }
