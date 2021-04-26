@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Art/Materials/Sky/LineKotsi/Cartoon & Stylized HDRI sky.meta
 <<<<<<< HEAD:Assets/Art/UpgradeAssets.meta
 guid: 143d5a1a36d8c2744a405a8576d3c05b
 =======
 guid: dc866123d2a6e634582d7570a6e821ef
 >>>>>>> 062a8e8bf6d6eca9b45f9297e15d2055de1315d0:Assets/Art/Materials/Sky/LineKotsi/Cartoon & Stylized HDRI sky.meta
+=======
+guid: f1c33bae344bb2343a8f983649a450b1
+>>>>>>> parent of 062a8e8b (Game Over Screen Started):Assets/Art/Prefabs/AnimatedPassives.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
