@@ -22,6 +22,8 @@ public class Bullet : MonoBehaviour
     {
         Spawner.resetArena += disableBullet;
         SPSpawner.resetArena += disableBullet;
+
+
     }
 
     private void OnDisable()
@@ -30,6 +32,10 @@ public class Bullet : MonoBehaviour
         SPSpawner.resetArena -= disableBullet;
     }
     // Start is called before the first frame update
+    private void OnAwake()
+    {
+        
+    }
     void Start()
     {
 

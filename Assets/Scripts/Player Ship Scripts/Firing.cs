@@ -10,6 +10,7 @@ public class Firing : MonoBehaviour
     public Bullet prefab;
     public movement player;
     private bool bBigBullet;
+    int sfx = 0;
 
     private IEnumerator coroutine;
 
@@ -119,6 +120,26 @@ public class Firing : MonoBehaviour
                 }
 
                 bullet.gameObject.SetActive(true);
+
+                sfx++;
+                switch (sfx)
+                {
+                    case 0:
+                        FindObjectOfType<SoundManager>().Play("Laser1");
+                        break;
+
+                    case 1:
+                        FindObjectOfType<SoundManager>().Play("PShot2");
+                        break;
+
+                    case 2:
+                        FindObjectOfType<SoundManager>().Play("PShot3");
+                        sfx = -1;
+                        break;
+
+                    default:
+                        break;
+                }
 
                 coroutine = destroyBullet(bullet, .3f);
                 StartCoroutine(coroutine);

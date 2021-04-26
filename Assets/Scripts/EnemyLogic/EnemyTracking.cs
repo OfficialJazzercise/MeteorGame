@@ -13,6 +13,8 @@ public class EnemyTracking : MonoBehaviour
 
     private IEnumerator coroutine;
 
+    int sfx;
+
     private void OnEnable()
     {
         Enemy.shootBullet += startBullet;
@@ -69,7 +71,27 @@ public class EnemyTracking : MonoBehaviour
                     bullet.resetTrail();
                     
                     bullet.gameObject.SetActive(true);
-                    FindObjectOfType<SoundManager>().Play("EL1");
+
+
+                    sfx++;
+                    switch (sfx)
+                    {
+                        case 0:
+                            FindObjectOfType<SoundManager>().Play("EL1");
+                            break;
+
+                        case 1:
+                            FindObjectOfType<SoundManager>().Play("EL2");
+                            break;
+
+                        case 2:
+                            FindObjectOfType<SoundManager>().Play("EL3");
+                            sfx = -1;
+                            break;
+
+                        default:
+                            break;
+                    }
 
                     findShortestTrip(bullet);
 
