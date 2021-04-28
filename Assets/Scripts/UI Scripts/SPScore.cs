@@ -62,6 +62,10 @@ public class SPScore : MonoBehaviour
 
         P1ScoreText.text = P1Score.ToString("000000000000");
         combo.text = comboMultiplier.ToString("0.00");
+
+        PlayerPrefs.SetInt("P1Score", (int) P1Score);
+        PlayerPrefs.SetInt("P2Score", 0);
+        PlayerPrefs.Save();
     }
 
     private void resetMultiplier()

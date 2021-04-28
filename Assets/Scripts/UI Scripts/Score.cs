@@ -80,6 +80,10 @@ public class Score : MonoBehaviour
         pointsGiven = Mathf.Round(100 * scoreMultiplier);
         scoreMultiplier += .1f;
         flashText(pointsGiven, Pos);
+
+        PlayerPrefs.SetInt("P1Score", (int) P1Score);
+        PlayerPrefs.SetInt("P2Score", (int) P2Score);
+        PlayerPrefs.Save();
     }
 
     private void resetMultiplier()

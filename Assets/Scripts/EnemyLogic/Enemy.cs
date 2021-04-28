@@ -197,13 +197,10 @@ public class Enemy : MonoBehaviour
 
     private void SentryAnimation()
     {
-        Debug.Log("test");
-        anim = GetComponent<Animator>();
+        anim.SetTrigger("isGrounded");
 
-        anim.Play("Sentry_Deploy");
-        StartCoroutine(SentryWait(30f));
-        anim.Play("Sentry_Rotate_loop");
-        
+        // StartCoroutine(SentryWait(30f));
+
     }
     
     private IEnumerator SentryWait(float waiting)
