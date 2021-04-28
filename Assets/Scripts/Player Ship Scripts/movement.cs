@@ -11,6 +11,8 @@ public class movement : MonoBehaviour
     public GameObject muzzleRight;
     public GameObject muzzleLeft;
     public Transform projectileSpawn;
+    public GameObject IdleThruster;
+    public GameObject MovingThruster;
 
     private IEnumerator coroutine;
 
@@ -89,11 +91,15 @@ public class movement : MonoBehaviour
         if (horizontalMovement != 0 && context.started)
         {
             Debug.Log("moving");// Moving here
-            
+            IdleThruster.SetActive(false);
+            MovingThruster.SetActive(true);
         }
         else if(horizontalMovement == 0)
         {
             Debug.Log("stopped");// Idle here
+            IdleThruster.SetActive(true);
+            MovingThruster.SetActive(false);
+            
         }
 
         if (context.ReadValue<Vector2>().x < 0)

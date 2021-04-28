@@ -827,6 +827,7 @@ GameObject:
   - component: {fileID: 774343968589223419}
   - component: {fileID: 4216830363100675280}
   - component: {fileID: 1991896768605631668}
+  - component: {fileID: 664864682416276367}
   m_Layer: 0
   m_Name: GBulletUpgrade
   m_TagString: Untagged
@@ -874,6 +875,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 3.8, z: 3.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &664864682416276367
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495461722284632865}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec15016cc2ff07a41bacdb630f66644f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6056684896416727288
 PrefabInstance:
   m_ObjectHideFlags: 0

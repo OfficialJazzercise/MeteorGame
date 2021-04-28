@@ -155,8 +155,10 @@ public class Enemy : MonoBehaviour
                     height -= speed * Time.deltaTime / 3;
 
                     if (height <= desiredHeight)
-                    {
+                    { 
                         canShoot = true;
+                        
+                    
                     }
                 }
             }
