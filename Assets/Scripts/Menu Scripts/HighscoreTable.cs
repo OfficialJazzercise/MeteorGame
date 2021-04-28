@@ -10,6 +10,8 @@ public class HighscoreTable : MonoBehaviour
     private Transform entryTemplate;
     private List<Transform> highscoreEntryTransformList;
     private const int highscoreLimit = 10;
+
+    private const string defaultPref = "{\"highscoreEntryList\":[{\"score\":53488,\"name\":\"AAA\"},{\"score\":58888,\"name\":\"FML\"}]}";
  
 
     private void Awake()
@@ -21,7 +23,8 @@ public class HighscoreTable : MonoBehaviour
 
         AddHighscoreEntry(6, "FML");
         
-        string jsonString = PlayerPrefs.GetString("highscoreTable");
+        string jsonString = PlayerPrefs.GetString("highscoreTable", defaultPref);
+        Debug.Log(jsonString);
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
 
@@ -80,7 +83,7 @@ public class HighscoreTable : MonoBehaviour
     {
         HighscoreEntry highscoreEntry = new HighscoreEntry {score = score, name = name };
 
-        string jsonString = PlayerPrefs.GetString("highscoreTable");
+        string jsonString = PlayerPrefs.GetString("highscoreTable", defaultPref);
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
         highscores.highscoreEntryList.Add(highscoreEntry);
