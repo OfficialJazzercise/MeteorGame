@@ -199,7 +199,7 @@ public class movement : MonoBehaviour
         {
             if (shotDelay <= 0)
             {
-                FindObjectOfType<SoundManager>().Play("Laser1");//Will give variations later
+                //i took out the thing for sfx bullets
                 shotDelay = 0.15f;
                 singleShot();
             }

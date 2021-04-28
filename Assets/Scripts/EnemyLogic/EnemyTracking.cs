@@ -8,7 +8,7 @@ public class EnemyTracking : MonoBehaviour
     public List<EnemyProjectile> bulletList; // A list the will contain all the default bullets of the game
     Vector3 origin = Vector3.zero;
     public EnemyProjectile prefab;
-
+    int sfx = 0;
     private GameObject target; 
 
     private IEnumerator coroutine;
@@ -49,7 +49,7 @@ public class EnemyTracking : MonoBehaviour
 
         float distanceToPlayer = Math.Abs(target.GetComponent<movement>().rot - currentRot);
         float heightToPlayer = Math.Abs(target.GetComponent<movement>().height - currentHieght);
-
+         
         if (distanceToPlayer <= 50 && heightToPlayer <= 15)
         {
             //cycles through each object in bulletList
@@ -65,12 +65,35 @@ public class EnemyTracking : MonoBehaviour
                     bullet.targetsRot = target.GetComponent<movement>().rot;
                     bullet.canActivate = false;
 
+                    switch (sfx)
+                    {
+                        case 0:
+                            FindObjectOfType<SoundManager>().Play("EL1");
+                            sfx = 1;
+                            Debug.Log("EL1");
+                            break;
+                        case 1:
+                            FindObjectOfType<SoundManager>().Play("EL2");
+                            
+                            Debug.Log("EL2");
+                            break;
+                        case 2:
+                            FindObjectOfType<SoundManager>().Play("EL3");
+                            sfx = 0;
+                            Debug.Log("EL3");
+                            break;
+                        default:
+                            sfx = 0;
+                            break;
+                    }
+                    sfx++;                    
                     //Prevents the bullet's trail from making weird traces
                     bullet.resetTrail();
                     
                     bullet.gameObject.SetActive(true);
-                    FindObjectOfType<SoundManager>().Play("EL1");
 
+                    
+                    
                     findShortestTrip(bullet);
 
                     //Leaves the function to skip cycling through the rest of the list

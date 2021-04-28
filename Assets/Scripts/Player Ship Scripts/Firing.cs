@@ -10,6 +10,7 @@ public class Firing : MonoBehaviour
     public Bullet prefab;
     public movement player;
     private bool bBigBullet;
+    int sfx = 0;
 
     private IEnumerator coroutine;
 
@@ -72,9 +73,12 @@ public class Firing : MonoBehaviour
     //a function to activate a bullet when needed
     public void startBullet(Transform newTransform, Quaternion newRotation)
     {
+        
         //cycles through each object in bulletList
         foreach (Bullet bullet in bulletList)
         {
+            
+
             //ignores the bullet if it's already active
             if (bullet.canActivate)
             {
@@ -87,6 +91,30 @@ public class Firing : MonoBehaviour
                 bullet.height = player.height;
                 bullet.targetHeight = bullet.height;
                 bullet.isRight = player.isRight;
+               
+                switch (sfx)
+                {
+                    case 0:
+                        FindObjectOfType<SoundManager>().Play("PShot1");
+                        Debug.Log("PS1");
+
+                        break;
+                    case 1:
+                        FindObjectOfType<SoundManager>().Play("PShot2");
+
+                        Debug.Log("PS2");
+                        break;
+                    case 2:
+                        FindObjectOfType<SoundManager>().Play("PShot3");
+                        sfx = -1;
+                        Debug.Log("PS3");
+                        break;
+                    default:
+
+                        break;
+                }
+                sfx++;
+                
 
                 if (bullet.isRight)
                 {
@@ -126,10 +154,11 @@ public class Firing : MonoBehaviour
                 //Leaves the function to skip cycling through the rest of the list
                 return;
             }
+            
+            
+
         }
-
     }
-
     //use for the courtine, will disable both muzzles after a set amount of time
     private IEnumerator destroyBullet(Bullet bullet, float waitTime)
     {
