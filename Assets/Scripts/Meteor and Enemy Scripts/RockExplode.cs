@@ -10,6 +10,7 @@ public class RockExplode : MonoBehaviour
     public Vector3 Pos;
 
     public List<GameObject> explosionList;
+    public List<GameObject> impactList;
     public List<FloatingScore> textList;
 
     private void OnEnable()
@@ -17,6 +18,8 @@ public class RockExplode : MonoBehaviour
         SpaceRock.startExplosion += airExplosion;
         Enemy.startExplosion += airExplosion;
         movement.startExplosion += airExplosion;
+        SPSpawner.impactExplosion += groundExplosion;
+        Spawner.impactExplosion += groundExplosion;
 
         Score.flashText += popInText;
         SPScore.flashText += popInText;
@@ -25,7 +28,9 @@ public class RockExplode : MonoBehaviour
     {
         SpaceRock.startExplosion -= airExplosion;
         Enemy.startExplosion -= airExplosion;
-        movement.startExplosion += airExplosion;
+        movement.startExplosion -= airExplosion;
+        SPSpawner.impactExplosion -= groundExplosion;
+        Spawner.impactExplosion -= groundExplosion;
 
         Score.flashText -= popInText;
         SPScore.flashText -= popInText;
@@ -41,6 +46,13 @@ public class RockExplode : MonoBehaviour
             clone.SetActive(false);
 
             explosionList.Add(clone);
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            clone = Instantiate(Impact, Impact.transform.position, Impact.transform.rotation);
+            clone.SetActive(false);
+            impactList.Add(clone);
         }
 
         for (int i = 0; i < 10; i++)
@@ -66,6 +78,26 @@ public class RockExplode : MonoBehaviour
                         explosion.transform.position = Pos;
                         explosion.gameObject.SetActive(true);
                 
+                    break;
+                }
+            }
+        }
+
+    }
+
+    private void groundExplosion(Vector3 Pos)
+    {
+        //cycles through each object in bulletList
+        foreach (GameObject explosion in impactList)
+        {
+            if (explosion != null)
+            {
+                //ignores the bullet if it's already active
+                if (!explosion.activeSelf)
+                {
+                    explosion.transform.position = Pos;
+                    explosion.gameObject.SetActive(true);
+
                     break;
                 }
             }

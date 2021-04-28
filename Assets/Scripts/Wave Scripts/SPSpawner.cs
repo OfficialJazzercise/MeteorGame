@@ -39,6 +39,7 @@ public class SPSpawner : MonoBehaviour
     public static Action resetArena = delegate { };
     public static Action restoreLife = delegate { };
     public static Action decreaseLife = delegate { };
+    public static Action<Vector3> impactExplosion = delegate { };
 
     private IEnumerator coroutine;
 
@@ -404,6 +405,8 @@ public class SPSpawner : MonoBehaviour
         meteor.rot = 0;
         meteor.height = 25;
         meteor.canSplit = false;
+
+        impactExplosion(meteor.transform.position);
         meteor.gameObject.SetActive(false);
 
         var color = cityHitScreenFlash.GetComponent<Image>().color;
