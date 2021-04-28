@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public Transform projectileSpawn;
     public GameObject enemy;
     private GameObject target;
-
+    public Animator anim;
     private float distanceToPlayer;
     private IEnumerator coroutine;
 
@@ -157,8 +157,7 @@ public class Enemy : MonoBehaviour
                     if (height <= desiredHeight)
                     { 
                         canShoot = true;
-                        
-                    
+                        SentryAnimation();
                     }
                 }
             }
@@ -196,4 +195,20 @@ public class Enemy : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
+    private void SentryAnimation()
+    {
+        Debug.Log("test");
+        anim = GetComponent<Animator>();
+
+        anim.Play("Sentry_Deploy");
+        StartCoroutine(SentryWait(30f));
+        anim.Play("Sentry_Rotate_loop");
+        
+    }
+    
+    private IEnumerator SentryWait(float waiting)
+    {
+        yield return new WaitForSeconds(waiting);
+
+    }
 }
