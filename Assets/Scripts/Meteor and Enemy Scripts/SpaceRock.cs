@@ -34,7 +34,7 @@ public class SpaceRock : MonoBehaviour
     public static Action<Vector3> startExplosion = delegate { };
 
     public AudioSource playSound;
-
+    int sfx = 0;
     private void OnEnable()
     {
         Spawner.resetArena += disableSelf;
@@ -77,7 +77,7 @@ public class SpaceRock : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
+        
         //If a bullet hits the meteor destroys the bullet and the meteor
         if (other.CompareTag("Bullet"))
         {
@@ -88,10 +88,25 @@ public class SpaceRock : MonoBehaviour
             IncreaseScore(gameObject.transform.position);
             startExplosion(this.gameObject.transform.position);
             MeteorDestroyed();
-            FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
             ScreenShake.instance.StartShake(.4f, .8f); //Shakes screen upon destroying meteor
             gameObject.SetActive(false);
             canSplit = false;
+
+            
+            switch(sfx)
+            {
+                case 0:
+                    FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
+                    break;
+
+                case 1:
+                    FindObjectOfType<SoundManager>().Play("Boom2");//Finds SFX to play
+                    sfx = 0;
+                    break;
+                default:
+                    break;
+            }
+            sfx++;
 
             if (isSplit)
             {
