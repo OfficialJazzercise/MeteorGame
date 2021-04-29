@@ -31,4 +31,24 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
         
     }
+
+    public void CreditsToMainMenu()
+    {
+        beginFade(SceneManager.GetActiveScene().buildIndex - 4);
+    }
+
+    public void HSToMainMenu()
+    {
+        beginFade(SceneManager.GetActiveScene().buildIndex - 3);
+    }
+
+    public void HighScores()
+    {
+        beginFade(SceneManager.GetActiveScene().buildIndex + 3);
+    }
+
+    public void Credits()
+    {
+        beginFade(SceneManager.GetActiveScene().buildIndex + 4);
+    }
 }
