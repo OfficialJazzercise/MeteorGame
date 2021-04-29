@@ -1,24 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &5367660179605659936
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246472229966402327}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 959440c6d0c085a4ca627fe7a96814d1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4254009754314852608
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +138,6 @@ GameObject:
   - component: {fileID: 7605860004338424981}
   - component: {fileID: 378055863953175375}
   - component: {fileID: 9121020031077873094}
-  - component: {fileID: -3909905751798507137}
   m_Layer: 0
   m_Name: GroundEnemy
   m_TagString: Untagged
@@ -231,25 +211,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &-3909905751798507137
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8790636247856097502}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 959440c6d0c085a4ca627fe7a96814d1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7119631714917592616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,7 +241,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 96b8606c278bbb948903aebcf2fb15ef,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96b8606c278bbb948903aebcf2fb15ef,
         type: 3}
@@ -290,7 +251,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 96b8606c278bbb948903aebcf2fb15ef,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96b8606c278bbb948903aebcf2fb15ef,
         type: 3}
@@ -305,7 +266,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 96b8606c278bbb948903aebcf2fb15ef,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96b8606c278bbb948903aebcf2fb15ef,
         type: 3}
@@ -333,12 +294,6 @@ GameObject:
 --- !u!4 &7297162010460539331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 96b8606c278bbb948903aebcf2fb15ef,
-    type: 3}
-  m_PrefabInstance: {fileID: 7119631714917592616}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &246472229966402327 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7036213049465896255, guid: 96b8606c278bbb948903aebcf2fb15ef,
     type: 3}
   m_PrefabInstance: {fileID: 7119631714917592616}
   m_PrefabAsset: {fileID: 0}

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -76,7 +76,15 @@ public class Enemy : MonoBehaviour
             EnemyDestroyed();
             startExplosion(gameObject.transform.position);
             canActivate = true;
+            if(enemyType == "grounded")
+            {
+                anim.SetTrigger("IsDead");
+            }
+
             gameObject.SetActive(false);
+            
+
+
         }
 
         //If the player hits the meteor destroys the player
@@ -157,7 +165,7 @@ public class Enemy : MonoBehaviour
                     if (height <= desiredHeight)
                     { 
                         canShoot = true;
-                        SentryAnimation();
+                        anim.SetTrigger("IsGrounded");
                     }
                 }
             }
@@ -197,8 +205,8 @@ public class Enemy : MonoBehaviour
 
     private void SentryAnimation()
     {
-        anim.SetTrigger("isGrounded");
-
+        //anim.SetTrigger("isGrounded");
+        //anim.Play("Sentry_Deploy");
         // StartCoroutine(SentryWait(30f));
 
     }
