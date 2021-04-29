@@ -205,6 +205,7 @@ public class HighscoreTable : MonoBehaviour
 
         //Use this as a template to determine player scores and which scene to reset to
         PlayerPrefs.SetString("highscoreTable", json);
+        PlayerPrefs.SetInt("P1Score", 0);
         PlayerPrefs.Save();
 
         coroutine = AddP2Score();
@@ -256,6 +257,7 @@ public class HighscoreTable : MonoBehaviour
 
         //Use this as a template to determine player scores and which scene to reset to
         PlayerPrefs.SetString("highscoreTable", json);
+        PlayerPrefs.SetInt("P2Score", 0);
         PlayerPrefs.Save();
 
         makeScoreBoard();
