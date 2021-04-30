@@ -17,6 +17,10 @@ public class HighscoreTable : MonoBehaviour
     private int counter = 3;
 
     private int currentLetter = 0;
+    public TextMeshProUGUI initial1;
+    public TextMeshProUGUI initial2;
+    public TextMeshProUGUI initial3;
+    public GameObject prompt;
 
     private IEnumerator coroutine;
 
@@ -133,6 +137,25 @@ public class HighscoreTable : MonoBehaviour
             {
                 currentLetter = 0;
             }
+
+            switch (counter)
+            {
+                case 1:
+                    initial3.SetText(alphabet[currentLetter]);
+                    break;
+
+                case 2:
+                    initial2.SetText(alphabet[currentLetter]);
+                    break;
+
+                case 3:
+                    initial1.SetText(alphabet[currentLetter]);
+                    break;
+
+                default:
+                    initial1.SetText(alphabet[currentLetter]);
+                    break;
+            }
         }
     }
 
@@ -145,6 +168,26 @@ public class HighscoreTable : MonoBehaviour
             if (currentLetter < 0)
             {
                 currentLetter = 25;
+            }
+
+
+            switch (counter)
+            {
+                case 1:
+                    initial3.SetText(alphabet[currentLetter]);
+                    break;
+
+                case 2:
+                    initial2.SetText(alphabet[currentLetter]);
+                    break;
+
+                case 3:
+                    initial1.SetText(alphabet[currentLetter]);
+                    break;
+
+                default:
+                    initial1.SetText(alphabet[currentLetter]);
+                    break;
             }
         }
     }
@@ -170,6 +213,10 @@ public class HighscoreTable : MonoBehaviour
         {
             counter = 3;
             inputName = "";
+
+            //enable input box here
+            prompt.SetActive(true);
+
 
             while (counter > 0)
             {
@@ -208,6 +255,10 @@ public class HighscoreTable : MonoBehaviour
         PlayerPrefs.SetInt("P1Score", 0);
         PlayerPrefs.Save();
 
+        //disable input box here
+        prompt.SetActive(false);
+
+
         coroutine = AddP2Score();
         StartCoroutine(coroutine);
     }
@@ -222,6 +273,9 @@ public class HighscoreTable : MonoBehaviour
         {
             counter = 3;
             inputName = "";
+
+            //enable input box here
+            prompt.SetActive(true);
 
             while (counter > 0)
             {
@@ -259,6 +313,9 @@ public class HighscoreTable : MonoBehaviour
         PlayerPrefs.SetString("highscoreTable", json);
         PlayerPrefs.SetInt("P2Score", 0);
         PlayerPrefs.Save();
+
+        //disable input box here
+        prompt.SetActive(false);
 
         makeScoreBoard();
     }
