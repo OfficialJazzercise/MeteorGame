@@ -12,11 +12,11 @@ public class Score : MonoBehaviour
 
     public Text P1ScoreText;
     private float P1Score = 0;
-    private int P1LifeTarget = 10000;
+    private int P1LifeTarget = 50000;
 
     public Text P2ScoreText;
     private float P2Score = 0;
-    private int P2LifeTarget = 10000;
+    private int P2LifeTarget = 50000;
 
     private float scoreMultiplier = 1;
     public float pointsGiven = 0;
@@ -67,14 +67,14 @@ public class Score : MonoBehaviour
         if (P1Score > P1LifeTarget)
         {
             GiveLife();
-            P1LifeTarget += 10000;
+            P1LifeTarget += 50000;
         }
 
         
         if(P2Score > P2LifeTarget)
         {
             GiveLife();
-            P2LifeTarget += 10000;
+            P2LifeTarget += 50000;
         }
 
         pointsGiven = Mathf.Round(100 * scoreMultiplier);
