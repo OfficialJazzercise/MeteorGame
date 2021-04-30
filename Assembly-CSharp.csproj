@@ -73,6 +73,9 @@
     <Compile Include="Assets\Scripts\Meteor and Enemy Scripts\RockExplode.cs" />
     <Compile Include="Assets\Scripts\Meteor and Enemy Scripts\SelfDestruct.cs" />
     <Compile Include="Assets\Scripts\Meteor and Enemy Scripts\SpaceRock.cs" />
+    <Compile Include="Assets\Scripts\Meteor and Enemy Scripts\rotateSentry.cs" />
+    <Compile Include="Assets\Scripts\Meteor and Enemy Scripts\spinFlying.cs" />
+    <Compile Include="Assets\Scripts\Meteor and Enemy Scripts\spinMeteor.cs" />
     <Compile Include="Assets\Scripts\Player Ship Scripts\BoostTrailToggle.cs" />
     <Compile Include="Assets\Scripts\Player Ship Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Player Ship Scripts\Firing.cs" />
