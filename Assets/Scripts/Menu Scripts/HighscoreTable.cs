@@ -24,7 +24,7 @@ public class HighscoreTable : MonoBehaviour
 
     private IEnumerator coroutine;
 
-    private const string defaultPref = "{\"highscoreEntryList\":[{\"score\":53488,\"name\":\"AAA\"},{\"score\":58888,\"name\":\"FML\"}]}";
+    private const string defaultPref = "{\"highscoreEntryList\":[{\"score\":10000,\"name\":\"AAA\"},{\"score\":10000,\"name\":\"AAA\"},{\"score\":10000,\"name\":\"AAA\"},{\"score\":10000,\"name\":\"AAA\"},{\"score\":10000,\"name\":\"AAA\"},{\"score\":10000,\"name\":\"AAA\"},{\"score\":10000,\"name\":\"AAA\"},{\"score\":10000,\"name\":\"AAA\"},{\"score\":10000,\"name\":\"AAA\"},{\"score\":10000,\"name\":\"AAA\"}]}";
  
 
     private void Awake()
