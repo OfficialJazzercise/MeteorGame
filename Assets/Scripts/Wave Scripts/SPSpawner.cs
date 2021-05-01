@@ -455,6 +455,8 @@ public class SPSpawner : MonoBehaviour
         color.a = 0.5f;
 
         cityHitScreenFlash.GetComponent<Image>().color = color;
+
+        FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
     }
 
     private IEnumerator switchPlayers(float waitTime)
@@ -469,6 +471,10 @@ public class SPSpawner : MonoBehaviour
         Player.SetActive(true);
         restoreLife();
         PlayerActive = true;
+
+
+        //PlayerSpawnSound
+        
 
         coroutine = prepWave(5f);
         StartCoroutine(coroutine);

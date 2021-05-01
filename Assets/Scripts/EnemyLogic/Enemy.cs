@@ -79,6 +79,8 @@ public class Enemy : MonoBehaviour
                 anim.SetTrigger("IsDead");
             }
 
+             FindObjectOfType<SoundManager>().Play("EnemyCrunch");//Finds SFX to play
+             
             gameObject.SetActive(false);
             
 

@@ -103,13 +103,22 @@ public class movement : MonoBehaviour
         }
 
         if (context.ReadValue<Vector2>().x < 0)
-            {
+        {
                 isRight = false;
-            }
-            else if (context.ReadValue<Vector2>().x > 0)
-            {
+        }
+        else if (context.ReadValue<Vector2>().x > 0)
+        {
                 isRight = true;
-            }
+        }
+
+        if(context.started)
+        {
+            gameObject.GetComponent<AudioSource>().Play();//SFX
+        }
+        else if (context.canceled)
+        {
+            gameObject.GetComponent<AudioSource>().Stop();//SFX
+        }
     }
 
     public void Boosting(InputAction.CallbackContext context)
@@ -119,12 +128,14 @@ public class movement : MonoBehaviour
                 speed = 40f;
                 vSpeed = 30f;
                 isBoosting = true;
+                gameObject.GetComponent<AudioSource>().volume = .3f;
             }
             else if (context.canceled)
             {
                 speed = 100f;
                 vSpeed = 60f;
                 isBoosting = false;
+                gameObject.GetComponent<AudioSource>().volume = .5f;
             }
     }
 
@@ -161,8 +172,6 @@ public class movement : MonoBehaviour
 
         if (verticalMovement < 0)
         {
-            FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-
             height += verticalMovement * vSpeed * Time.deltaTime;
 
             if (height >= -11)
@@ -178,8 +187,6 @@ public class movement : MonoBehaviour
         }
         else if (verticalMovement > 0)
         {
-            FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-
             height += verticalMovement * vSpeed * Time.deltaTime;
 
             if (height <= 68)

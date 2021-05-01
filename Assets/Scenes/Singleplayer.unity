@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7485786, g: 0.4315484, b: 0.32522887, a: 1}
+  m_IndirectSpecularColor: {r: 0.7485757, g: 0.43154615, b: 0.3252265, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1865,33 +1865,33 @@ MonoBehaviour:
     pitch: 0
     source: {fileID: 0}
   - name: Boom
-    clip: {fileID: 8300000, guid: e8bfc2e07dfaa6343a61144bc551d25b, type: 3}
+    clip: {fileID: 8300000, guid: ec26f650a3d0a6045b04b19419028870, type: 3}
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
-  - name: FallingRocks
-    clip: {fileID: 8300000, guid: 1d787c4e49f12464b94cbfd262e4e98e, type: 3}
-    volume: 0
+  - name: EnemyCrunch
+    clip: {fileID: 8300000, guid: 22f53253bf0ec57429cecb32b9dadaac, type: 3}
+    volume: 0.65
     pitch: 0
     source: {fileID: 0}
   - name: GetItem
-    clip: {fileID: 8300000, guid: a5ccb155f147c8a419f65203a3192836, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 30e8d0e0299d78141a5544af02cd1b6d, type: 3}
+    volume: 0.3
     pitch: 0
     source: {fileID: 0}
   - name: PShot1
     clip: {fileID: 8300000, guid: ffd370833517c914badbf50349c8623c, type: 3}
-    volume: 0.4
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
   - name: PShot2
     clip: {fileID: 8300000, guid: e89d50e874ae36d41b036247b21b3863, type: 3}
-    volume: 0.4
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
   - name: PShot3
     clip: {fileID: 8300000, guid: c288f929fd8918640b662e1cd111d35a, type: 3}
-    volume: 0.4
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
   - name: Thrusters
@@ -1906,17 +1906,17 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: EL1
     clip: {fileID: 8300000, guid: 087a47c20e6791647b9c08e6ccc3fa4f, type: 3}
-    volume: 0.183
+    volume: 0.12
     pitch: 0
     source: {fileID: 0}
   - name: EL2
     clip: {fileID: 8300000, guid: 947c21397b2da064a9b8d5f4bbbc99a3, type: 3}
-    volume: 0.183
+    volume: 0.12
     pitch: 0
     source: {fileID: 0}
   - name: EL3
     clip: {fileID: 8300000, guid: 3691043e37d05774c80d6dc47a16eef5, type: 3}
-    volume: 0.183
+    volume: 0.12
     pitch: 0
     source: {fileID: 0}
   - name: Impact
@@ -1930,7 +1930,12 @@ MonoBehaviour:
     pitch: 0
     source: {fileID: 0}
   - name: Boom2
-    clip: {fileID: 8300000, guid: 7fa46dd04e65fcd47810430816cddece, type: 3}
+    clip: {fileID: 8300000, guid: 187c7bc31c5744c4b8b2fb32b5ca865d, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: RileyButton
+    clip: {fileID: 8300000, guid: 1d787c4e49f12464b94cbfd262e4e98e, type: 3}
     volume: 1
     pitch: 0
     source: {fileID: 0}
@@ -6477,6 +6482,102 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &378408619
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378408610}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7b018e1da2bcc8445a0c8ce882679812, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &385680952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8000,7 +8101,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 78583b16b5624dc4cb862d852d1bf18c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.08
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9642,6 +9743,107 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2107035456}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &590630060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b6606ef2548734bb6d11b9d160bc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: 10
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxColor:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  hdriSky:
+    m_OverrideState: 0
+    m_Value: {fileID: 8900000, guid: 8253d41e6e8b11a4cbe77a4f8f82934d, type: 3}
+  enableBackplate:
+    m_OverrideState: 0
+    m_Value: 0
+  backplateType:
+    m_OverrideState: 0
+    m_Value: 0
+  groundLevel:
+    m_OverrideState: 0
+    m_Value: 0
+  scale:
+    m_OverrideState: 0
+    m_Value: {x: 32, y: 32}
+  projectionDistance:
+    m_OverrideState: 0
+    m_Value: 16
+    min: 0.0000001
+  plateRotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  plateTexRotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  plateTexOffset:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0}
+  blendAmount:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 100
+  shadowTint:
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  pointLightShadow:
+    m_OverrideState: 0
+    m_Value: 0
+  dirLightShadow:
+    m_OverrideState: 0
+    m_Value: 0
+  rectLightShadow:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!1001 &601647158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16753,6 +16955,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 540ea078-fede-4cfe-9427-654db742e0df
     m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8e45fe1a-cd75-4301-a648-04fab36ee05e
+    m_ActionName: Player/ScrollDown[/Keyboard/s,/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 45a12af2-b523-4142-a8c2-5b99c9f315c2
+    m_ActionName: Player/ScrollUp[/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fc37c7b9-8a4c-4126-b15a-15c6e48cbf29
+    m_ActionName: Player/Confirm[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -22175,107 +22389,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16808190b9b70e94e82b1b537521dfb1, type: 3}
---- !u!114 &1273922183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59b6606ef2548734bb6d11b9d160bc7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  rotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  skyIntensityMode:
-    m_OverrideState: 0
-    m_Value: 0
-  exposure:
-    m_OverrideState: 0
-    m_Value: 10
-  multiplier:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  upperHemisphereLuxValue:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  upperHemisphereLuxColor:
-    m_OverrideState: 0
-    m_Value: {x: 0, y: 0, z: 0}
-  desiredLuxValue:
-    m_OverrideState: 0
-    m_Value: 20000
-  updateMode:
-    m_OverrideState: 0
-    m_Value: 0
-  updatePeriod:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-  includeSunInBaking:
-    m_OverrideState: 0
-    m_Value: 0
-  hdriSky:
-    m_OverrideState: 0
-    m_Value: {fileID: 8900000, guid: 8253d41e6e8b11a4cbe77a4f8f82934d, type: 3}
-  enableBackplate:
-    m_OverrideState: 0
-    m_Value: 0
-  backplateType:
-    m_OverrideState: 0
-    m_Value: 0
-  groundLevel:
-    m_OverrideState: 0
-    m_Value: 0
-  scale:
-    m_OverrideState: 0
-    m_Value: {x: 32, y: 32}
-  projectionDistance:
-    m_OverrideState: 0
-    m_Value: 16
-    min: 0.0000001
-  plateRotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  plateTexRotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  plateTexOffset:
-    m_OverrideState: 0
-    m_Value: {x: 0, y: 0}
-  blendAmount:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 100
-  shadowTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  pointLightShadow:
-    m_OverrideState: 0
-    m_Value: 0
-  dirLightShadow:
-    m_OverrideState: 0
-    m_Value: 0
-  rectLightShadow:
-    m_OverrideState: 0
-    m_Value: 0
 --- !u!1 &1274040038
 GameObject:
   m_ObjectHideFlags: 0
@@ -32916,7 +33029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: ae98bd8998d5b2c4384933d6b255f0ea, type: 2}
   m_StaticLightingSkyUniqueID: 1
-  m_SkySettings: {fileID: 1273922183}
+  m_SkySettings: {fileID: 590630060}
   m_SkySettingsFromProfile: {fileID: 7488742677745068149, guid: ae98bd8998d5b2c4384933d6b255f0ea,
     type: 2}
 --- !u!4 &1826024779
@@ -39413,7 +39526,7 @@ PrefabInstance:
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
       propertyPath: spawnLocations.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
@@ -39505,18 +39618,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
+      propertyPath: spawnLocations.Array.data[4].x
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
+        type: 3}
       propertyPath: spawnLocations.Array.data[4].y
-      value: -4
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
       propertyPath: spawnLocations.Array.data[4].z
-      value: 70
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
       propertyPath: spawnLocations.Array.data[5].y
-      value: 15
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
@@ -39526,21 +39644,31 @@ PrefabInstance:
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
       propertyPath: spawnLocations.Array.data[6].y
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
-        type: 3}
-      propertyPath: spawnLocations.Array.data[6].z
-      value: -70
-      objectReference: {fileID: 0}
-    - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
-        type: 3}
-      propertyPath: spawnLocations.Array.data[7].y
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
         type: 3}
+      propertyPath: spawnLocations.Array.data[6].z
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
+        type: 3}
+      propertyPath: spawnLocations.Array.data[7].y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
+        type: 3}
       propertyPath: spawnLocations.Array.data[7].z
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
+        type: 3}
+      propertyPath: spawnLocations.Array.data[8].y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577636439304397685, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,
+        type: 3}
+      propertyPath: spawnLocations.Array.data[8].z
       value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 2504497792209197010, guid: ea05f7b3368e4fb4c8d7fb669f20d78c,

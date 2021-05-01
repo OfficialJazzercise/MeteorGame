@@ -24,6 +24,7 @@ public class GBullet : MonoBehaviour
     {  
         BigBulletPowerUp();
 
+        FindObjectOfType<SoundManager>().Play("GetItem");//Finds SFX to play
         //sound effect needed
 
 

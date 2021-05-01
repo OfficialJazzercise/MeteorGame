@@ -1,6 +1,8 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class SoundManager : MonoBehaviour
 {
@@ -12,7 +14,6 @@ public class SoundManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-
             s.source.volume = s.volume;
 
         }
@@ -21,6 +22,6 @@ public class SoundManager : MonoBehaviour
     public void Play(string name)
     {
         Sounds s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+        s.source.PlayOneShot(s.clip);
     }
 }

@@ -88,8 +88,6 @@ public class cameraFollow : MonoBehaviour
 
             if (verticalMovement < 0)
             {
-                FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-
                 height += verticalMovement * vSpeed * Time.deltaTime;
 
                 if (height >= -11)
@@ -103,8 +101,6 @@ public class cameraFollow : MonoBehaviour
             }
             else if (verticalMovement > 0)
             {
-                FindObjectOfType<SoundManager>().Play("Thrusters");//SFX
-
                 height += verticalMovement * vSpeed * Time.deltaTime;
 
                 if (height <= 68)
