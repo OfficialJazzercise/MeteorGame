@@ -107,12 +107,12 @@ public class cameraFollow : MonoBehaviour
 
                 height += verticalMovement * vSpeed * Time.deltaTime;
 
-                if (height <= 70)
+                if (height <= 68)
                 {
                 }
                 else
                 {
-                    height = 70;
+                    height = 68;
                 }
             }
 

@@ -66,8 +66,6 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             other.gameObject.SetActive(false);
-            rot = 0;
-            height = 10;
             IncreaseScore(gameObject.transform.position);
             FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
             ScreenShake.instance.StartShake(.4f, .8f); //Shakes screen upon destroying meteor

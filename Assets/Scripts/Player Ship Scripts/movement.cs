@@ -182,14 +182,14 @@ public class movement : MonoBehaviour
 
             height += verticalMovement * vSpeed * Time.deltaTime;
 
-            if (height <= 70)
+            if (height <= 68)
             {
                 bottomMap = false;
                 topMap = false;
             }
             else
             {
-                height = 70;
+                height = 68;
                 topMap = true;
             }
         }

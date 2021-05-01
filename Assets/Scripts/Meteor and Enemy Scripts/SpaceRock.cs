@@ -26,6 +26,7 @@ public class SpaceRock : MonoBehaviour
     public Vector3 lookTowards;
 
 
+
     //delegate used for the Score Script
     public static Action<Vector3> IncreaseScore = delegate { };
     public static Action MeteorDestroyed = delegate { };
@@ -83,13 +84,10 @@ public class SpaceRock : MonoBehaviour
         {
             if(canSplit)rockBreak(rot, height, this.gameObject.transform.position);
             other.gameObject.SetActive(false);
-            rot = 0;
-            height = 25;
             IncreaseScore(gameObject.transform.position);
             startExplosion(this.gameObject.transform.position);
             MeteorDestroyed();
             ScreenShake.instance.StartShake(.4f, .8f); //Shakes screen upon destroying meteor
-            gameObject.SetActive(false);
             canSplit = false;
 
             
@@ -112,6 +110,8 @@ public class SpaceRock : MonoBehaviour
             {
               isSplit = false;
             }
+
+            gameObject.SetActive(false);
 
         }
 

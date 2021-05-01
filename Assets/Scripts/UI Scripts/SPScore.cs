@@ -12,7 +12,7 @@ public class SPScore : MonoBehaviour
 
     public Text P1ScoreText;
     private float P1Score = 0;
-    private int P1LifeTarget = 10000;
+    private int P1LifeTarget = 100000;
 
     private float scoreMultiplier = 1;
     public float pointsGiven = 0;
@@ -53,7 +53,7 @@ public class SPScore : MonoBehaviour
         if (P1Score > P1LifeTarget)
         {
             GiveLife();
-            P1LifeTarget += 10000;
+            P1LifeTarget += 100000;
         }
 
         pointsGiven = Mathf.Round(100 * scoreMultiplier);

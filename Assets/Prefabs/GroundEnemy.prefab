@@ -83,8 +83,8 @@ VFXRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
+  m_RenderingLayerMask: 2
+  m_RendererPriority: 1
   m_Materials:
   - {fileID: 0}
   m_StaticBatchInfo:

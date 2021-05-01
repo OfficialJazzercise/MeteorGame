@@ -20,7 +20,7 @@ public class SelfDestruct : MonoBehaviour
             x = x + 1 * Time.deltaTime;
         else if(x >= 2)
         {
-            Thingy.SetActive(false);
+            gameObject.SetActive(false);
         }
             
             

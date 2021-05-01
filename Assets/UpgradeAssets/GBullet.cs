@@ -21,10 +21,12 @@ public class GBullet : MonoBehaviour
 
     //Starts the delagate then hides the powerup
     void pickUp(Collider player)
-    {
-        Debug.Log("Upgrade Successfully Activated");
-  
+    {  
         BigBulletPowerUp();
+
+        //sound effect needed
+
+
         gameObject.SetActive(false); ;
     }
 }
