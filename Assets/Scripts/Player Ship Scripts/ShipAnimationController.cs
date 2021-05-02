@@ -15,6 +15,9 @@ public class ShipAnimationController : MonoBehaviour
     private void OnEnable()
     {
         anim = GetComponent<Animator>();
+        horizontalMovement = 0;
+        verticalMovement = 0;
+        isRight = false;
     }
     private void OnDisable()
     {
