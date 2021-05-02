@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     public GameObject enemy;
     private GameObject target;
     public Animator anim;
-    private float distanceToPlayer;
     private IEnumerator coroutine;
 
     public float rot = 0.0f;
@@ -118,9 +117,11 @@ public class Enemy : MonoBehaviour
         //Sets the players postion on a circular track based on which direction the are traveling, speed, and time
         if (canMove)
         {
-            distanceToPlayer = Math.Abs(target.GetComponent<movement>().rot - rot);
+            float distanceToPlayerA = Math.Abs(target.GetComponent<movement>().rot - rot);
+            float distanceToPlayerB = Math.Abs(target.GetComponent<movement>().rot + 360 - rot);
 
-            if (distanceToPlayer <= 50)
+
+            if (distanceToPlayerA <= 50 || distanceToPlayerB <= 50)
             {
                 rot -= speed * Time.deltaTime / 5;
             }

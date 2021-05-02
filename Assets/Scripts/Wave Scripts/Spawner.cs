@@ -459,7 +459,9 @@ public class Spawner : MonoBehaviour
         meteor.height = 25;
         meteor.canSplit = false;
 
+        
         impactExplosion(meteor.transform.position);
+        meteor.canActivate = true;
         meteor.gameObject.SetActive(false);
 
         var color = cityHitScreenFlash.GetComponent<Image>().color;
