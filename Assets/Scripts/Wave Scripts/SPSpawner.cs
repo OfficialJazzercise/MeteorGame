@@ -94,6 +94,8 @@ public class SPSpawner : MonoBehaviour
     {
         //creates a meteorList and adds meteors to it
         meteorList = new List<SpaceRock>();
+        flyingList = new List<Enemy>();
+        groundedList = new List<Enemy>();
         GameObject clone;
 
         for (int i = 0; i < 30; i++)
@@ -330,6 +332,11 @@ public class SPSpawner : MonoBehaviour
             yield return null;
         }
 
+        if (!PlayerActive)
+        {
+            yield break;
+        }
+
         currentWave++;
         waveText.text = "Wave: " + currentWave.ToString();
         waveText.gameObject.SetActive(true);
@@ -465,16 +472,15 @@ public class SPSpawner : MonoBehaviour
         PlayerText.text = "P1";
         currentWave--;
 
-
         yield return new WaitForSeconds(waitTime);
 
         Player.SetActive(true);
-        restoreLife();
         PlayerActive = true;
 
+        restoreLife();
 
         //PlayerSpawnSound
-        
+
 
         coroutine = prepWave(5f);
         StartCoroutine(coroutine);

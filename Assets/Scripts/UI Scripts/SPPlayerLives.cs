@@ -34,7 +34,10 @@ public class SPPlayerLives : MonoBehaviour
     }
     private void Start()
     {
+        if (P1Text != null)
+        {
             P1Text.text = "x " + p1Health.ToString("00");
+        }
     }
 
     private void hurtPlayer()

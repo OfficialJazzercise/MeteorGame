@@ -23,14 +23,14 @@ public class Firing : MonoBehaviour
     private void OnEnable()
     {
         GBullet.BigBulletPowerUp += BigBulletPowerUp;
-        Spawner.resetArena += resetBigBullet;
-        SPSpawner.resetArena += resetBigBullet;
+        Spawner.restoreLife += resetBigBullet;
+        SPSpawner.restoreLife += resetBigBullet;
     }
     private void OnDisable()
     {
         GBullet.BigBulletPowerUp -= BigBulletPowerUp;
-        Spawner.resetArena -= resetBigBullet;
-        SPSpawner.resetArena -= resetBigBullet;
+        Spawner.restoreLife -= resetBigBullet;
+        SPSpawner.restoreLife -= resetBigBullet;
     }
 
     private void BigBulletPowerUp()
@@ -46,11 +46,8 @@ public class Firing : MonoBehaviour
     private void resetBigBullet() 
     { 
         //Deactivates powerup
-
-
         bBigBullet = false; 
-        GiantBulletEnded();
-        
+        GiantBulletEnded();      
     }
 
     // Start is called before the first frame update
@@ -195,12 +192,12 @@ public class Firing : MonoBehaviour
 
             if (player.verticalMovement > 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
             {
-                startingHeight += 3f;
+                startingHeight += 2.8f;
                 projectile.targetHeight += 45f;
             }
             else if (player.verticalMovement < 0 && player.horizontalMovement != 0 && !player.topMap && !player.bottomMap)
             {
-                startingHeight += -2.8f;
+                startingHeight += -2.5f;
                 projectile.targetHeight += -45f;
             }
             else

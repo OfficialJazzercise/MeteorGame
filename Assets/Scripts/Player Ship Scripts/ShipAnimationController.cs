@@ -12,26 +12,12 @@ public class ShipAnimationController : MonoBehaviour
     private float horizontalMovement = 0;
     private float verticalMovement = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         anim = GetComponent<Animator>();
     }
-
-    private void OnEnable()
-    {
-        Spawner.restoreLife += fixLRFlip;
-        SPSpawner.restoreLife += fixLRFlip;
-    }
     private void OnDisable()
     {
-        Spawner.restoreLife -= fixLRFlip;
-        SPSpawner.restoreLife -= fixLRFlip;
-    }
-
-    void fixLRFlip()
-    {
-        isRight = false;
     }
 
     public void ShipAnim(InputAction.CallbackContext context)

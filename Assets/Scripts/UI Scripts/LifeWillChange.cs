@@ -22,18 +22,19 @@ public class LifeWillChange : MonoBehaviour
     private void OnEnable()
     {
         Spawner.decreaseLife += minusLife;
-        Spawner.restoreLife += resetCity;
+        Spawner.resetArena += resetCity;
+
 
         SPSpawner.decreaseLife += minusLife;
-        SPSpawner.restoreLife += resetCity;
+        SPSpawner.resetArena += resetCity;
     }
     private void OnDisable()
     {
         Spawner.decreaseLife -= minusLife;
-        Spawner.restoreLife -= resetCity;
+        Spawner.resetArena -= resetCity;
 
         SPSpawner.decreaseLife -= minusLife;
-        SPSpawner.restoreLife -= resetCity;
+        SPSpawner.resetArena -= resetCity;
     }
 
     void minusLife()
@@ -60,6 +61,7 @@ public class LifeWillChange : MonoBehaviour
     {
         cityLife = 5;
         lifeSwap.sprite = lifeImages[4];
+        siren.Stop();
     }
 
 

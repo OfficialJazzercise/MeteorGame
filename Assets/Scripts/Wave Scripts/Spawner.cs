@@ -37,6 +37,8 @@ public class Spawner : MonoBehaviour
     private int P1Wave = 0;
     private int P2Wave = 0;
 
+    private bool enemiesAlive = true;
+
 
 
     public static Action resetArena = delegate{ };
@@ -97,6 +99,8 @@ public class Spawner : MonoBehaviour
     {
         //creates a meteorList and adds meteors to it
         meteorList = new List<SpaceRock>();
+        flyingList = new List<Enemy>();
+        groundedList = new List<Enemy>();
         GameObject clone;
 
         for (int i = 0; i < 30; i++)
@@ -137,12 +141,11 @@ public class Spawner : MonoBehaviour
                 meteor.rot = UnityEngine.Random.Range(0, 360);
                 meteor.canSplit = false;
                 meteor.canActivate = false;
-                meteor.height = 100;
+                meteor.height = 200;
                 meteor.transform.position = new Vector3(200, 200, 200);
                 meteor.gameObject.SetActive(true);
 
-
-                coroutine = moveMeteor(meteor, 7f);
+                coroutine = moveMeteor(meteor, 10f);
                 StartCoroutine(coroutine);
                 return;
             }
@@ -156,15 +159,14 @@ public class Spawner : MonoBehaviour
             if (meteor.canActivate)
             {
                 meteor.rot = UnityEngine.Random.Range(0, 360);
-                meteor.height = 100;
+                meteor.height = 200;
                 meteor.canActivate = false;
                 meteor.canSplit = true;
                 meteor.transform.position = new Vector3(200, 200, 200);
                 meteor.gameObject.SetActive(true);
 
 
-
-                coroutine = moveMeteor(meteor, 7f);
+                coroutine = moveMeteor(meteor, 10f);
                 StartCoroutine(coroutine);
                 return;
             }
@@ -245,7 +247,6 @@ public class Spawner : MonoBehaviour
     //use for the courtine, will disable both muzzles after a set amount of time
     private IEnumerator spawnEnemy(float waitTime)
     {
-
         yield return new WaitForSeconds(waitTime);
 
         int num;//how many rocks var
@@ -255,11 +256,11 @@ public class Spawner : MonoBehaviour
         if (PlayerActive)
         {
 
-            if (num >= 20)
+            if (num >= 16)
             {
                 spawnSplitter();
             }
-            else if (num >= 15)
+            else if (num >= 13)
             {
                 spawnFlyingEnemy();
             }
@@ -282,6 +283,8 @@ public class Spawner : MonoBehaviour
 
     void spawnFlyingEnemy()
     {
+        spawnRegular();
+
         foreach (Enemy enemy in flyingList)
         {
             if (enemy.canActivate)
@@ -289,8 +292,7 @@ public class Spawner : MonoBehaviour
                 enemy.enemyType = "flying";
                 enemy.rot = UnityEngine.Random.Range(0, 360);
                 enemy.canActivate = false;
-                enemy.height = 100;
-                enemy.desiredHeight = -11;
+                enemy.height = 200;
                 enemy.canMove = false;
                 enemy.desiredHeight = UnityEngine.Random.Range(10, 60);
                 enemy.transform.position = new Vector3(200, 200, 200);
@@ -304,6 +306,8 @@ public class Spawner : MonoBehaviour
 
     void spawnGroundEnemy()
     {
+        spawnRegular();
+
         foreach (Enemy enemy in groundedList)
         {
             if (enemy.canActivate)
@@ -311,7 +315,7 @@ public class Spawner : MonoBehaviour
                 enemy.enemyType = "grounded";
                 enemy.rot = UnityEngine.Random.Range(0, 360);
                 enemy.canActivate = false;
-                enemy.height = 100;
+                enemy.height = 200;
                 enemy.canMove = false;
                 enemy.desiredHeight = -12;
                 enemy.transform.position = new Vector3(200, 200, 200);
@@ -326,24 +330,65 @@ public class Spawner : MonoBehaviour
     //use for the courtine, will disable both muzzles after a set amount of time
     private IEnumerator prepWave(float waitTime)
     {
-        waveEnd = false;
+        while (enemiesAlive)
+        {
+            checkifAlive();
+            yield return null;
+        }
+
+        if (!PlayerActive)
+        {
+            yield break;
+        }
+
         currentWave++;
         waveText.text = "Wave: " + currentWave.ToString();
         waveText.gameObject.SetActive(true);
         PlayerText.gameObject.SetActive(true);
         waveSize = currentWave * 10;
-        spawnRate = 2.5f - waveSize / 50f;
 
-        if (spawnRate < 1)
+
+
+
+        if (waveSize > 100)
         {
-            spawnRate = 1;
+            spawnRate = 1f;
+        }
+        else if (waveSize > 75)
+        {
+            spawnRate = 1.5f;
+        }
+        else if (waveSize > 50)
+        {
+            spawnRate = 2f;
+        }
+        else if (waveSize > 40)
+        {
+            spawnRate = 2.1f;
+        }
+        else if (waveSize > 30)
+        {
+            spawnRate = 2.2f;
+        }
+        else if (waveSize > 15)
+        {
+            spawnRate = 2.3f;
+        }
+        else if (waveSize > 5)
+        {
+            spawnRate = 2.4f;
+        }
+        else
+        {
+            spawnRate = 2.5f;
         }
 
         yield return new WaitForSeconds(waitTime);
 
         meteorsSpawned = waveSize;
         waveEnd = false;
-        
+        enemiesAlive = true;
+
         waveText.gameObject.SetActive(false);
         PlayerText.gameObject.SetActive(false);
 
@@ -363,14 +408,14 @@ public class Spawner : MonoBehaviour
 
         if (meteor.isRight)
         {
-            targetRot = meteor.rot + 20;
+            targetRot = meteor.rot + 100;
         }
         else
         {
-            targetRot = meteor.rot - 20;
+            targetRot = meteor.rot - 100;
         }
 
-        float targetHeight = -15;
+        float targetHeight = -10;
 
         while (timePast < duration && meteor.gameObject.activeSelf)
         {
@@ -408,7 +453,7 @@ public class Spawner : MonoBehaviour
     {
         decreaseMeterCount();
         decreaseLife();
-        
+
         ScreenShake.instance.StartShake(1.2f, 1.8f); //Shakes screen upon hitting city
         meteor.rot = 0;
         meteor.height = 25;
@@ -421,6 +466,8 @@ public class Spawner : MonoBehaviour
         color.a = 0.5f;
 
         cityHitScreenFlash.GetComponent<Image>().color = color;
+
+        FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
     }
 
     private IEnumerator switchPlayers(float waitTime)
@@ -441,8 +488,11 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         Player.SetActive(true);
-        restoreLife();
         PlayerActive = true;
+
+        //PlayerSpawnSound
+
+        restoreLife();
 
         coroutine = prepWave(5f);
         StartCoroutine(coroutine);
@@ -452,5 +502,38 @@ public class Spawner : MonoBehaviour
     private void disableWave()
     {
         resetArena();
+    }
+
+    private void checkifAlive()
+    {
+        foreach (SpaceRock meteor in meteorList)
+        {
+            if (meteor.gameObject.activeSelf)
+            {
+                enemiesAlive = true;
+                return;
+            }
+        }
+
+        foreach (Enemy enemy in groundedList)
+        {
+            if (enemy.gameObject.activeSelf)
+            {
+                enemiesAlive = true;
+                return;
+            }
+        }
+
+        foreach (Enemy enemy in flyingList)
+        {
+            if (enemy.gameObject.activeSelf)
+            {
+                enemiesAlive = true;
+                return;
+            }
+        }
+
+        enemiesAlive = false;
+        return;
     }
 }

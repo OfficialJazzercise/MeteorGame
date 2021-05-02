@@ -32,12 +32,13 @@ public class Score : MonoBehaviour
         SpaceRock.IncreaseScore += IncreaseScore;
         Enemy.IncreaseScore += IncreaseScore;
 
-        LifeWillChange.CityDestroyed += changePlayer;
-        SpaceRock.PlayerKilled += changePlayer;
-        Enemy.PlayerKilled += changePlayer;
-        EnemyProjectile.PlayerKilled += changePlayer;
+        LifeWillChange.CityDestroyed += resetMultiplier;
+        SpaceRock.PlayerKilled += resetMultiplier;
+        Enemy.PlayerKilled += resetMultiplier;
+        EnemyProjectile.PlayerKilled += resetMultiplier;
 
         Spawner.decreaseLife += resetMultiplier;
+        Spawner.restoreLife += changePlayer;
     }
     private void OnDisable()
     {
@@ -49,7 +50,8 @@ public class Score : MonoBehaviour
         Enemy.PlayerKilled -= changePlayer;
         EnemyProjectile.PlayerKilled -= changePlayer;
 
-        Spawner.decreaseLife -= resetMultiplier;
+        SPSpawner.decreaseLife -= resetMultiplier;
+        SPSpawner.restoreLife -= changePlayer;
     }
     private void IncreaseScore(Vector3 Pos)
     {
@@ -81,6 +83,11 @@ public class Score : MonoBehaviour
         scoreMultiplier += .1f;
         flashText(pointsGiven, Pos);
 
+        //prints out the currentscore and rounds it to nearest 0
+        P1ScoreText.text = P1Score.ToString("000000000000");
+        P2ScoreText.text = P2Score.ToString("000000000000");
+        combo.text = comboMultiplier.ToString("0.00");
+
         PlayerPrefs.SetInt("P1Score", (int) P1Score);
         PlayerPrefs.SetInt("P2Score", (int) P2Score);
         PlayerPrefs.Save();
@@ -90,22 +97,14 @@ public class Score : MonoBehaviour
     {
         scoreMultiplier = 1;
         comboMultiplier = 1;
+
+        combo.text = comboMultiplier.ToString("0.00");
     }
 
     private void changePlayer()
     {
         player1Turn = !player1Turn;
         resetMultiplier();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //prints out the currentscore and rounds it to nearest 0
-        P1ScoreText.text = P1Score.ToString("000000000000");
-        P2ScoreText.text = P2Score.ToString("000000000000");
-        combo.text = comboMultiplier.ToString("0.00");
-
     }
 
     private void Start()

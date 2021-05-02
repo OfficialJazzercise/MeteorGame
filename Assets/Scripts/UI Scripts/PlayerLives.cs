@@ -25,7 +25,7 @@ public class PlayerLives : MonoBehaviour
         SpaceRock.PlayerKilled += hurtPlayer;
         Enemy.PlayerKilled += hurtPlayer;
         EnemyProjectile.PlayerKilled += hurtPlayer;
-        Score.GiveLife += giveLife;
+        SPScore.GiveLife += giveLife;
     }
     private void OnDisable()
     {
@@ -33,7 +33,7 @@ public class PlayerLives : MonoBehaviour
         SpaceRock.PlayerKilled -= hurtPlayer;
         Enemy.PlayerKilled -= hurtPlayer;
         EnemyProjectile.PlayerKilled -= hurtPlayer;
-        Score.GiveLife += giveLife;
+        SPScore.GiveLife -= giveLife;
     }
     private void Start()
     {
@@ -63,6 +63,7 @@ public class PlayerLives : MonoBehaviour
         else
         {
             p2Health--;
+
             if (P2Text != null)
             {
                 P2Text.text = p2Health.ToString("00") + " x";
