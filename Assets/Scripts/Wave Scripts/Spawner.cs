@@ -492,7 +492,7 @@ public class Spawner : MonoBehaviour
         Player.SetActive(true);
         PlayerActive = true;
 
-        //PlayerSpawnSound
+        FindObjectOfType<SoundManager>().Play("SpawnIn");//Finds SFX to play
 
         restoreLife();
 

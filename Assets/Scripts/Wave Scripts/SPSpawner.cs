@@ -479,10 +479,7 @@ public class SPSpawner : MonoBehaviour
         Player.SetActive(true);
         PlayerActive = true;
 
-        restoreLife();
-
-        //PlayerSpawnSound
-
+        FindObjectOfType<SoundManager>().Play("SpawnIn");//Finds SFX to play
 
         coroutine = prepWave(5f);
         StartCoroutine(coroutine);

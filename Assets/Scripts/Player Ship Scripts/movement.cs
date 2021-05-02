@@ -69,6 +69,7 @@ public class movement : MonoBehaviour
     void shipRevived()
     {
         player.SetActive(true);
+
     }
 
     public void Shooting(InputAction.CallbackContext context)
@@ -150,6 +151,8 @@ public class movement : MonoBehaviour
     {
         rot = player.transform.eulerAngles.y;
         cacheHeight = transform.position.y;
+
+        FindObjectOfType<SoundManager>().Play("SpawnIn");
 
     }
 

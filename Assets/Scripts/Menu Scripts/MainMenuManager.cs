@@ -51,4 +51,9 @@ public class MainMenuManager : MonoBehaviour
     {
         beginFade(SceneManager.GetActiveScene().buildIndex + 4);
     }
+
+    public void itsaSecret()
+    {
+        FindObjectOfType<SoundManager>().Play("RileyButton");//Finds SFX to play
+    }
 }

@@ -1650,8 +1650,8 @@ VisualEffectResource:
               inWeight: 0
               outWeight: 0
             - serializedVersion: 3
-              time: 0.505249
-              value: -0.016174316
+              time: 0.20779419
+              value: -0.32525635
               inSlope: 0
               outSlope: 0
               tangentMode: 0
@@ -1660,7 +1660,7 @@ VisualEffectResource:
               outWeight: 0
             - serializedVersion: 3
               time: 0.7328044
-              value: -0.13510466
+              value: -0.47653532
               inSlope: -1.8196374
               outSlope: -1.8196374
               tangentMode: 0
@@ -5652,7 +5652,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0004705432802438736,"value":5.002805233001709,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.5052490234375,"value":-0.01617431640625,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.7328044176101685,"value":-0.13510465621948243,"inTangent":-1.819637417793274,"outTangent":-1.819637417793274,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.0004705432802438736,"value":5.002805233001709,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.207794189453125,"value":-0.32525634765625,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":0.7328044176101685,"value":-0.4765353202819824,"inTangent":-1.819637417793274,"outTangent":-1.819637417793274,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: Size
