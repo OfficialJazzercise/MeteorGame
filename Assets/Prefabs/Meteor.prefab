@@ -61,8 +61,6 @@ MonoBehaviour:
   canActivate: 1
   isRight: 1
   lookTowards: {x: 0, y: 0, z: 0}
-  rock: {fileID: 8532540413349441178}
-  smoke: {fileID: 1739965659281075546}
   playSound: {fileID: 0}
 --- !u!135 &8354167794363400796
 SphereCollider:
@@ -88,7 +86,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -168,18 +166,6 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8992082351631663401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8532540413349441178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbf0ba32f68fe89479d038648283f1ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5778914028602879297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -187,40 +173,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2471936521092038571}
     m_Modifications:
-    - target: {fileID: -5451100344673648133, guid: 7fabfed8d04a1e9468f997687e4dab04,
-        type: 3}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2763943519167890395, guid: 7fabfed8d04a1e9468f997687e4dab04,
         type: 3}
       propertyPath: m_Name
       value: Meteorite Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 2763943519167890395, guid: 7fabfed8d04a1e9468f997687e4dab04,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3247288089693821281, guid: 7fabfed8d04a1e9468f997687e4dab04,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3247288089693821281, guid: 7fabfed8d04a1e9468f997687e4dab04,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3247288089693821281, guid: 7fabfed8d04a1e9468f997687e4dab04,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3247288089693821281, guid: 7fabfed8d04a1e9468f997687e4dab04,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3247288089693821281, guid: 7fabfed8d04a1e9468f997687e4dab04,
         type: 3}
@@ -272,20 +233,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4421272099223593486, guid: 7fabfed8d04a1e9468f997687e4dab04,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a8fbca4550140b647af19a8982baf7fb, type: 2}
-    m_RemovedComponents:
-    - {fileID: -7383827702652849050, guid: 7fabfed8d04a1e9468f997687e4dab04, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fabfed8d04a1e9468f997687e4dab04, type: 3}
---- !u!1 &8532540413349441178 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2763943519167890395, guid: 7fabfed8d04a1e9468f997687e4dab04,
-    type: 3}
-  m_PrefabInstance: {fileID: 5778914028602879297}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9016906709421782048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3247288089693821281, guid: 7fabfed8d04a1e9468f997687e4dab04,
@@ -796,12 +745,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923aa50bad281a443af7d469cd48cb4d, type: 3}
---- !u!1 &1739965659281075546 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7713861278256989620, guid: 923aa50bad281a443af7d469cd48cb4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 8298087347047999726}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1739965659281075543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7713861278256989625, guid: 923aa50bad281a443af7d469cd48cb4d,
