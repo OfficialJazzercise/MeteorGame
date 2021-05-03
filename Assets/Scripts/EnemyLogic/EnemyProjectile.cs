@@ -30,8 +30,8 @@ public class EnemyProjectile : MonoBehaviour
 
     private void disableSelf()
     {
-        gameObject.SetActive(false);
         canActivate = true;
+        gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update

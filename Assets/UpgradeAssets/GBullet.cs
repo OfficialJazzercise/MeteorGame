@@ -9,6 +9,23 @@ public class GBullet : MonoBehaviour
     //delagate used to activate the BigBulletPowerUp in Firing
     public static Action BigBulletPowerUp = delegate { };
 
+    private void OnEnable()
+    {
+        Spawner.resetArena += disableSelf;
+        SPSpawner.resetArena += disableSelf;
+    }
+
+    private void OnDisable()
+    {
+        Spawner.resetArena -= disableSelf;
+        SPSpawner.resetArena -= disableSelf;
+    }
+
+    void disableSelf()
+    {
+        gameObject.SetActive(false);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         //checks if player collided with the powerup

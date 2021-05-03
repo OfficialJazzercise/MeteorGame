@@ -43,6 +43,7 @@ public class Bullet : MonoBehaviour
 
     private void disableBullet()
     {
+        canActivate = true;
         gameObject.SetActive(false);
     }
 

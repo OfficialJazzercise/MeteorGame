@@ -57,7 +57,7 @@ public class Firing : MonoBehaviour
         bulletList = new List<Bullet>();
         GameObject clone;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 15; i++)
         {
             clone = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation).gameObject;
             clone.SetActive(false);
@@ -165,9 +165,8 @@ public class Firing : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        bullet.gameObject.SetActive(false);
         bullet.canActivate = true;
-
+        bullet.gameObject.SetActive(false);
     }
 
     private IEnumerator endPowerup(float waitTime)
