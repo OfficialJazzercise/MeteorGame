@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4944196737197480814}
   - component: {fileID: 1154542822437208756}
+  - component: {fileID: 4587163081989757645}
   m_Layer: 0
   m_Name: MainTrail
   m_TagString: Untagged
@@ -137,6 +138,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &4587163081989757645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150212631370696214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34e63d3c7d043640b86ec23d28d6b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trail: {fileID: 1154542822437208756}
 --- !u!1 &1923626806537727695
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7087710973858697165}
   - component: {fileID: 1746213945230430852}
+  - component: {fileID: 6880524696562182617}
   m_Layer: 0
   m_Name: RightTrail
   m_TagString: Untagged
@@ -402,6 +417,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &6880524696562182617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586496907309149873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34e63d3c7d043640b86ec23d28d6b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trail: {fileID: 1746213945230430852}
 --- !u!1 &3912556700607146450
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8077470218645462177}
   - component: {fileID: 1729738698844494308}
+  - component: {fileID: 94961911669945383}
   m_Layer: 0
   m_Name: LeftTrail
   m_TagString: Untagged
@@ -582,6 +611,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &94961911669945383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695108691895517832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34e63d3c7d043640b86ec23d28d6b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trail: {fileID: 1729738698844494308}
 --- !u!1 &5404022668441971611
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4791022809025139571}
   - component: {fileID: 6913236299266522911}
+  - component: {fileID: 872117367292997274}
   m_Layer: 0
   m_Name: TopTrail
   m_TagString: Untagged
@@ -710,6 +753,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &872117367292997274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404022668441971611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34e63d3c7d043640b86ec23d28d6b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trail: {fileID: 6913236299266522911}
 --- !u!1 &6052576367614401206
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8818476901939655457}
   - component: {fileID: 3643991366156135539}
+  - component: {fileID: 7475102556628770752}
   m_Layer: 0
   m_Name: BottomTrail
   m_TagString: Untagged
@@ -946,6 +1003,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &7475102556628770752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7989254712694939617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34e63d3c7d043640b86ec23d28d6b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trail: {fileID: 3643991366156135539}
 --- !u!95 &1210927233
 Animator:
   serializedVersion: 3
@@ -1244,15 +1314,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 366ec7d767db0a447bb907cc466f450f, type: 3}
---- !u!1 &8691809862582419222 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7796794947420479285, guid: 366ec7d767db0a447bb907cc466f450f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1489641128884494371}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8691809862582419221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7796794947420479286, guid: 366ec7d767db0a447bb907cc466f450f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1489641128884494371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8691809862582419222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7796794947420479285, guid: 366ec7d767db0a447bb907cc466f450f,
     type: 3}
   m_PrefabInstance: {fileID: 1489641128884494371}
   m_PrefabAsset: {fileID: 0}

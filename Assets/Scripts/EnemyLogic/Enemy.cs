@@ -36,7 +36,13 @@ public class Enemy : MonoBehaviour
     {
         Spawner.resetArena += disableSelf;
         SPSpawner.resetArena += disableSelf;
+
         startBlasting();
+
+        if (enemyType == "flying")
+        {
+            canShoot = true;
+        }
     }
     private void OnDisable()
     {
@@ -152,10 +158,8 @@ public class Enemy : MonoBehaviour
                     if (height <= desiredHeight)
                     {
                         canMove = true;
-                        canShoot = true;
                     }
                 }
-
             }
             else if (enemyType == "grounded")
             {
@@ -194,8 +198,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         if (canShoot)
-        {
-            
+        {     
             createShot();
         }
 

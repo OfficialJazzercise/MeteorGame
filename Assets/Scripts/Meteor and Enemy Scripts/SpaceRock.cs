@@ -91,7 +91,7 @@ public class SpaceRock : MonoBehaviour
             canSplit = false;
 
             
-            switch(sfx)
+          /*  switch(sfx)
             {
                 case 0:
                     FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
@@ -107,7 +107,9 @@ public class SpaceRock : MonoBehaviour
                     FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
                     sfx = 1;
                     break;
-            }
+            }*/
+
+            FindObjectOfType<SoundManager>().Play("Boom2");//Finds SFX to play
 
             if (isSplit)
             {

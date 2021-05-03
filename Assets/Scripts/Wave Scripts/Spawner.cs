@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 
 public class Spawner : MonoBehaviour
@@ -29,8 +30,8 @@ public class Spawner : MonoBehaviour
     private bool waveEnd = true;
 
     private int currentWave = 0;
-    public Text waveText;
-    public Text PlayerText;
+    public TextMeshProUGUI waveText;
+    public TextMeshProUGUI PlayerText;
 
     private bool PlayerActive = true;
     private bool Player1Turn = true;
@@ -469,7 +470,7 @@ public class Spawner : MonoBehaviour
 
         cityHitScreenFlash.GetComponent<Image>().color = color;
 
-        FindObjectOfType<SoundManager>().Play("Boom");//Finds SFX to play
+        FindObjectOfType<SoundManager>().Play("Boom2");//Finds SFX to play
     }
 
     private IEnumerator switchPlayers(float waitTime)
@@ -490,11 +491,12 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         Player.SetActive(true);
+        Debug.Log("hello");
+        restoreLife();
+
         PlayerActive = true;
 
         FindObjectOfType<SoundManager>().Play("SpawnIn");//Finds SFX to play
-
-        restoreLife();
 
         coroutine = prepWave(5f);
         StartCoroutine(coroutine);

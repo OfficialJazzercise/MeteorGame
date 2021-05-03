@@ -47,7 +47,19 @@ public class EnemyTracking : MonoBehaviour
     public void startBullet(float currentRot, float currentHieght, Transform currentLoction)
     {
 
+        float distanceToPlayerA = Math.Abs(target.GetComponent<movement>().rot - currentRot);
+        float distanceToPlayerB = Math.Abs(target.GetComponent<movement>().rot + 360 - currentRot);
         float distanceToPlayer = Math.Abs(target.GetComponent<movement>().rot - currentRot);
+
+        if (distanceToPlayerA > distanceToPlayerB)
+        {
+            distanceToPlayer = distanceToPlayerB;
+        }
+        else
+        {
+            distanceToPlayer = distanceToPlayerA;
+        }
+
         float heightToPlayer = Math.Abs(target.GetComponent<movement>().height - currentHieght);
          
         if (distanceToPlayer <= 50 && heightToPlayer <= 15)
@@ -90,10 +102,7 @@ public class EnemyTracking : MonoBehaviour
                     //Prevents the bullet's trail from making weird traces
                     bullet.resetTrail();
                     
-                    bullet.gameObject.SetActive(true);
-
-                    
-                    
+                    bullet.gameObject.SetActive(true);                
                     findShortestTrip(bullet);
 
                     //Leaves the function to skip cycling through the rest of the list

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class FloatingScore : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class FloatingScore : MonoBehaviour
         if (target == null)
             target = GameObject.FindGameObjectWithTag("MainCamera");
 
-        GetComponent<TextMesh>().text = points.ToString();
+        GetComponent<TextMeshPro>().text = points.ToString();
         GetComponent<Animator>().Play("same state you are", -1, 0f);
     }
     
