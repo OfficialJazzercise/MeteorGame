@@ -110,9 +110,12 @@ public class movement : MonoBehaviour
                 isRight = true;
         }
 
-        if(context.started)
+        if(horizontalMovement != 0 || verticalMovement != 0)
         {
-            gameObject.GetComponent<AudioSource>().Play();//SFX
+            if (gameObject.GetComponent<AudioSource>().isPlaying == false)
+            {
+                gameObject.GetComponent<AudioSource>().Play();//SFX
+            }
         }
         else if (context.canceled)
         {

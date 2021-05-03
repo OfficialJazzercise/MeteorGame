@@ -20,6 +20,7 @@ public class HighscoreTable : MonoBehaviour
     public TextMeshProUGUI initial1;
     public TextMeshProUGUI initial2;
     public TextMeshProUGUI initial3;
+    public TextMeshProUGUI player;
     public GameObject prompt;
 
     private IEnumerator coroutine;
@@ -209,11 +210,15 @@ public class HighscoreTable : MonoBehaviour
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
 
-        if (highscores.highscoreEntryList[highscores.highscoreEntryList.Count - 1].score < PlayerPrefs.GetInt("P1Score", 12000))
+        if (highscores.highscoreEntryList[highscores.highscoreEntryList.Count - 1].score < PlayerPrefs.GetInt("P1Score", 0))
         {
             counter = 3;
             inputName = "";
+            player.SetText("Player 1");
 
+            initial3.SetText(alphabet[currentLetter]);
+            initial2.SetText(alphabet[currentLetter]);
+            initial1.SetText(alphabet[currentLetter]);
             //enable input box here
             prompt.SetActive(true);
 
@@ -224,7 +229,7 @@ public class HighscoreTable : MonoBehaviour
             }
         }
 
-        HighscoreEntry highscoreEntry = new HighscoreEntry { score = PlayerPrefs.GetInt("P1Score", 12000), name = inputName };
+        HighscoreEntry highscoreEntry = new HighscoreEntry { score = PlayerPrefs.GetInt("P1Score", 0), name = inputName };
 
         highscores.highscoreEntryList.Add(highscoreEntry);
 
@@ -273,6 +278,11 @@ public class HighscoreTable : MonoBehaviour
         {
             counter = 3;
             inputName = "";
+            player.SetText("Player 2");
+
+            initial3.SetText(alphabet[currentLetter]);
+            initial2.SetText(alphabet[currentLetter]);
+            initial1.SetText(alphabet[currentLetter]);
 
             //enable input box here
             prompt.SetActive(true);
@@ -283,7 +293,7 @@ public class HighscoreTable : MonoBehaviour
             }
         }
 
-        HighscoreEntry highscoreEntry = new HighscoreEntry { score = PlayerPrefs.GetInt("P2Score", 12000), name = inputName };
+        HighscoreEntry highscoreEntry = new HighscoreEntry { score = PlayerPrefs.GetInt("P2Score", 0), name = inputName };
 
         highscores.highscoreEntryList.Add(highscoreEntry);
 

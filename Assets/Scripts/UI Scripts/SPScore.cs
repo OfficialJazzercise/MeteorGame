@@ -50,6 +50,11 @@ public class SPScore : MonoBehaviour
         P1Score += 100 * scoreMultiplier;
         comboMultiplier += .1f;
 
+        if(comboMultiplier >= 25)
+        {
+            comboMultiplier = 25;
+        }
+
         if (P1Score > P1LifeTarget)
         {
             GiveLife();
