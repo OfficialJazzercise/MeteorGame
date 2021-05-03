@@ -501,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 7713861278256989622, guid: 923aa50bad281a443af7d469cd48cb4d,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 3000
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7713861278256989622, guid: 923aa50bad281a443af7d469cd48cb4d,
         type: 3}

@@ -57,7 +57,7 @@ public class Firing : MonoBehaviour
         bulletList = new List<Bullet>();
         GameObject clone;
 
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 5; i++)
         {
             clone = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation).gameObject;
             clone.SetActive(false);
