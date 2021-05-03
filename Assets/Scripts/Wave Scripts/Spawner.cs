@@ -144,6 +144,7 @@ public class Spawner : MonoBehaviour
                 meteor.canActivate = false;
                 meteor.height = 200;
                 meteor.transform.position = new Vector3(200, 200, 200);
+                meteor.isRight = !meteor.isRight;
                 meteor.gameObject.SetActive(true);
 
                 coroutine = moveMeteor(meteor, 10f);
@@ -164,6 +165,7 @@ public class Spawner : MonoBehaviour
                 meteor.canActivate = false;
                 meteor.canSplit = true;
                 meteor.transform.position = new Vector3(200, 200, 200);
+                meteor.isRight = !meteor.isRight;
                 meteor.gameObject.SetActive(true);
 
 
